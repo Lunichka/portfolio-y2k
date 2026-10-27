@@ -117,13 +117,14 @@ window.LEYLA_PROJECTS = [
     hero: [
       { src: 'assets/projects/kladovka/feed-bed.webp', alt: 'Баннер для ленты: «Вспомнила в 3 ночи. Забыла в 3:01.»', format: 'feed' },
       { src: 'assets/projects/kladovka/stories-iron.webp', alt: 'Баннер для сторис: «Утюг выключен. Наверное.»', format: 'stories' },
-      { src: 'assets/projects/kladovka/feed-iron.webp', alt: 'Баннер для ленты: «Утюг выключен. Наверное.»', format: 'feed' },
+      { src: 'assets/projects/kladovka/feed-iron.png', alt: 'Баннер для ленты: «Утюг выключен. Наверное.»', format: 'feed' },
     ],
     sections: [
       { id: 'task', title: 'Задача', text: ['Придумать запуск приложения, которое помогает выгружать из головы мысли, задачи и напоминания. Сделать рекламную кампанию для соцсетей и презентацию для инвесторов.'] },
       { id: 'insight', title: 'Инсайт', text: ['Невыполненные дела не исчезают. Они занимают место в голове, как вещи, которые некуда убрать: утюг, молоко, запись к стоматологу.', 'В среднем человек держит внимание на одном экране 47 секунд. В голове у него примерно столько же открытых вкладок.'] },
       { id: 'idea', title: 'Идея', text: ['Мысли становятся физическими предметами и вытесняют человека из его собственной жизни. Огромный утюг, кровать, заваленная делами. Кладовка — место, куда всё это можно убрать.'] },
-      { id: 'system', title: 'Система', text: ['Мягкий пластилиновый 3D, тёплая палитра, широкий гротеск. Формула заголовка: ситуация, которую узнаёт каждый, и шутка коралловым.'],
+      {
+        id: 'system', title: 'Система', text: ['Мягкий пластилиновый 3D, тёплая палитра, широкий гротеск. Формула заголовка: ситуация, которую узнаёт каждый, и шутка коралловым.'],
         palette: [
           { name: 'Небо', hex: '#ABDEEC', role: 'фон дневных сюжетов' },
           { name: 'Ночь', hex: '#111A4E', role: 'ночной сюжет, заголовки' },
@@ -131,18 +132,25 @@ window.LEYLA_PROJECTS = [
           { name: 'Апельсин', hex: '#E89C52', role: 'предметы' },
           { name: 'Бирюза', hex: '#2093AE', role: 'иконка бренда' },
           { name: 'Крем', hex: '#FCF6E3', role: 'фон презентации' },
-        ] },
-      { id: 'banners', title: 'Баннеры', text: ['Два сюжета для ленты и сторис. Одна система: заголовок, огромная мысль, крошечный человек и плашка с брендом.'], gallery: 'banners',
+        ]
+      },
+      {
+        id: 'banners', title: 'Баннеры', text: ['Два сюжета для ленты и сторис. Одна система: заголовок, огромная мысль, крошечный человек и плашка с брендом.'], gallery: 'banners',
         media: [
           { src: 'assets/projects/kladovka/stories-iron.webp', alt: 'Сторис 9:16: «Утюг выключен. Наверное.»', caption: 'Сторис 9:16', device: 'banner', span: 4 },
-          { src: 'assets/projects/kladovka/feed-iron.webp', alt: 'Лента 4:5: «Утюг выключен. Наверное.»', caption: 'Лента 4:5', device: 'banner', span: 4 },
+          { src: 'assets/projects/kladovka/.webp', alt: 'Лента 4:5: «Утюг выключен. Наверное.»', caption: 'Лента 4:5', device: 'banner', span: 4 },
           { src: 'assets/projects/kladovka/feed-bed.webp', alt: 'Лента 4:5: «Вспомнила в 3 ночи. Забыла в 3:01.»', caption: 'Лента 4:5', device: 'banner', span: 4 },
-        ] },
-      { id: 'deck', title: 'Презентация', text: ['Для инвесторов — те же предметы, но разложенные по полкам. В рекламе мысли — хаос, в презентации — порядок.'], gallery: 'slides',
+        ]
+      },
+      {
+        id: 'deck', title: 'Презентация', text: ['Для инвесторов — те же предметы, но разложенные по полкам. В рекламе мысли — хаос, в презентации — порядок.'], gallery: 'slides',
         media: [1, 2, 3, 4, 5, 6, 7].map(i => ({ src: `assets/projects/kladovka/slide-${i}.webp`, alt: `Слайд ${i} презентации для инвесторов`, caption: `Слайд ${i} / 7`, device: 'slide' })),
-        note: 'Целиком презентация — в PDF, кнопка вверху страницы.' },
-      { id: 'clip', title: 'Ролик', gallery: 'clip',
-        media: [{ kind: 'video', soon: true, src: 'assets/projects/kladovka/kladovka-clip.mp4', poster: 'assets/projects/kladovka/kladovka-clip-poster.jpg', caption: 'Короткий ролик кампании', ratio: '9 / 16' }] },
+        note: 'Целиком презентация — в PDF, кнопка вверху страницы.'
+      },
+      {
+        id: 'clip', title: 'Ролик', gallery: 'clip',
+        media: [{ kind: 'video', soon: true, src: 'assets/projects/kladovka/kladovka-clip.mp4', poster: 'assets/projects/kladovka/kladovka-clip-poster.jpg', caption: 'Короткий ролик кампании', ratio: '9 / 16' }]
+      },
     ],
     context: [], challenge: [], concept: [], palette: [], fonts: [], ux: [], implementation: [], media: [], missing: [], todo: [],
   },
