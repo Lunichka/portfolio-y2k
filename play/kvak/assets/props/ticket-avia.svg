@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 90"><!-- PLACEHOLDER: заменить на авторский рисунок авиабилета -->
+<g stroke="#14171f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+<path d="M6 10 L170 6 L172 84 L8 86 Z" fill="#f4ecd6"/>
+<path d="M172 6 L214 10 L212 82 L172 84 Z" fill="#f4ecd6"/>
+<path d="M6 10 L170 6 L171 26 L7 30 Z" fill="#2f7fd1"/>
+<path d="M172 6 L214 10 L213 28 L172 26 Z" fill="#2f7fd1"/>
+<path d="M172 6 L172 84" stroke-dasharray="3 7" stroke-width="3"/>
+<path d="M30 62 L66 52 L88 42 L96 46 L84 56 L104 60 L100 66 L60 70 Z" fill="#ff6a13"/>
+<path d="M118 46 H156 M118 60 H146" stroke-width="3.5"/>
+<path d="M184 46 H202 M184 60 H198" stroke-width="3"/>
+</g></svg>

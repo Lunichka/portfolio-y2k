@@ -1,0 +1,238 @@
+/* ==========================================================
+   LEYLA OS — shared theme (desktop + case pages)
+   1. Fonts   2. Tokens: Glitter (default) / Eye Rest   3. Base
+   4. Shared UI: buttons, chips, badges, window chrome, mode switch,
+      placeholders ("file not found"), pixel icons
+   ========================================================== */
+
+/* ---------- 1. Fonts (self-hosted: no external requests, Cyrillic included) ---------- */
+@font-face { font-family: "Tiny5"; font-display: swap; src: url("../assets/fonts/tiny5-cyrillic-400-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Tiny5"; font-display: swap; src: url("../assets/fonts/tiny5-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Pixelify Sans"; font-display: swap; src: url("../assets/fonts/pixelify-sans-cyrillic-400-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Pixelify Sans"; font-display: swap; src: url("../assets/fonts/pixelify-sans-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212; }
+@font-face { font-family: "Silkscreen"; font-display: swap; font-weight: 400; src: url("../assets/fonts/silkscreen-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+@font-face { font-family: "Silkscreen"; font-display: swap; font-weight: 700; src: url("../assets/fonts/silkscreen-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+/* Cursive of the 2000s RuNet: Fiolex Girls / Monotype Corsiva are used when installed on the
+   visitor's computer; Marck Script (Cyrillic) is the shipped fallback.
+   To ship Fiolex Girls to everyone: put FiolexGirls.woff2 into assets/fonts/ and uncomment:
+   @font-face { font-family: "Fiolex Girls"; font-display: swap; src: url("../assets/fonts/FiolexGirls.woff2") format("woff2"); } */
+@font-face { font-family: "Marck Script"; font-display: swap; src: url("../assets/fonts/marck-script-cyrillic-400-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Marck Script"; font-display: swap; src: url("../assets/fonts/marck-script-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+
+/* project specimen fonts (archive previews + case pages): the real typefaces of each project */
+@font-face { font-family: "SpecGaramond"; font-display: swap; src: url("../assets/fonts/eb-garamond-cyrillic-400-normal.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+2116; }
+@font-face { font-family: "SpecGaramond"; font-display: swap; src: url("../assets/fonts/eb-garamond-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "SpecCourier"; font-display: swap; src: url("../assets/fonts/courier-prime-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "SpecFraunces"; font-display: swap; src: url("../assets/fonts/fraunces-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "SpecManrope"; font-display: swap; src: url("../assets/fonts/manrope-cyrillic-400-normal.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+2116; }
+@font-face { font-family: "SpecManrope"; font-display: swap; src: url("../assets/fonts/manrope-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "SpecPlex"; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+2116; }
+@font-face { font-family: "SpecPlex"; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+
+/* ---------- 2. Tokens ---------- */
+:root {
+  /* palette — glitter */
+  --pink: #ff5fb7;
+  --hot: #ff2f9e;
+  --pink-soft: #ffd1ec;
+  --lav: #b79bff;
+  --lav-soft: #eadfff;
+  --purple: #7c4dcc;
+  --purple-d: #5b2a86;
+  --ink: #3b1d55;
+  --paper: #fff6fc;
+  --paper-2: #f6ecff;
+  --yellow: #ffe45e;
+  --mint: #d5f7e4;
+
+  /* semantic */
+  --text: var(--ink);
+  --muted: #6b4a8c;
+  --link: #6a2fd0;
+  --win-bg: var(--paper);
+  --win-bg-2: var(--paper-2);
+  --win-border: var(--purple);
+  --win-edge: var(--purple-d);
+  --win-shadow: 6px 6px 0 rgba(91, 42, 134, .55);
+  --title-bg: linear-gradient(90deg, #ff6fc2 0%, #c79bff 100%);
+  --title-text: #fff;
+  --title-shadow: 1px 1px 0 rgba(91, 42, 134, .8);
+  --btn-bg: linear-gradient(#ff6cc4, #e0338e);
+  --btn-text: #fff;
+  --btn-alt-bg: linear-gradient(#cfb4ff, #9d7aee);
+  --btn-border: var(--purple-d);
+  --btn-shadow: inset 1px 1px 0 rgba(255,255,255,.7), inset -1px -1px 0 rgba(0,0,0,.2), 2px 2px 0 var(--purple-d);
+  --chip-bg: #fff;
+  --chip-on-bg: var(--purple);
+  --chip-on-text: #fff;
+  --field-bg: #fff;
+  --focus: #ffe45e;
+  --radius: 4px;
+
+  --wallpaper: url("../assets/glitter.webp") center / cover no-repeat, linear-gradient(135deg, #ffb3d9 0%, #d9c2ff 55%, #b9c8ff 100%);
+
+  /* type */
+  --f-pixel: "Tiny5", "Silkscreen", ui-monospace, "Courier New", monospace;
+  --f-brand: "Silkscreen", "Tiny5", ui-monospace, monospace;
+  --f-status: "Pixelify Sans", "Tiny5", ui-monospace, monospace;
+  --f-ui: Tahoma, Verdana, "Segoe UI", "PT Sans", system-ui, sans-serif;
+  --f-cursive: "Fiolex Girls", "Monotype Corsiva", "Marck Script", "Apple Chancery", cursive;
+  --f-comic: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", var(--f-ui);
+
+  color-scheme: light;
+}
+
+/* Eye Rest Mode: the same OS with the volume down — Windows 95/98 chrome,
+   muted silver and navy, sky wallpaper, no glitter, no cursive, no motion. */
+html.eye-rest {
+  --text: #23262e;
+  --muted: #555a66;
+  --link: #24479a;
+  --win-bg: #ecebe6;
+  --win-bg-2: #e2e0d9;
+  --win-border: #8a877f;
+  --win-edge: #4a4943;
+  --win-shadow: 3px 3px 0 rgba(40, 50, 80, .18);
+  --title-bg: linear-gradient(90deg, #34497a 0%, #7d8fb8 100%);
+  --title-text: #fff;
+  --title-shadow: none;
+  --btn-bg: #e2dfd7;
+  --btn-text: #1e2128;
+  --btn-alt-bg: #e2dfd7;
+  --btn-border: #4a4943;
+  --btn-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8a877f;
+  --chip-bg: #f4f3ef;
+  --chip-on-bg: #34497a;
+  --chip-on-text: #fff;
+  --field-bg: #fff;
+  --focus: #34497a;
+  --radius: 0px;
+
+  --wallpaper:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='300' shape-rendering='crispEdges'%3E%3Cg fill='%23ffffff' opacity='.85'%3E%3Cpath d='M40 60h60v6h18v6h12v12H22V72h18z'/%3E%3Cpath d='M300 190h44v6h14v6h10v10H286v-10h14z'/%3E%3C/g%3E%3Cg fill='%23ffffff' opacity='.55'%3E%3Cpath d='M380 40h30v6h10v8h-52v-8h12z'/%3E%3Cpath d='M120 230h34v6h10v8H112v-8h8z'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 480px 300px repeat,
+    linear-gradient(#8fb7df 0%, #b9d3ea 45%, #dfe9ef 100%);
+}
+
+/* ---------- 3. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 15px/1.55 var(--f-ui); color: var(--text); background: #e7d4ff; -webkit-font-smoothing: antialiased; }
+html.eye-rest body { background: #b9d3ea; }
+img, video { max-width: 100%; height: auto; }
+a { color: var(--link); text-underline-offset: 2px; }
+button { font: inherit; color: inherit; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; box-shadow: 0 0 0 5px var(--purple-d); }
+html.eye-rest :focus-visible { outline: 2px dotted #1e2128; outline-offset: 2px; box-shadow: none; }
+
+/* retro cursors — glitter only */
+html:not(.eye-rest) body { cursor: url("../assets/pink-cursor.png") 4 4, auto; }
+html:not(.eye-rest) a, html:not(.eye-rest) button, html:not(.eye-rest) [role="button"], html:not(.eye-rest) label { cursor: url("../assets/pink-press.png?v=2") 12 8, pointer; }
+
+.skip { position: fixed; left: 8px; top: -60px; z-index: 2000; padding: 10px 14px; background: var(--paper); color: var(--ink); border: 2px solid var(--purple-d); font: 16px var(--f-pixel); }
+.skip:focus { top: 8px; }
+
+/* ---------- 4. Shared UI ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; text-decoration: none;
+  font: 16px/1 var(--f-pixel); letter-spacing: .02em; text-transform: uppercase;
+  padding: 10px 14px; min-height: 42px; color: var(--btn-text); background: var(--btn-bg);
+  border: 2px solid var(--btn-border); border-radius: 3px; box-shadow: var(--btn-shadow);
+  text-shadow: 1px 1px 0 rgba(91, 42, 134, .8);
+}
+.btn:hover { filter: brightness(1.06); }
+.btn:active { transform: translate(2px, 2px); box-shadow: inset 1px 1px 0 rgba(0,0,0,.2); }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
+.btn-alt { background: var(--btn-alt-bg); }
+.btn-big { font-size: 18px; padding: 12px 18px; min-height: 48px; }
+.btn-ghost { background: #fff; color: var(--purple-d); text-shadow: none; }
+html.eye-rest .btn { text-shadow: none; border-radius: 0; }
+html.eye-rest .btn:active { box-shadow: inset 1px 1px 0 #8a877f, inset -1px -1px 0 #fff; }
+html.eye-rest .btn-ghost { background: var(--btn-bg); color: var(--btn-text); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer; min-height: 34px;
+  font: 14px/1 var(--f-pixel); padding: 7px 10px; color: var(--purple-d);
+  background: var(--chip-bg); border: 2px solid var(--purple); border-radius: 12px;
+}
+.chip .n { font: 13px var(--f-status); opacity: .8; }
+.chip[aria-pressed="true"] { background: var(--chip-on-bg); color: var(--chip-on-text); }
+html.eye-rest .chip { border-radius: 0; color: var(--text); border-color: #8a877f; box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #b6b3aa; }
+html.eye-rest .chip[aria-pressed="true"] { color: #fff; background: #34497a; box-shadow: inset 1px 1px 0 #1d2b4f; }
+
+.badge { display: inline-flex; align-items: center; gap: 5px; font: 13px/1 var(--f-pixel); padding: 4px 8px; border-radius: 10px; border: 2px solid var(--purple-d); background: #fff; color: var(--purple-d); white-space: nowrap; }
+.badge.t-special { background: var(--hot); color: #fff; }
+.badge.t-client { background: #ffe3f4; }
+.badge.t-personal { background: var(--lav-soft); }
+.badge.t-concept { background: #fff1c2; }
+.badge.s-done, .badge.s-live { background: var(--mint); border-color: #2c8a5a; color: #12452c; }
+.badge.s-wip, .badge.s-moodboard { background: var(--yellow); }
+.badge.s-prototype { background: #d5f7e4; border-color: #2c8a5a; color: #12452c; }
+.badge.s-draft { background: #fff; border-style: dashed; }
+html.eye-rest .badge { border-radius: 0; border: 1px solid #8a877f; background: #f4f3ef; color: var(--text); }
+
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 6px 0; }
+.tags li { font: 13px/1 var(--f-pixel); padding: 5px 8px; background: var(--lav-soft); border: 2px solid var(--purple); border-radius: 12px; color: var(--purple-d); }
+html.eye-rest .tags li { border-radius: 0; border: 1px solid #8a877f; background: #f4f3ef; color: var(--text); }
+
+.notice { margin: 10px 0; padding: 8px 10px; font-size: 13.5px; background: #fff7c9; border: 2px dashed #c9a400; border-radius: 3px; color: #4a3a00; }
+html.eye-rest .notice { background: #ffffe1; border: 1px solid #4a4943; border-radius: 0; }
+
+/* window chrome (used by desktop windows and case pages) */
+.win-bar { display: flex; align-items: center; gap: 8px; padding: 4px 6px; background: var(--title-bg); color: var(--title-text); border-bottom: 2px solid var(--win-border); }
+.win-title { margin: 0; flex: 1; min-width: 0; font: 16px/1.25 var(--f-pixel); text-shadow: var(--title-shadow); letter-spacing: .03em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.win-ico { display: inline-flex; }
+.win-btns { display: inline-flex; gap: 4px; }
+.wbtn {
+  width: 28px; height: 24px; display: grid; place-items: center; cursor: pointer; padding: 0; text-decoration: none;
+  font: 16px/1 var(--f-pixel); color: var(--purple-d); background: #fff; border: 2px solid var(--purple-d); border-radius: 2px;
+  box-shadow: inset -1px -1px 0 rgba(0,0,0,.15);
+}
+.wbtn:hover { background: var(--pink-soft); }
+html.eye-rest .win-bar { border-bottom: 0; padding: 3px 3px 3px 6px; }
+html.eye-rest .wbtn { width: 22px; height: 20px; border: 0; border-radius: 0; background: #e2dfd7; color: #1e2128; font-size: 14px; box-shadow: inset -1px -1px 0 #4a4943, inset 1px 1px 0 #fff, inset -2px -2px 0 #8a877f; }
+html.eye-rest .wbtn:hover { background: #ecebe6; }
+
+/* Win98 bevel used for frames in Eye Rest Mode */
+html.eye-rest .bevel { border: 0 !important; border-radius: 0 !important; box-shadow: inset -1px -1px 0 #4a4943, inset 1px 1px 0 #fff, inset -2px -2px 0 #8a877f, inset 2px 2px 0 #dcd9d0, var(--win-shadow) !important; padding: 3px; }
+html.eye-rest .sunken { border: 0 !important; border-radius: 0 !important; box-shadow: inset 1px 1px 0 #8a877f, inset -1px -1px 0 #fff, inset 2px 2px 0 #4a4943, inset -2px -2px 0 #dcd9d0 !important; }
+
+/* mode switch — the same control on the desktop taskbar and on case pages */
+.mode-switch { display: inline-flex; align-items: stretch; gap: 0; border: 2px solid var(--purple-d); border-radius: 4px; background: #fff; overflow: hidden; }
+.mode-switch .ms-cap { display: inline-flex; align-items: center; padding: 0 8px; font: 13px var(--f-pixel); color: var(--purple-d); background: var(--pink-soft); border-right: 2px solid var(--purple-d); }
+.mode-switch button { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 3px 10px; border: 0; background: transparent; cursor: pointer; font: 14px/1 var(--f-pixel); color: var(--purple-d); }
+.mode-switch button + button { border-left: 2px solid var(--purple-d); }
+.mode-switch button[aria-pressed="true"] { background: var(--purple); color: #fff; }
+html.eye-rest .mode-switch { border: 0; border-radius: 0; background: #e2dfd7; box-shadow: inset 1px 1px 0 #8a877f, inset -1px -1px 0 #fff; padding: 2px; gap: 2px; }
+html.eye-rest .mode-switch .ms-cap { background: transparent; border: 0; color: var(--text); }
+html.eye-rest .mode-switch button { color: var(--text); box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8a877f; border: 0; }
+html.eye-rest .mode-switch button + button { border: 0; }
+html.eye-rest .mode-switch button[aria-pressed="true"] { background: #34497a; color: #fff; box-shadow: inset 1px 1px 0 #1d2b4f; }
+
+/* "file not found" placeholder for missing assets — clearly not final */
+.missing {
+  display: grid; place-items: center; align-content: center; gap: 8px; padding: 18px; text-align: center; min-height: 160px;
+  color: var(--purple-d); background:
+    repeating-linear-gradient(45deg, rgba(124,77,204,.07) 0 10px, transparent 10px 20px), var(--win-bg);
+  border: 2px dashed var(--purple); border-radius: 3px;
+}
+.missing .m-title { font: 16px var(--f-pixel); letter-spacing: .04em; }
+.missing .m-what { font-size: 14px; max-width: 46ch; color: var(--text); }
+.missing code, .draft code { font: 13px var(--f-status); background: rgba(124,77,204,.1); padding: 1px 5px; word-break: break-all; }
+.missing .m-ico { width: 34px; height: 30px; display: grid; place-items: center; font: 20px var(--f-pixel); background: var(--yellow); color: #1c1c1c; border: 2px solid #1c1c1c; clip-path: polygon(50% 0, 100% 100%, 0 100%); padding-top: 9px; }
+html.eye-rest .missing { color: var(--text); border: 1px dashed #4a4943; border-radius: 0; background: repeating-linear-gradient(45deg, rgba(0,0,0,.04) 0 10px, transparent 10px 20px), #f4f3ef; }
+
+.draft { margin: 12px 0; padding: 10px 12px; border: 2px dashed #c9a400; background: #fffbe0; color: #4a3a00; font-size: 14px; border-radius: 3px; }
+.draft b { font: 14px var(--f-pixel); letter-spacing: .04em; }
+html.eye-rest .draft { border-radius: 0; border: 1px dashed #4a4943; background: #ffffe1; color: #23262e; }
+
+/* pixel icons (inline SVG) */
+.pix { display: inline-block; image-rendering: pixelated; vertical-align: middle; line-height: 0; }
+.pix svg { display: block; shape-rendering: crispEdges; }
+
+/* Global switch: no decorative animation anywhere */
+html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+}

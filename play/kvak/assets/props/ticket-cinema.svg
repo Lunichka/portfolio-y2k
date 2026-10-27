@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><!-- PLACEHOLDER: заменить на авторский рисунок билета в кино -->
+<g stroke="#14171f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+<path d="M6 8 H194 V36 A14 14 0 0 0 194 64 V92 H6 V64 A14 14 0 0 0 6 36 Z" fill="#ff4f3a"/>
+<path d="M140 8 V92" stroke-dasharray="3 7" stroke-width="3"/>
+<path d="M72 28 L79 44 L96 46 L83 57 L87 74 L72 65 L57 74 L61 57 L48 46 L65 44 Z" fill="#ffd93b"/>
+<path d="M156 30 H182 M156 50 H178 M156 70 H182" stroke-width="3.5"/>
+<path d="M20 20 H36 M20 80 H44" stroke-width="3"/>
+</g></svg>

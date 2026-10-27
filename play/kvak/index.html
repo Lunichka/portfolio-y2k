@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>КВАК, ГДЕ МОИ ВЕЩИ?! — интерактивный спецпроект (концепт)</title>
+<meta name="description" content="Концептуальный интерактивный спецпроект: офис горит, дедлайн не ждёт, найди пять потерянных вещей Квака. Рекламные интеграции — демонстрационные.">
+<link rel="icon" href="assets/ui/sticker-zhaba.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#game-stage">К игровому полю</a>
+
+<div id="app">
+
+  <!-- ============ ЭКРАН 1 · ОБЛОЖКА: первый кадр игры ============ -->
+  <section id="screen-cover" class="screen is-active" aria-labelledby="cover-title">
+    <!-- ОБЛОЖКА: однотонный фон, по центру — объявление (название), под ним кнопка; вокруг — предметы из офиса, огонь;
+         Квак выглядывает из-за объявления, моргает и прячется обратно -->
+    <div class="cover-decor" aria-hidden="true">
+      <img class="dc dc-folder"  src="assets/decor/folder.png"  alt="">
+      <img class="dc dc-mug"     src="assets/decor/mug-magistr.svg" alt="">
+      <img class="dc dc-st-kva"  src="assets/decor/st-kva.png"  alt="">
+      <img class="dc dc-st-report" src="assets/decor/st-report.png" alt="">
+      <img class="dc dc-receipt" src="assets/decor/receipt.svg" alt="">
+      <img class="dc dc-laptop"  src="assets/decor/laptop.svg"  alt="">
+      <img class="dc dc-st-q"    src="assets/decor/st-kva-q.png" alt="">
+      <img class="dc dc-st-e"    src="assets/decor/st-kva-e.png" alt="">
+      <img class="dc dc-cactus"  src="assets/decor/cactus.png"  alt="">
+      <img class="dc dc-can"     src="assets/decor/can.png"     alt="">
+      <img class="dc dc-ball"    src="assets/decor/ball.png"    alt="">
+      <img class="dc dc-pills"   src="assets/decor/blister.svg" alt="">
+    </div>
+
+    <div class="fire-layer fire-back" aria-hidden="true">
+      <img class="fire flick f-a" src="assets/fire/fire9.png" alt="">
+      <img class="fire flick f-b" src="assets/fire/fire7.png" alt="">
+      <img class="fire flick f-c" src="assets/fire/fire5.png" alt="">
+      <img class="fire flick f-d" src="assets/fire/fire8.png" alt="">
+    </div>
+
+    <div class="cover-center">
+      <div class="notice">
+        <div class="peek" id="peek" aria-hidden="true">
+          <div class="frog-rig">
+            <img class="hero-frog" src="assets/frog.png" alt="">
+            <img class="frog-eyes" src="assets/frog-eyes-closed.png" alt="">
+          </div>
+        </div>
+        <i class="tape tape-l" aria-hidden="true"></i><i class="tape tape-r" aria-hidden="true"></i>
+        <p class="notice-kicker"><span>Срочное дело</span><span>№ 005</span></p>
+        <h1 id="cover-title" class="cover-title">Квак, где мои вещи?!</h1>
+        <p class="notice-text">На рабочем месте пропали 5&nbsp;вещей. Найди их, пока офис не&nbsp;сгорел.</p>
+      </div>
+      <button id="btn-start" class="btn btn-verb" type="button"><span class="play" aria-hidden="true">▶</span> Спасти рабочий день</button>
+    </div>
+
+    <div class="fire-layer fire-front" aria-hidden="true">
+      <img class="fire flick f-f" src="assets/fire/fire4.png" alt="">
+      <img class="fire flick f-g" src="assets/fire/fire2.png" alt="">
+    </div>
+  </section>
+
+  <!-- ============ ЭКРАН 2 · ИГРА ============ -->
+  <section id="screen-game" class="screen" aria-labelledby="game-title">
+    <div class="game-bg" aria-hidden="true"></div>
+    <div class="game-wrap">
+
+      <header class="game-head">
+        <div class="head-title">
+          <p class="caption caption-light">Задача · Квак, где мои вещи?!</p>
+          <h2 id="game-title">Помоги Кваку собраться</h2>
+          <p class="instr" id="game-instr">Квак потерял пять вещей где-то на столе. Нажимай на найденное — пока всё не сгорело.</p>
+        </div>
+
+        <div class="head-stats">
+          <div class="stat stat-count" aria-live="polite" aria-atomic="true">
+            <span class="stat-label">Найдено</span>
+            <span class="stat-value"><b id="count-found">0</b><i>/</i>5</span>
+            <span class="cells" id="cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+          <div class="stat stat-time" id="timer" role="timer" aria-label="Осталось времени">
+            <span class="stat-label">Осталось</span>
+            <span class="stat-value"><b id="time-left">60</b><small>сек</small></span>
+            <span class="time-bar" aria-hidden="true"><span id="time-bar-fill"></span></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="game-grid">
+        <div class="stage-col">
+          <div class="stage-scroller" tabindex="-1">
+            <div class="stage" id="game-stage" role="group" aria-label="Рабочий стол Квака. Найди пять предметов и нажми на них">
+              <img class="stage-img" src="assets/scene.png" alt="Захламлённый офисный стол Квака: ноутбук с чатом, стикеры «КВА!», кружка STAFF ONLY, мышь и банка энергетика. Под столом видны жабьи лапы." draggable="false">
+              <div class="stage-heat" aria-hidden="true"></div>
+              <div class="legs-layer" id="legs-layer" aria-hidden="true">
+                <img class="leg-patch" src="assets/legs/patch-right.png" alt="" style="left:51.855%;top:71.914%;width:24.023%">
+                <img class="leg-left" src="assets/legs/leg-left.png" alt="" style="left:21.582%;top:72.987%;width:26.455%">
+                <div class="leg-rig" id="leg-rig">
+                  <img class="leg-body" src="assets/legs/leg-right.png" alt="">
+                  <img class="leg-foot" id="leg-foot" src="assets/legs/foot-right.png" alt="" style="left:.12%;top:.2%;width:72.62%">
+                </div>
+              </div>
+              <div id="props" class="props"></div>
+              <div id="hotspots" class="hotspots"></div>
+              <div class="stage-fire" id="stage-fire" aria-hidden="true">
+                <div class="stage-smoke"><i class="sm sm-l"></i><i class="sm sm-r"></i><i class="sm sm-t"></i></div>
+                <img class="fire flame sf-l"  data-min="0"    src="assets/fire/fire9.png" alt="">
+                <img class="fire flame sf-l2" data-min="0"    src="assets/fire/fire2.png" alt="">
+                <img class="fire flame sf-r"  data-min="0"    src="assets/fire/fire5.png" alt="">
+                <img class="fire flame sf-r2" data-min="0"    src="assets/fire/fire6.png" alt="">
+                <img class="fire flame sf-l3" data-min="0.30" src="assets/fire/fire8.png" alt="">
+                <img class="fire flame sf-r3" data-min="0.40" src="assets/fire/fire7.png" alt="">
+                <img class="fire flame sf-l4" data-min="0.68" src="assets/fire/fire4.png" alt="">
+                <img class="fire flame sf-r4" data-min="0.78" src="assets/fire/fire2.png" alt="">
+                <img class="fire flame sf-l5" data-min="0.90" src="assets/fire/fire6.png" alt="">
+                <img class="fire flame sf-r5" data-min="0.92" src="assets/fire/fire8.png" alt="">
+                <img class="fire flame sf-l6" data-min="0.46" src="assets/fire/fire2.png" alt="">
+                <img class="fire flame sf-r6" data-min="0.52" src="assets/fire/fire6.png" alt="">
+                <img class="fire flame sf-l7" data-min="0.60" src="assets/fire/fire6.png" alt="">
+                <img class="fire flame sf-r7" data-min="0.64" src="assets/fire/fire4.png" alt="">
+                <img class="fire flame sf-l8" data-min="0.80" src="assets/fire/fire8.png" alt="">
+                <img class="fire flame sf-r8" data-min="0.84" src="assets/fire/fire2.png" alt="">
+                <img class="fire flame sf-l9" data-min="0.93" src="assets/fire/fire9.png" alt="">
+                <img class="fire flame sf-r9" data-min="0.96" src="assets/fire/fire5.png" alt="">
+              </div>
+              <div id="misses" class="misses" aria-hidden="true"></div>
+            </div>
+          </div>
+          <p class="scroll-hint" aria-hidden="true">← листай сцену вбок →</p>
+        </div>
+
+        <aside class="side" aria-labelledby="side-title">
+          <p class="caption">Документ · чек-лист</p>
+          <h3 id="side-title">Список Квака</h3>
+          <p class="side-sub">Найди всё из списка — ничего не забудь.</p>
+          <ul id="items" class="items"></ul>
+
+          <div class="side-foot">
+            <button id="btn-restart" class="btn btn-ghost" type="button">Начать заново</button>
+            <div id="restart-confirm" class="restart-confirm" hidden>
+              <p>Сбросить найденное и таймер?</p>
+              <div>
+                <button id="btn-restart-yes" class="btn btn-small btn-danger" type="button">Да, сбросить</button>
+                <button id="btn-restart-no" class="btn btn-small btn-ghost" type="button">Нет</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <p class="legal">Концептуальный проект. Бренды в нём упомянуты как демонстрационные идеи; партнёры в создании не участвовали, предложения и промокоды не действуют.</p>
+    </div>
+  </section>
+
+  <!-- ============ ЭКРАН 3 · ФИНАЛ ============ -->
+  <section id="screen-final" class="screen" aria-labelledby="final-title">
+    <div class="final-bg" aria-hidden="true"><div class="rays"></div></div>
+    <div class="fire-layer final-fire" aria-hidden="true">
+      <img class="fire flick ff-a" src="assets/fire/fire9.png" alt="">
+      <img class="fire flick ff-b" src="assets/fire/fire5.png" alt="">
+    </div>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+    <div class="final-inner">
+      <div class="final-hero">
+        <div class="frog-rig final-rig">
+          <img class="final-frog" src="assets/frog.png" alt="Квак доволен: всё найдено">
+          <img class="frog-eyes" src="assets/frog-eyes-closed.png" alt="" aria-hidden="true">
+        </div>
+        <div class="stamp" aria-hidden="true">Выжил!</div>
+      </div>
+
+      <div class="final-text">
+        <p class="caption caption-lime">Статус: задача закрыта</p>
+        <h2 id="final-title" class="final-title">Квак выжил.<br><em>Дедлайн тоже.</em></h2>
+        <p class="final-lead">Все пять предметов найдены. Офис пока стоит. Ты официально спас рабочий день.</p>
+
+        <div class="pass" id="pass">
+          <div class="pass-main">
+            <p class="pass-kicker">Золотой пропуск</p>
+            <p class="pass-title">Сертификат выжившего в дедлайне</p>
+            <dl class="pass-stats">
+              <div><dt>Найдено</dt><dd>5 из 5</dd></div>
+              <div><dt>Время</dt><dd id="res-time">0 сек</dd></div>
+              <div><dt>Промахи</dt><dd id="res-miss">0</dd></div>
+            </dl>
+            <p class="pass-rank" id="res-rank">Старший спасатель</p>
+          </div>
+          <div class="pass-stub" aria-hidden="true"><span>ДЕМО</span><span>№ 0001</span></div>
+        </div>
+        <p class="pass-note">Игровая награда. Не является финансовым продуктом или реальным пропуском.</p>
+        <p class="pass-best" id="res-best" hidden></p>
+
+        <div class="final-actions">
+          <button id="btn-again" class="btn btn-hero btn-hero-sm" type="button">Играть ещё раз <span class="arrow" aria-hidden="true">↻</span></button>
+          <button id="btn-home" class="btn btn-ghost btn-ghost-light" type="button">← На обложку</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ МОДАЛЬНОЕ ОКНО ПРЕДМЕТА ============ -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-backdrop" data-close="1"></div>
+  <div class="modal-card" id="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-text" tabindex="-1">
+    <div class="titlebar"><span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="tb-name" id="modal-app"></span></div>
+    <button class="modal-x" id="modal-x" type="button" aria-label="Закрыть окно и вернуться к игре"><span aria-hidden="true">×</span></button>
+
+    <div class="modal-top">
+      <span class="chip" id="modal-chip">Концепт · партнёр</span>
+      <span class="chip chip-found" id="modal-progress">Найдено 1 из 5</span>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-art" aria-hidden="true">
+        <img id="modal-art-img" src="" alt="">
+        <div class="modal-quote" id="modal-quote"></div>
+      </div>
+      <div class="modal-copy">
+        <h2 id="modal-title"></h2>
+        <p id="modal-text"></p>
+
+        <div class="reward" id="modal-reward" aria-live="polite">
+          <p class="reward-label" id="reward-label"></p>
+          <div class="reward-reveal" id="reward-reveal" hidden>
+            <div class="reward-code" id="reward-code" hidden>
+              <code id="reward-code-text"></code>
+              <button class="btn btn-small" id="btn-copy" type="button">Скопировать</button>
+            </div>
+            <p class="reward-detail" id="reward-detail"></p>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-modal" id="modal-cta" type="button"></button>
+          <button class="btn btn-ghost btn-modal-back" id="modal-back" type="button">Вернуться к поиску</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="modal-legal"><strong>Концепт рекламной интеграции.</strong> Не является действующим предложением.</p>
+  </div>
+</div>
+
+<!-- ============ ВРЕМЯ ВЫШЛО ============ -->
+<div id="timeout" class="modal" hidden>
+  <div class="modal-backdrop"></div>
+  <div class="modal-card modal-timeout m-alert" role="alertdialog" aria-modal="true" aria-labelledby="timeout-title" aria-describedby="timeout-text" tabindex="-1" id="timeout-card">
+    <div class="titlebar"><span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="tb-name">Системное уведомление</span></div>
+    <div class="modal-body modal-body-single">
+      <div class="modal-copy">
+        <p class="chip chip-found">Время вышло</p>
+        <h2 id="timeout-title">Дедлайн наступил. Квак в панике.</h2>
+        <p id="timeout-text">Ты нашёл <b id="timeout-found">0</b> из 5. Найденное сохранено — можно добавить времени и продолжить.</p>
+        <div class="modal-actions">
+          <button class="btn btn-modal" id="btn-more-time" type="button">Ещё 30 секунд — продолжить</button>
+          <button class="btn btn-ghost" id="btn-timeout-restart" type="button">Начать заново <small>(прогресс сбросится)</small></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- переходы между экранами -->
+<div id="wipe" class="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<noscript><p style="position:fixed;inset:auto 0 0 0;background:#ffd93b;color:#14171f;padding:12px;font:700 16px sans-serif;text-align:center;z-index:99">Для игры нужен JavaScript.</p></noscript>
+
+<script src="js/game.js"></script>
+</body>
+</html>

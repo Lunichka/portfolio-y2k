@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Лейла — веб и UI/UX дизайнер · LEYLA OS</title>
+  <meta name="description"
+    content="Портфолио Лейлы, веб- и UI/UX-дизайнера: проекты, кейсы, гостевая книга и режим «Отдых для глаз» — в виде персональной операционки из нулевых.">
+  <meta property="og:title" content="LEYLA OS — портфолио веб- и UI/UX-дизайнера">
+  <meta property="og:description" content="Проекты, кейсы и гостевая книга в персональной операционке из нулевых.">
+  <!-- mode before first paint: no flash of the wrong theme -->
+  <script>
+    try { if (localStorage.getItem('leyla-os:mode') === 'eyerest') document.documentElement.classList.add('eye-rest'); } catch (e) { }
+    try { if (sessionStorage.getItem('leyla-os:booted') || /^#(world|projects|other|about|guestbook|button|eyerest|contact)$/.test(location.hash)) document.documentElement.classList.add('booted'); } catch (e) { }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 8%27 shape-rendering=%27crispEdges%27%3E%3Cpath fill=%27%23ff3d9a%27 d=%27M1 0h3v1h1V0h3v1h1v3H8v1H7v1H6v1H5v1H4V7H3V6H2V5H1V4H0V1h1z%27/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/tiny5-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="styles.css">
+  <noscript>
+    <style>#boot, #desktop, #taskbar { display: none !important; } body { overflow: auto; }</style>
+  </noscript>
+</head>
+
+<body>
+  <a class="skip" href="#win-projects" data-open="projects">Перейти к проектам</a>
+  <h1 class="vh">Лейла — портфолио веб- и UI/UX-дизайнера</h1>
+
+  <div id="bg" aria-hidden="true"></div>
+  <div id="sheen" aria-hidden="true"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <!-- ============ WELCOME / LOADING ============ -->
+  <section id="boot" aria-label="Загрузка LEYLA OS">
+    <div class="boot-card bevel">
+      <div class="boot-head win-bar"><span class="win-title">LEYLA OS 2.0 — запуск</span></div>
+      <div class="boot-inner">
+        <img class="boot-banner" data-gif src="assets/welcome-page.gif" alt="Добро пожаловать в моё портфолио"
+          width="1731" height="138" fetchpriority="high">
+        <p class="boot-os"><span class="brand">LEYLA OS 2.0</span> <span class="boot-ver">· розовый гламур эдишн</span></p>
+        <div class="bar sunken" role="progressbar" aria-label="Загрузка" aria-valuemin="0" aria-valuemax="100"
+          aria-valuenow="0" id="boot-bar"><span id="boot-fill"></span></div>
+        <p class="boot-status" id="boot-status">Загружаем блёстки и дофамин…</p>
+        <div class="boot-actions">
+          <button class="btn btn-big" id="boot-enter" type="button">ENTER ♥ войти</button>
+          <button class="linkish" id="boot-calm" type="button">☁ войти в режиме «Отдых для глаз»</button>
+          <p class="boot-hint" aria-hidden="true">или просто нажми Enter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESKTOP ============ -->
+  <main id="desktop" aria-label="Рабочий стол">
+    <div class="marquee" id="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>★ ПРИФФКИ ВСЕМ КТО ЗАШЁЛ ★ СПЕЦПРОЕКТЫ ★ FIGMA ★ PHOTOSHOP ★ ILLUSTRATOR ★ AFTER EFFECTS ★ ПОДПИШИТЕ МОЮ ГОСТЕВУЮ ПЛИЗ ★ СМОТРЕТЬ
+          ТОЛЬКО В СОЛНЦЕЗАЩИТНЫХ ОЧКАХ ★ </span>
+        <span>★ ПРИФФКИ ВСЕМ КТО ЗАШЁЛ ★ СПЕЦПРОЕКТЫ ★ FIGMA ★ PHOTOSHOP ★ ILLUSTRATOR ★ AFTER EFFECTS ★ ПОДПИШИТЕ МОЮ ГОСТЕВУЮ ПЛИЗ ★ СМОТРЕТЬ
+          ТОЛЬКО В СОЛНЦЕЗАЩИТНЫХ ОЧКАХ ★ </span>
+      </div>
+    </div>
+
+    <nav class="icons" aria-label="Ярлыки рабочего стола" id="icons"></nav>
+
+    <!-- The designer as a character. One cut-out photo + separate layers:
+         Glitter = outline + pink glitter laptop on top; Eye Rest = the plain photo with the silver laptop. -->
+    <figure class="portrait" id="portrait">
+      <div class="p-stack">
+        <img class="p-outline" src="assets/portrait/outline-glitter.webp" alt="" width="904" height="1500" decoding="async">
+        <img class="p-base" src="assets/portrait/suit.webp" alt="Лейла в чёрном костюме и тёмных очках с ноутбуком в руках"
+          width="904" height="1500" decoding="async" fetchpriority="high">
+        <img class="p-lid" src="assets/portrait/laptop-glitter.webp" alt="" width="904" height="1500" decoding="async">
+        <span class="spark s1" aria-hidden="true"></span><span class="spark s2" aria-hidden="true"></span>
+        <span class="spark s3" aria-hidden="true"></span><span class="spark s4" aria-hidden="true"></span>
+        <span class="spark s5" aria-hidden="true"></span>
+      </div>
+      <figcaption>
+        <button type="button" class="nametag bevel" data-open="about">
+          <span class="nt-name">Лейла</span>
+          <span class="nt-role">веб &amp; UI/UX дизайнер</span>
+          <span class="nt-more">анкета.txt ↗</span>
+        </button>
+      </figcaption>
+    </figure>
+
+    <!-- MY WORLD -->
+    <section class="win" id="win-world" aria-labelledby="t-world">
+      <header class="win-bar"><span class="win-ico" data-pix="heart" data-scale="2"></span>
+        <h2 class="win-title" id="t-world">МОЙ_МИР.EXE</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body world">
+        <div class="world-hero" aria-hidden="true">
+          <div class="p-stack">
+            <img class="p-outline" src="assets/portrait/outline-glitter.webp" alt="" width="904" height="1500" loading="lazy">
+            <img class="p-base" src="assets/portrait/suit.webp" alt="" width="904" height="1500" loading="lazy">
+            <img class="p-lid" src="assets/portrait/laptop-glitter.webp" alt="" width="904" height="1500" loading="lazy">
+          </div>
+        </div>
+        <img class="world-banner" data-gif src="assets/welcome-page.gif" alt="Добро пожаловать" width="1731"
+          height="138">
+        <div class="intro">
+          <img class="intro-gif" data-gif src="assets/im-leyla.gif" alt="Привет! Я Лейла" width="802" height="125">
+          <p>Я веб- и UI/UX-дизайнер. Рисую макеты в <b>Figma</b>, собираю сайты в <b>Framer</b> и сама пишу
+            кастомные компоненты на React и Framer Motion, когда стандартных кнопок маловато.</p>
+          <p>Этот сайтик — мой мини-интернет из нулевых: смотри проекты, черкни что-нибудь в гостевую, забирай
+            кнопку 88×31 или жми «Отдых для глаз», если монитор начал плавиться.</p>
+        </div>
+        <div class="divider" data-divider="heart,star,flower,star"></div>
+        <div class="row-btns">
+          <button class="btn btn-big" type="button" data-open="projects">▶ Смотреть проекты</button>
+          <button class="btn btn-alt" type="button" data-open="guestbook">✎ Черкнуть в гостевую</button>
+        </div>
+        <div class="shortcut-grid" id="shortcut-grid" aria-label="Все разделы"></div>
+      </div>
+      <footer class="win-status" id="world-status">1 анкета · 0 вирусов (проверено Касперским)</footer>
+    </section>
+
+    <!-- PROJECTS ARCHIVE -->
+    <section class="win" id="win-projects" aria-labelledby="t-projects">
+      <header class="win-bar"><span class="win-ico" data-pix="folder" data-scale="2"></span>
+        <h2 class="win-title" id="t-projects">ПРОЕКТЫ.DIR</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body no-pad">
+        <div class="explorer">
+          <div class="ex-toolbar">
+            <div class="ex-addr sunken" aria-hidden="true"><span data-pix="folder" data-scale="2"></span> C:\LEYLA\ПРОЕКТЫ\</div>
+            <div class="ex-filter" id="proj-filter" role="group" aria-label="Фильтр проектов"></div>
+          </div>
+          <ol class="ex-list" id="proj-list" aria-label="Проекты"></ol>
+        </div>
+      </div>
+      <footer class="win-status" id="proj-status">загружаем папку…</footer>
+    </section>
+
+    <!-- OTHER WORK: sites & UI, kept apart from the special-projects archive -->
+    <section class="win" id="win-other" aria-labelledby="t-other">
+      <header class="win-bar"><span class="win-ico" data-pix="folder2" data-scale="2"></span>
+        <h2 class="win-title" id="t-other">ДРУГИЕ_РАБОТЫ.DIR</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body no-pad">
+        <div class="explorer">
+          <div class="ex-toolbar">
+            <div class="ex-addr sunken" aria-hidden="true"><span data-pix="folder2" data-scale="2"></span> C:\LEYLA\ДРУГИЕ_РАБОТЫ\</div>
+            <p class="ex-note">Сайты, UI-концепты и Framer-компоненты для клиентов. Основные спецпроекты — в <button type="button" class="linkish" data-open="projects">ПРОЕКТЫ.DIR</button></p>
+          </div>
+          <ol class="ex-list" id="other-list" aria-label="Другие работы"></ol>
+        </div>
+      </div>
+      <footer class="win-status" id="other-status"></footer>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="win" id="win-about" aria-labelledby="t-about">
+      <header class="win-bar"><span class="win-ico" data-pix="flower" data-scale="2"></span>
+        <h2 class="win-title" id="t-about">АНКЕТА.TXT</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body about">
+        <figure class="about-photo">
+          <img src="assets/photos/leyla-cafe.webp" alt="Лейла в полосатой рубашке говорит по телефону за ноутбуком в кафе"
+            width="800" height="1000" loading="lazy">
+          <figcaption>это я ♥ на связи</figcaption>
+        </figure>
+        <div class="about-text">
+          <h3>Лейла</h3>
+          <p class="sub">Веб- и UI/UX-дизайнер</p>
+          <p>Делаю спецпроекты, рекламу и сайты: придумываю идею, рисую баннеры и презентации, собираю
+            интерактив и сама довожу его до кода.</p>
+          <p>Люблю чистую типографику, ламповые детали из прошлого и анимации, у которых есть смысл, а не просто
+            «чтобы всё крутилось».</p>
+          <p>Ищу команду, которая делает рекламу, брендированные digital-проекты и спецпроекты.</p>
+          <h4>Мой арсенал</h4>
+          <ul class="tags">
+            <li>Figma</li>
+            <li>Photoshop</li>
+            <li>Illustrator</li>
+            <li>After Effects</li>
+            <li>Framer</li>
+            <li>React / TypeScript</li>
+            <li>HTML / CSS / JS</li>
+          </ul>
+          <p class="small">В Figma — макеты сайтов и презентации, в Photoshop и Illustrator — баннеры и графика, в After Effects —
+            моушн.</p>
+          <div class="row-btns">
+            <button class="btn" type="button" data-open="projects">Смотреть работы</button>
+            <button class="btn btn-alt" type="button" data-open="contact">Написать письмо</button>
+          </div>
+        </div>
+      </div>
+      <footer class="win-status">profile.exe — пашет на все 100%</footer>
+    </section>
+
+    <!-- GUESTBOOK -->
+    <section class="win" id="win-guestbook" aria-labelledby="t-guestbook">
+      <header class="win-bar"><span class="win-ico" data-pix="book" data-scale="2"></span>
+        <h2 class="win-title" id="t-guestbook">ГОСТЕВАЯ.LOG</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body gb">
+        <div class="gb-head">
+          <div class="gb-title" aria-hidden="true">Guestbook</div>
+          <p class="gb-welcome"><img data-gif class="gb-glitter" src="assets/priffki-glitter.gif" alt="Приффки!"
+              width="378" height="101" loading="lazy"></p>
+          <p>Оставь след в истории интернета — черкни пару строк!</p>
+          <div class="divider" data-divider="heart,star,heart,flower,heart"></div>
+          <p class="gb-links">[ <a href="#gb-form" data-gb="form">Черкнуть в гостевую</a> ] [ <a href="#gb-table"
+              data-gb="list">Читать записки</a> ] [ <a href="#win-contact" data-open="contact">Мыло</a> ]</p>
+        </div>
+
+        <p class="notice" role="note"><b>Внимание:</b> строчки с плашкой <span class="tag-demo">ДЕМО</span> — для
+          красоты. Сервера пока нет, поэтому твоя запись сохраняется только в твоём браузере — другие посетители её не
+          увидят (честно-честно).</p>
+
+        <table class="gb-table" id="gb-table">
+          <caption class="vh">Записи в гостевой книге</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="vh">Иконка</span></th>
+              <th scope="col">Кто писал</th>
+              <th scope="col">Когда</th>
+              <th scope="col">Что сказал</th>
+            </tr>
+          </thead>
+          <tbody id="gb-rows"></tbody>
+        </table>
+
+        <div class="divider" data-divider="star,heart,star,heart,star"></div>
+
+        <form class="gb-form" id="gb-form" novalidate>
+          <h3>✎ Подписать гостевую <span class="tag-local">только у тебя</span></h3>
+          <div class="field">
+            <label for="gb-name">Твой никнейм</label>
+            <input id="gb-name" name="name" type="text" maxlength="24" autocomplete="nickname"
+              aria-describedby="gb-name-err" required>
+            <p class="err" id="gb-name-err"></p>
+          </div>
+          <fieldset class="field icons-pick">
+            <legend>Выбери иконку</legend>
+            <label><input type="radio" name="icon" value="heart" checked><span data-pix="heart"
+                data-scale="3"></span><span class="vh">сердечко</span></label>
+            <label><input type="radio" name="icon" value="star"><span data-pix="star" data-scale="3"></span><span
+                class="vh">звезда</span></label>
+            <label><input type="radio" name="icon" value="flower"><span data-pix="flower" data-scale="3"></span><span
+                class="vh">цветочек</span></label>
+            <label><input type="radio" name="icon" value="butterfly"><span data-pix="butterfly"
+                data-scale="3"></span><span class="vh">бабочка</span></label>
+          </fieldset>
+          <div class="field">
+            <label for="gb-msg">Сообщение <span class="count" id="gb-count">0/140</span></label>
+            <textarea id="gb-msg" name="message" rows="3" maxlength="140" aria-describedby="gb-msg-err"
+              required></textarea>
+            <p class="err" id="gb-msg-err"></p>
+          </div>
+          <button class="btn btn-big" type="submit">Записать в гостевую ♥</button>
+          <p class="form-status" id="gb-status" role="status"></p>
+        </form>
+      </div>
+      <footer class="win-status">рекомендуется смотреть в тёмных очках</footer>
+    </section>
+
+    <!-- MY BUTTON -->
+    <section class="win" id="win-button" aria-labelledby="t-button">
+      <header class="win-bar"><span class="win-ico" data-pix="star" data-scale="2"></span>
+        <h2 class="win-title" id="t-button">ОБМЕН_КНОПКАМИ!</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body btn-win">
+        <p>Хочешь поставить ссылочку на меня у себя в блоге? Лови мою фирменную кнопочку <b>88 × 31 пиксель</b> —
+          тру-классику раннего веба.</p>
+        <div class="btn-stage">
+          <a id="my-button-link" href="./" class="btn88-link" aria-label="Лейла — портфолио (кнопка 88 на 31)">
+            <img id="my-button-img" data-gif class="btn88" src="assets/leyla-button-88x31.gif" alt="LEYLA.EXE"
+              width="88" height="31">
+          </a>
+          <a href="./" class="btn88-link big" tabindex="-1" aria-hidden="true">
+            <img data-gif class="btn88" src="assets/leyla-button-88x31.gif" alt="" width="88" height="31">
+          </a>
+        </div>
+        <label for="embed-code" class="lbl">HTML-код для твоего сайта:</label>
+        <textarea id="embed-code" class="code" rows="4" readonly spellcheck="false"></textarea>
+        <div class="row-btns">
+          <button class="btn" type="button" id="copy-embed">Скопировать код</button>
+          <span class="form-status" id="copy-status" role="status"></span>
+        </div>
+        <p class="notice" id="url-note" role="note"></p>
+        <p class="small">Сохранить картинку: <a id="dl-banner" href="assets/leyla-button-88x31.gif"
+            download>leyla-button-88x31.gif</a> (88 × 31 px, анимированная гифка)</p>
+      </div>
+      <footer class="win-status">88×31 px · 4 кадра · ноль трекеров</footer>
+    </section>
+
+    <!-- EYE REST ZONE -->
+    <section class="win" id="win-eyerest" aria-labelledby="t-eyerest">
+      <header class="win-bar"><span class="win-ico" data-pix="eye" data-scale="2"></span>
+        <h2 class="win-title" id="t-eyerest">ОТДЫХ_ДЛЯ_ГЛАЗ.EXE</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body er">
+        <div class="er-warn" id="er-warn">
+          <div class="dialog bevel">
+            <div class="dialog-bar">Системная тревога</div>
+            <div class="dialog-body">
+              <span class="dialog-ico" aria-hidden="true">!</span>
+              <div>
+                <p class="dialog-title">ВНИМАНИЕ: ОБНАРУЖЕН ПЕРЕДОЗ ГЛАМУРА.</p>
+                <p>Включить режим «Отдых для глаз»?</p>
+              </div>
+            </div>
+            <div class="dialog-foot">
+              <button class="btn btn-big" type="button" data-eye="on" id="er-activate">Убрать блёстки</button>
+            </div>
+          </div>
+          <p class="small">Выключает мерцание, шлейф за курсором, бегущую строку и гифки, а розовый гламур меняет на
+            спокойное небо и классические окна. Проекты, тексты и открытые окна остаются на своих местах.</p>
+        </div>
+
+        <div class="er-calm" id="er-calm" hidden>
+          <div class="sky sunken" aria-hidden="true">
+            <span class="cloud c1" data-pix="cloud" data-scale="6"></span>
+            <span class="cloud c2" data-pix="cloud" data-scale="4"></span>
+            <span class="flower-big" data-pix="flower" data-scale="8"></span>
+          </div>
+          <p class="calm-title">ДОБРО ПОЖАЛОВАТЬ В ТИХУЮ ГАВАНЬ</p>
+          <p id="er-survived" class="calm-sub"></p>
+          <button class="btn btn-big" type="button" data-eye="off" id="er-restore">Вернуть блёстки!</button>
+        </div>
+      </div>
+      <footer class="win-status" id="er-status">Отдых для глаз: ВЫКЛ</footer>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="win" id="win-contact" aria-labelledby="t-contact">
+      <header class="win-bar"><span class="win-ico" data-pix="mail" data-scale="2"></span>
+        <h2 class="win-title" id="t-contact">СВЯЗЬ.EXE</h2><span class="win-btns"></span>
+      </header>
+      <div class="win-body contact">
+        <p>Есть проект, вакансия мечты или просто хочешь обсудить вёрстку? Шли весточку.</p>
+        <p id="contact-tg" class="row-btns"></p>
+        <div id="contact-live" hidden>
+          <form id="contact-form" novalidate>
+            <div class="field"><label for="c-name">Как тебя зовут?</label><input id="c-name" type="text"
+                autocomplete="name"></div>
+            <div class="field"><label for="c-msg">Суть вопроса</label><textarea id="c-msg" rows="4"></textarea>
+              <p class="err" id="c-err"></p>
+            </div>
+            <button class="btn btn-big" type="submit">Отправить письмецо ✉</button>
+            <p class="small">Откроет твой почтовик с готовым текстом — с сайта ничего само не улетает.</p>
+          </form>
+          <p class="small">Или пиши напрямую: <a id="c-mail" href="#"></a></p>
+        </div>
+        <p class="notice" id="contact-missing" role="note"><b>Для Лейлы (видно только локально):</b> почта пока не вписана.
+          Добавь <code>EMAIL</code> и <code>TELEGRAM</code> в файл <code>data/site.js</code> — и здесь появятся форма и кнопка.</p>
+        <ul class="link-list" id="link-list"></ul>
+      </div>
+      <footer class="win-status">жду ответа (надеюсь, твоего)</footer>
+    </section>
+  </main>
+
+  <!-- ============ TASKBAR ============ -->
+  <footer id="taskbar">
+    <button id="start" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="startmenu"><span
+        data-pix="heart" data-scale="2" aria-hidden="true"></span> <span class="start-txt">ЛЕЙЛА</span></button>
+    <div id="tasks" aria-label="Открытые окна"></div>
+
+    <nav id="mnav" aria-label="Быстрый переход">
+      <button type="button" data-open="world"><span data-pix="heart" data-scale="2"
+          aria-hidden="true"></span>Главная</button>
+      <button type="button" data-open="projects"><span data-pix="folder" data-scale="2"
+          aria-hidden="true"></span>Проекты</button>
+      <button type="button" data-open="guestbook"><span data-pix="book" data-scale="2"
+          aria-hidden="true"></span>Гостевая</button>
+    </nav>
+
+    <div id="tray">
+      <div id="mode-switch" data-mode-switch data-caption="Режим"></div>
+      <button type="button" id="mode-mini" class="tray-btn" aria-label="Режим оформления"><span class="mm-ico"
+          aria-hidden="true"></span><span class="mm-txt"></span></button>
+      <time id="clock" aria-label="Местное время"></time>
+    </div>
+  </footer>
+
+  <div id="startmenu" role="menu" aria-label="Меню LEYLA OS" hidden></div>
+
+  <noscript>
+    <div class="nojs">
+      <h2>LEYLA OS работает на JavaScript</h2>
+      <p>Без него рабочий стол не откроется, но кейсы доступны напрямую:</p>
+      <!-- cases:start (generated by tools/build.mjs) -->
+      <ul>
+        <li><a href="work/orchestra-1703.html">Orchestra 1703: кто ты из мира музыки?</a></li>
+        <li><a href="work/kladovka.html">Кладовка. Too many tabs</a></li>
+        <li><a href="work/kvak.html">Квак, где мои вещи?!</a></li>
+        <li><a href="work/pixel-train.html">Симулятор худшего соседа</a></li>
+      </ul>
+      <!-- cases:end -->
+    </div>
+  </noscript>
+
+  <script src="data/site.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="js/mode.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
