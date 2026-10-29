@@ -15,7 +15,7 @@
     try { if (sessionStorage.getItem('leyla-os:booted') || /^#(world|projects|other|about|guestbook|button|eyerest|contact)$/.test(location.hash)) document.documentElement.classList.add('booted'); } catch (e) { }
   </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 8%27 shape-rendering=%27crispEdges%27%3E%3Cpath fill=%27%23ff3d9a%27 d=%27M1 0h3v1h1V0h3v1h1v3H8v1H7v1H6v1H5v1H4V7H3V6H2V5H1V4H0V1h1z%27/%3E%3C/svg%3E">
-  <link rel="preload" href="assets/fonts/tiny5-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bitcell.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="styles.css">
   <noscript>
@@ -347,7 +347,7 @@
           <p class="small">Или пиши напрямую: <a id="c-mail" href="#"></a></p>
         </div>
         <p class="notice" id="contact-missing" role="note"><b>Для Лейлы (видно только локально):</b> почта пока не вписана.
-          Добавь <code>EMAIL</code> и <code>TELEGRAM</code> в файл <code>data/site.js</code> — и здесь появятся форма и кнопка.</p>
+          Добавь <code>EMAIL</code> в файл <code>data/site.js</code> — и здесь появится форма письма.</p>
         <ul class="link-list" id="link-list"></ul>
       </div>
       <footer class="win-status">жду ответа (надеюсь, твоего)</footer>

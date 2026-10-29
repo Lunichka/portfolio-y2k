@@ -11,9 +11,9 @@
                 e.g. [{ label: "Behance", url: "https://www.behance.net/…" }]
    ========================================================== */
 window.LEYLA_SITE = {
-  SITE_URL: '',
+  SITE_URL: 'https://leyla-portfolio-y2k.vercel.app/',
   BANNER_URL: '',
-  EMAIL: '',
-  TELEGRAM: '',   // ник без @, например 'leyla_design'
+  EMAIL: 'lejla.eyvazova@gmail.com',
+  TELEGRAM: 'leylaraudson',   // ник без @, например 'leyla_design'
   LINKS: [],
 };
