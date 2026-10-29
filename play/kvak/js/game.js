@@ -22,9 +22,9 @@
       src: 'assets/props/ticket-avia.svg', placeholder: true,
       x: 78, y: 338, w: 74, ar: 220 / 90, rot: -9,
       theme: 'm-avia', partner: 'Aviasales',
-      title: 'Ты нашёл билет. Пора сваливать из этого офиса.',
+      title: 'Ты нашел билет. Пора сваливать из этого офиса.',
       text: 'Квак заслужил отпуск. Мы тоже считаем, что после такого дедлайна пора сменить обстановку.',
-      quote: 'Я не сбегаю. Я работаю удалённо. Желательно — с пальмами.',
+      quote: 'Я не сбегаю. Я работаю удаленно. Желательно — с пальмами.',
       rewardLabel: 'Промокод на покупку авиабилета',
       cta: 'Забрать промокод',
       code: 'KVAK-FLY',
@@ -81,7 +81,7 @@
       rewardLabel: 'Специальное предложение на первую консультацию',
       cta: 'Узнать о поддержке',
       code: null,
-      detail: 'Демо-предложение: первая консультация на особых условиях. Это не медицинская услуга и не обещание результата; в реальной интеграции здесь были бы условия партнёра. Если сейчас тяжело — можно поговорить с близким человеком или специалистом.'
+      detail: 'Демо-предложение: первая консультация на особых условиях. Это не медицинская услуга и не обещание результата; в реальной интеграции здесь были бы условия партнера. Если сейчас тяжело — можно поговорить с близким человеком или специалистом.'
     }
   ];
 
@@ -132,7 +132,7 @@
     barMax: GAME_SECONDS * 1000,
     elapsed: 0,           // сколько мс реально шла игра
     misses: 0,
-    running: false,       // идёт ли таймер
+    running: false,       // идет ли таймер
     modalOpen: false,
     timeoutOpen: false,
     openedId: null,
@@ -164,7 +164,7 @@
       b.style.width = pct(it.w + HIT_PAD, SCENE_W);
       b.style.height = pct(h + HIT_PAD, SCENE_H);
       b.style.setProperty('--rot', it.rot + 'deg');
-      b.setAttribute('aria-label', it.name + '. Нажми, если нашёл');
+      b.setAttribute('aria-label', it.name + '. Нажми, если нашел');
       b.addEventListener('click', function (e) { e.stopPropagation(); onItemClick(it.id, b); });
       dom.hotspots.appendChild(b);
     });
@@ -206,7 +206,7 @@
       var li = $('.item[data-id="' + it.id + '"]');
       var pr = $('.prop[data-prop="' + it.id + '"]');
       hs.classList.toggle('is-found', isFound);
-      hs.setAttribute('aria-label', it.name + (isFound ? '. Уже найдено. Нажми, чтобы открыть историю' : '. Нажми, если нашёл'));
+      hs.setAttribute('aria-label', it.name + (isFound ? '. Уже найдено. Нажми, чтобы открыть историю' : '. Нажми, если нашел'));
       li.classList.toggle('is-found', isFound);
       $('.item-state', li).textContent = isFound ? '✓' : '';
       $('.item-btn', li).hidden = !isFound;
@@ -319,7 +319,7 @@
       startTimer();
       scratchSoon();
       var first = $('.stage-scroller');
-      if (first) { /* фокус не крадём: пользователь сам тянется к сцене */ }
+      if (first) { /* фокус не крадем: пользователь сам тянется к сцене */ }
     });
   }
 
@@ -400,7 +400,7 @@
       state.modalOpen = false;
       if (state.winPending) { win(); return; }
       var f = state.lastFocus;
-      if (f && document.contains(f) && !f.hidden) { try { f.focus({ preventScroll: true }); } catch (e) {} }
+      if (f && document.contains(f) && !f.hidden) { try { f.focus({ preventScroll: true }); } catch (e) { } }
       if (state.remaining > 0) startTimer();
     };
     if (reduceMotion) { finish(); return; }
@@ -451,7 +451,7 @@
     state.barMax = EXTRA_SECONDS * 1000;   // найденное не трогаем
     startTimer();
     var f = state.lastFocus;
-    if (f && document.contains(f)) { try { f.focus({ preventScroll: true }); } catch (e) {} }
+    if (f && document.contains(f)) { try { f.focus({ preventScroll: true }); } catch (e) { } }
   });
   $('#btn-timeout-restart').addEventListener('click', function () {
     closeTimeout();
@@ -475,7 +475,7 @@
      --------------------------------------------------------- */
   function bestKey() { return 'kvak.best.v1'; }
   function readBest() { try { var v = parseInt(localStorage.getItem(bestKey()), 10); return isNaN(v) ? null : v; } catch (e) { return null; } }
-  function writeBest(v) { try { localStorage.setItem(bestKey(), String(v)); } catch (e) {} }
+  function writeBest(v) { try { localStorage.setItem(bestKey(), String(v)); } catch (e) { } }
 
   function win() {
     pauseTimer();
@@ -535,7 +535,7 @@
   });
 
   /* ---------------------------------------------------------
-     ЖИВОЙ МИР: огонь, моргание, почёсывание ногой
+     ЖИВОЙ МИР: огонь, моргание, почесывание ногой
      --------------------------------------------------------- */
   /* false — когда scene.png переэкспортирована БЕЗ слоя «НОГИ»:
      тогда обе ноги рисуются из PSD (assets/legs/), заплатка не нужна */
@@ -559,7 +559,7 @@
 
   /* Усиление пожара — от игрового времени (state.elapsed), без собственного таймера.
      0…0.3 — несколько языков, 0.3…0.7 — больше и крупнее, 0.7…1 — новые языки и яркость.
-     «+30 секунд» не уменьшает огонь: elapsed только растёт, пока игра идёт. */
+     «+30 секунд» не уменьшает огонь: elapsed только растет, пока игра идет. */
   var fireBox = $('#stage-fire'), heatLevel = -1;
   function updateFire() {
     if (!fireBox) return;

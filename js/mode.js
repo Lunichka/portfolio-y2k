@@ -10,7 +10,7 @@
   'use strict';
   var KEY = 'leyla-os:mode', MKEY = 'leyla-os:motion';
   var root = document.documentElement;
-  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false, addEventListener: function () {} };
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false, addEventListener: function () { } };
   function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function write(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { /* storage off: keep it in memory */ } }
 
@@ -36,7 +36,7 @@
     mode = mode === 'eyerest' ? 'eyerest' : 'glitter';
     if (mode === state.mode) return;
     state.mode = mode; write(KEY, mode); apply();
-    announce(mode === 'eyerest' ? 'Режим «Отдых для глаз» включён' : 'Режим «Глиттер» включён');
+    announce(mode === 'eyerest' ? 'Режим «Отдых для глаз» включен' : 'Режим «Глиттер» включен');
   }
   function setMotion(on) { state.motionPref = on ? 'on' : 'off'; write(MKEY, state.motionPref); apply(); }
 
@@ -54,7 +54,7 @@
     host.classList.add('mode-switch');
     host.setAttribute('role', 'group');
     host.setAttribute('aria-label', 'Режим оформления');
-    host.title = 'Вырвиглаз-режим: блёстки ВКЛ / ВЫКЛ';
+    host.title = 'Вырвиглаз-режим: блестки ВКЛ / ВЫКЛ';
     if (host.dataset.caption !== 'off') {
       var cap = document.createElement('span'); cap.className = 'ms-cap'; cap.textContent = host.dataset.caption || 'Режим'; cap.setAttribute('aria-hidden', 'true');
       host.appendChild(cap);

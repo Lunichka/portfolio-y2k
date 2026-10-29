@@ -82,7 +82,7 @@ function specimen(pv, big) {
         </div>`;
 }
 function beforeAfter(ba) {
-  const side = (p, label) => (exists(p) ? `<img src="${esc(up(p))}" alt="${esc(label)}" loading="lazy">` : missing(`${label}: файл ещё не добавлен`, p));
+  const side = (p, label) => (exists(p) ? `<img src="${esc(up(p))}" alt="${esc(label)}" loading="lazy">` : missing(`${label}: файл еще не добавлен`, p));
   return `<figure class="ba-wrap">
           <div class="ba" style="--pos:50%">
             <div class="ba-pane ba-after">${side(ba.after, 'ПОСЛЕ — концепт')}</div>
@@ -166,27 +166,27 @@ function page(p, i) {
       S.push(section(++n, sec.id, sec.title, body));
     });
   } else {
-  S.push(section(++n, 'context', 'Контекст и цели', p.context.length ? paras(p.context) : draft('контекст и цели проекта')));
-  S.push(section(++n, 'challenge', 'Задача', p.challenge.length ? paras(p.challenge) : draft('формулировку дизайн-задачи')));
-  {
-    let b = p.concept.length ? paras(p.concept) : draft('творческую концепцию');
-    if (p.palette.length) b += `
+    S.push(section(++n, 'context', 'Контекст и цели', p.context.length ? paras(p.context) : draft('контекст и цели проекта')));
+    S.push(section(++n, 'challenge', 'Задача', p.challenge.length ? paras(p.challenge) : draft('формулировку дизайн-задачи')));
+    {
+      let b = p.concept.length ? paras(p.concept) : draft('творческую концепцию');
+      if (p.palette.length) b += `
         <h3>Цвет</h3>
         <ul class="swatches">${p.palette.map(c => `<li><i style="background:${esc(c.hex)}"></i><b>${esc(c.name)}</b><span>${esc(c.hex)}${c.role ? ' · ' + esc(c.role) : ''}</span></li>`).join('')}</ul>`;
-    if (p.fonts.length) b += `
+      if (p.fonts.length) b += `
         <h3>Шрифты</h3>
         <ul class="fonts">${p.fonts.map(f => `<li><span class="f-spec" style="font-family:'${esc(f.family)}',serif" aria-hidden="true">Аа Bb 123</span><b>${esc(f.name)}</b><span>${esc(f.role)}</span></li>`).join('')}</ul>`;
-    S.push(section(++n, 'concept', 'Концепция и визуальный стиль', b));
-  }
-  S.push(section(++n, 'ux', 'Ключевые UX/UI-решения', p.ux.length
-    ? `<ol class="ux">${p.ux.map(u => `<li><h3>${esc(u.title)}</h3><p>${esc(u.text)}</p></li>`).join('')}</ol>`
-    : draft('ключевые UX/UI-решения и почему они такие')));
-  {
-    const shots = images.map(image).join('\n        ') + miss.map(m => missing(m.what, m.file)).join('\n        ');
-    S.push(section(++n, 'screens', 'Экраны, макеты и адаптив', shots ? `<div class="gallery g-${esc(p.layout)}">\n        ${shots}\n        </div>` : draft('скриншоты и макеты')));
-  }
-  if (vids.length) S.push(section(++n, 'video', 'Видео и анимация', vids.map(v => video(v)).join('\n')));
-  if (p.implementation.length) S.push(section(++n, 'build', 'Реализация', `<ul class="impl">${p.implementation.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`));
+      S.push(section(++n, 'concept', 'Концепция и визуальный стиль', b));
+    }
+    S.push(section(++n, 'ux', 'Ключевые UX/UI-решения', p.ux.length
+      ? `<ol class="ux">${p.ux.map(u => `<li><h3>${esc(u.title)}</h3><p>${esc(u.text)}</p></li>`).join('')}</ol>`
+      : draft('ключевые UX/UI-решения и почему они такие')));
+    {
+      const shots = images.map(image).join('\n        ') + miss.map(m => missing(m.what, m.file)).join('\n        ');
+      S.push(section(++n, 'screens', 'Экраны, макеты и адаптив', shots ? `<div class="gallery g-${esc(p.layout)}">\n        ${shots}\n        </div>` : draft('скриншоты и макеты')));
+    }
+    if (vids.length) S.push(section(++n, 'video', 'Видео и анимация', vids.map(v => video(v)).join('\n')));
+    if (p.implementation.length) S.push(section(++n, 'build', 'Реализация', `<ul class="impl">${p.implementation.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`));
   }
 
   const ogImg = p.preview && p.preview.kind === 'image' && exists(p.preview.src) ? abs(p.preview.src) : '';
@@ -246,7 +246,7 @@ ${SITE.SITE_URL ? `  <link rel="canonical" href="${esc(abs('work/' + p.slug + '.
         ${hero.html ? `<div class="hero-media">\n        ${hero.html}\n        </div>` : ''}
       </header>
 ${(p.todo || []).length ? `
-      <aside class="draft todo" aria-label="Черновик кейса"><b>ЧЕРНОВИК КЕЙСА</b> — ещё не хватает: ${p.todo.map(esc).join(' · ')}.</aside>` : ''}
+      <aside class="draft todo" aria-label="Черновик кейса"><b>ЧЕРНОВИК КЕЙСА</b> — еще не хватает: ${p.todo.map(esc).join(' · ')}.</aside>` : ''}
 ${S.join('\n')}
     </article>
 

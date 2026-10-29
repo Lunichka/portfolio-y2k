@@ -11,7 +11,7 @@
    (контраст), только как заливка с графитовым текстом.
    ========================================================== */
 
-/* Шрифты (все локальные): Sochinyala — заголовки и крупные надписи (кириллица есть, знака № нет — он берётся из Onest),
+/* Шрифты (все локальные): Sochinyala — заголовки и крупные надписи (кириллица есть, знака № нет — он берется из Onest),
    Onest Regular/SemiBold — основной текст, интерфейс и ВСЕ цифры, IBM Plex Mono — мелкие технические метки, чек, коды. */
 @font-face{font-family:"Sochinyala";font-weight:400;font-display:swap;src:url("../assets/fonts/Sochinyala-Regular.woff2") format("woff2")}
 @font-face{font-family:"Onest";font-weight:100 500;font-display:swap;src:url("../assets/fonts/Onest-Regular.woff2") format("woff2")}
@@ -32,7 +32,7 @@
 :root{
   /* ---- 1. ЦВЕТА ---- */
   --bg:#F5F1E8;          /* основной фон */
-  --graphite:#20272B;    /* текст и тёмные поверхности */
+  --graphite:#20272B;    /* текст и темные поверхности */
   --lime:#D9FF43;        /* действия, прогресс */
   --fire:#F28B32;        /* огонь, срочность */
   --steel:#8AABBE;       /* дополнительный */
@@ -148,7 +148,7 @@ h1,h2,h3{word-spacing:.04em;font-family:var(--font-display);font-weight:var(--fw
 #screen-cover{min-height:100vh;min-height:100svh;overflow:hidden;background:var(--steel);color:var(--graphite)}
 #screen-cover.is-active{display:block}
 
-/* предметы из сцены (вырезаны из scene.png) — «бумажная аппликация»: светлый контур + сдвинутая тень, лёгкое парение */
+/* предметы из сцены (вырезаны из scene.png) — «бумажная аппликация»: светлый контур + сдвинутая тень, легкое парение */
 .cover-decor{position:absolute;inset:0;pointer-events:none;z-index:2}
 .dc{position:absolute;height:auto;display:block;rotate:var(--r,0deg);
   /* единый стиль наклейки: чистая светлая обводка + мягкая тень */
@@ -188,7 +188,7 @@ h1,h2,h3{word-spacing:.04em;font-family:var(--font-display);font-weight:var(--fw
 .notice{position:relative;width:min(680px,100%);transform:rotate(-1.1deg);
   background:#FFFEFA;color:var(--graphite);border:var(--bw) solid var(--graphite);border-radius:4px 6px 3px 5px / 5px 3px 6px 4px;
   padding:clamp(16px,2.6vh,26px) clamp(18px,2.6vw,32px) clamp(18px,2.8vh,28px);box-shadow:7px 9px 0 rgba(32,39,43,.4)}
-/* едва заметная фактура бумаги (локальный SVG-шум) и лёгкий подгиб нижнего угла */
+/* едва заметная фактура бумаги (локальный SVG-шум) и легкий подгиб нижнего угла */
 .notice::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
   background:
     linear-gradient(135deg,transparent 93%,rgba(32,39,43,.07) 93.5%,rgba(32,39,43,.02) 100%),
@@ -277,15 +277,15 @@ h1,h2,h3{word-spacing:.04em;font-family:var(--font-display);font-weight:var(--fw
   border:2px solid var(--graphite);font:900 15px/22px var(--font-body);text-align:center;transform:rotate(calc(var(--rot,0deg) * -1))}
 .hotspot.pop{animation:pop .6s var(--ease)}
 @keyframes pop{0%{transform:translate(-50%,-50%) rotate(var(--rot,0deg)) scale(.7)}60%{transform:translate(-50%,-50%) rotate(var(--rot,0deg)) scale(1.35)}100%{transform:translate(-50%,-50%) rotate(var(--rot,0deg)) scale(1)}}
-/* ---- ноги (анимация почёсывания, правая стопа) ---- */
+/* ---- ноги (анимация почесывания, правая стопа) ---- */
 .legs-layer{position:absolute;inset:0;pointer-events:none}
 .legs-layer img{position:absolute;height:auto;display:block}
 /* Правая нога — один цельный кусок (бедро + стопа в .leg-rig), движется вокруг шарнира у нижней кромки кадра.
-   Заплатка .leg-patch закрывает «запечённую» ногу в scene.png, чтобы под движущейся ногой не было двойника. */
+   Заплатка .leg-patch закрывает «запеченную» ногу в scene.png, чтобы под движущейся ногой не было двойника. */
 .leg-rig{position:absolute;left:52.148%;top:75.9%;width:25.483%;aspect-ratio:391/232;transform-origin:58% 100%;will-change:transform}
 .leg-rig img{position:absolute;display:block}
 .leg-rig .leg-body{left:0;top:0;width:100%;height:100%}
-/* Если в scene.png больше нет «запечённых» ног, добавь класс no-baked-legs на .stage (см. LEGS_IN_SCENE в js/game.js):
+/* Если в scene.png больше нет «запеченных» ног, добавь класс no-baked-legs на .stage (см. LEGS_IN_SCENE в js/game.js):
    обе ноги рисуются из PSD, заплатка не нужна. */
 .leg-left{display:none}
 .stage.no-baked-legs .leg-left{display:block}
@@ -306,7 +306,7 @@ h1,h2,h3{word-spacing:.04em;font-family:var(--font-display);font-weight:var(--fw
   90%{transform:translate(-4.5%,-.5%) rotate(-1.4deg) scale(1.005)}
 }
 
-/* ---- огонь в сцене: растёт вместе с таймером (--heat 0…1 задаёт JS) ---- */
+/* ---- огонь в сцене: растет вместе с таймером (--heat 0…1 задает JS) ---- */
 .stage-fire{--heat:0;position:absolute;inset:0;pointer-events:none;z-index:3}
 .stage-fire .fire{--w:10%;--ty:calc(1 + var(--heat) * .2);--ha:calc(1 + var(--heat) * .8);transform-origin:50% 100%;
   filter:brightness(calc(.96 + var(--heat) * .12)) saturate(calc(1 + var(--heat) * .25));width:calc(var(--w) * (.78 + var(--heat) * .32));opacity:calc(.78 + var(--heat) * .22);
@@ -341,7 +341,7 @@ h1,h2,h3{word-spacing:.04em;font-family:var(--font-display);font-weight:var(--fw
 .stage-heat{opacity:calc(.5 + var(--heat,0) * .5);animation:heat-pulse 2.2s ease-in-out infinite}
 @keyframes heat-pulse{50%{opacity:calc(.42 + var(--heat,0) * .6)}}
 
-/* ---- естественное мерцание: у каждого языка свои период, амплитуда и дрейф (значения задаёт JS) ---- */
+/* ---- естественное мерцание: у каждого языка свои период, амплитуда и дрейф (значения задает JS) ---- */
 .fire.flame{--d1:1.7s;--d2:2.6s;--a:.04;--r:1.5deg;--dx:.6%;
   animation:flame-scale var(--d1) ease-in-out infinite,flame-sway var(--d2) ease-in-out infinite}
 @keyframes flame-scale{
@@ -488,7 +488,7 @@ h1,h2,h3{word-spacing:.04em;font-family:var(--font-display);font-weight:var(--fw
 /* письмо (Aviasales) */
 .m-avia{--m-bg:var(--white);--m-accent:var(--steel);--m-bar:var(--steel);--m-bar-ink:var(--graphite)}
 .m-avia .modal-art{background:repeating-linear-gradient(135deg,var(--steel) 0 14px,#9bb9c9 14px 28px)}
-/* тёмное сообщение (Кинопоиск) */
+/* темное сообщение (Кинопоиск) */
 .m-kino{--m-bg:var(--graphite);--m-ink:var(--white);--m-accent:var(--steel);--m-bar:#0f1417;--m-bar-ink:var(--white)}
 .m-kino .modal-art{background:#0f1417;border-color:var(--white)}
 .m-kino .reward{background:rgba(255,255,255,.08);border-color:var(--white)}

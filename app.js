@@ -81,11 +81,11 @@
     if (eye && lastEye === false) {
       const secs = Math.max(1, Math.round((Date.now() - pageStart) / 1000));
       const t = secs >= 60 ? `${Math.floor(secs / 60)} мин ${secs % 60} сек` : `${secs} сек`;
-      $('#er-survived').textContent = `Ты выдержал(а) ${t} блёсток. Мы тобой гордимся.`;
+      $('#er-survived').textContent = `Ты выдержал(а) ${t} блесток. Мы тобой гордимся.`;
     }
     const mini = $('#mode-mini');
     mini.setAttribute('aria-pressed', String(eye));
-    mini.setAttribute('aria-label', eye ? 'Отдых для глаз включён. Нажми, чтобы вернуть блёстки' : 'Отдых для глаз выключен. Нажми, чтобы убрать блёстки');
+    mini.setAttribute('aria-label', eye ? 'Отдых для глаз включен. Нажми, чтобы вернуть блестки' : 'Отдых для глаз выключен. Нажми, чтобы убрать блестки');
     $('.mm-txt', mini).textContent = eye ? 'ОТДЫХ: ВКЛ' : 'ОТДЫХ: ВЫКЛ';
     if (motion) { fxStart(); unfreezeAll(); } else { fxStop(); freezeAll(); stopClips(); }
     refreshStartMenu();
@@ -452,8 +452,8 @@
   const GB_KEY = 'leyla-os:guestbook';
   const DEMO = [
     { name: '*~Dreamy~*', icon: 'heart', date: '15 мая 2002\n20:27', msg: 'ОБОЖАЮ твой сайт!!! Такой милый и блестящий :) так держать!' },
-    { name: 'Sk8er_Boi', icon: 'star', date: '16 мая 2002\n16:12', msg: 'Йо! Зачётный сайт!! Графика рулит! Пока-пока…' },
-    { name: '*·.kiki.·*', icon: 'butterfly', date: '17 мая 2002\n09:45', msg: 'Ааа… твоя страничка просто прелесть! Я ♥ её!!!' },
+    { name: 'Sk8er_Boi', icon: 'star', date: '16 мая 2002\n16:12', msg: 'Йо! Зачетный сайт!! Графика рулит! Пока-пока…' },
+    { name: '*·.kiki.·*', icon: 'butterfly', date: '17 мая 2002\n09:45', msg: 'Ааа… твоя страничка просто прелесть! Я ♥ ее!!!' },
     { name: 'Солнышко', icon: 'flower', date: '18 мая 2002\n13:03', msg: 'Так ярко и радостно! Улыбаюсь каждый раз, когда захожу :)' },
     { name: 'z0rG', icon: 'star', date: '19 мая 2002\n19:55', msg: 'Приветы с другого конца галактики…' },
   ];
@@ -486,7 +486,7 @@
     $('#gb-rows').prepend(gbRow(entry, true));
     mineEntries.unshift(entry); const saved = ls.set(GB_KEY, JSON.stringify(mineEntries.slice(0, 20)));
     gbMsg.value = ''; $('#gb-count').textContent = '0/140';
-    st.textContent = saved ? '✓ Записано! Запись видна только тебе, в этом браузере.' : '✓ Записано! Браузер не разрешил сохранение — после перезагрузки запись пропадёт.';
+    st.textContent = saved ? '✓ Записано! Запись видна только тебе, в этом браузере.' : '✓ Записано! Браузер не разрешил сохранение — после перезагрузки запись пропадет.';
     $('#gb-table').scrollIntoView({ block: 'nearest' });
   });
   $$('[data-gb]').forEach(a => a.addEventListener('click', e => {
@@ -508,7 +508,7 @@
     const note = $('#url-note');
     note.classList.toggle('ok', ready);
     note.textContent = ready ? '✓ В коде уже стоят настоящие адреса сайта и кнопки.'
-      : 'Сайт ещё не опубликован, поэтому в коде пока заглушки «ВСТАВЬ-…». Когда сайт будет онлайн, впиши SITE_URL в data/site.js — код заполнится сам.';
+      : 'Сайт еще не опубликован, поэтому в коде пока заглушки «ВСТАВЬ-…». Когда сайт будет онлайн, впиши SITE_URL в data/site.js — код заполнится сам.';
     $('#copy-embed').addEventListener('click', async () => {
       const st = $('#copy-status'), ta = $('#embed-code'); let ok = false;
       try { await navigator.clipboard.writeText(ta.value); ok = true; } catch (e) {
@@ -557,7 +557,7 @@
     if (ss.get('leyla-os:booted') || (location.hash && wins[location.hash.slice(1)])) { root.classList.add('booted'); bootEl.hidden = true; go(false); return; }
 
     lock(true);
-    const msgs = ['Загружаем блёстки и дофамин…', 'Полируем глиттер…', 'Сдуваем пыль с пикселей…', 'Раскладываем проекты по папкам…', 'Почти гламурно…'];
+    const msgs = ['Загружаем блестки и дофамин…', 'Полируем глиттер…', 'Сдуваем пыль с пикселей…', 'Раскладываем проекты по папкам…', 'Почти гламурно…'];
     const finish = () => { fill.style.width = '100%'; bar.setAttribute('aria-valuenow', '100'); status.textContent = 'Готово! Жми ENTER ♥'; enter.classList.add('is-ready'); };
     if (!Mode.motionOn()) finish();
     else {
