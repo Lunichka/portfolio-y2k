@@ -117,7 +117,7 @@ window.LEYLA_PROJECTS = [
     hero: [
       { src: 'assets/projects/kladovka/feed-bed.webp', alt: 'Баннер для ленты: «Вспомнила в 3 ночи. Забыла в 3:01.»', format: 'feed' },
       { src: 'assets/projects/kladovka/stories-iron.webp', alt: 'Баннер для сторис: «Утюг выключен. Наверное.»', format: 'stories' },
-      { src: 'assets/projects/kladovka/feed-iron.webp', alt: 'Баннер для ленты: «Утюг выключен. Наверное.»', format: 'feed' },
+      { src: 'assets/projects/kladovka/feed-iron.png', alt: 'Баннер для ленты: «Утюг выключен. Наверное.»', format: 'feed' },
     ],
     sections: [
       { id: 'task', title: 'Задача', text: ['Придумать запуск приложения, которое помогает выгружать из головы мысли, задачи и напоминания. Сделать рекламную кампанию для соцсетей и презентацию для инвесторов.'] },
@@ -138,7 +138,7 @@ window.LEYLA_PROJECTS = [
         id: 'banners', title: 'Баннеры', text: ['Два сюжета для ленты и сторис. Одна система: заголовок, огромная мысль, крошечный человек и плашка с брендом.'], gallery: 'banners',
         media: [
           { src: 'assets/projects/kladovka/stories-iron.webp', alt: 'Сторис 9:16: «Утюг выключен. Наверное.»', caption: 'Сторис 9:16', device: 'banner', span: 4 },
-          { src: 'assets/projects/kladovka/feed-iron.webp', alt: 'Лента 4:5: «Утюг выключен. Наверное.»', caption: 'Лента 4:5', device: 'banner', span: 4 },
+          { src: 'assets/projects/kladovka/feed-iron.png', alt: 'Лента 4:5: «Утюг выключен. Наверное.»', caption: 'Лента 4:5', device: 'banner', span: 4 },
           { src: 'assets/projects/kladovka/feed-bed.webp', alt: 'Лента 4:5: «Вспомнила в 3 ночи. Забыла в 3:01.»', caption: 'Лента 4:5', device: 'banner', span: 4 },
         ]
       },
