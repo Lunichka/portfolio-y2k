@@ -16,7 +16,7 @@
   </script>
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 8%27 shape-rendering=%27crispEdges%27%3E%3Cpath fill=%27%23ff3d9a%27 d=%27M1 0h3v1h1V0h3v1h1v3H8v1H7v1H6v1H5v1H4V7H3V6H2V5H1V4H0V1h1z%27/%3E%3C/svg%3E">
-  <link rel="preload" href="assets/fonts/bitcell.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/tiny5-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="styles.css">
   <noscript>
@@ -47,13 +47,13 @@
     <div class="boot-card bevel">
       <div class="boot-head win-bar"><span class="win-title">LEYLA OS 2.0 — запуск</span></div>
       <div class="boot-inner">
-        <img class="boot-banner" data-gif src="assets/welcome-page.gif" alt="Добро пожаловать в мое портфолио"
+        <img class="boot-banner" data-gif src="assets/welcome-page.gif" alt="Добро пожаловать в моё портфолио"
           width="1731" height="138" fetchpriority="high">
         <p class="boot-os"><span class="brand">LEYLA OS 2.0</span> <span class="boot-ver">· розовый гламур эдишн</span>
         </p>
         <div class="bar sunken" role="progressbar" aria-label="Загрузка" aria-valuemin="0" aria-valuemax="100"
           aria-valuenow="0" id="boot-bar"><span id="boot-fill"></span></div>
-        <p class="boot-status" id="boot-status">Загружаем блестки и дофамин…</p>
+        <p class="boot-status" id="boot-status">Загружаем блёстки и дофамин…</p>
         <div class="boot-actions">
           <button class="btn btn-big" id="boot-enter" type="button">ENTER ♥ войти</button>
           <button class="linkish" id="boot-calm" type="button">☁ войти в режиме «Отдых для глаз»</button>
@@ -67,9 +67,11 @@
   <main id="desktop" aria-label="Рабочий стол">
     <div class="marquee" id="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>★ ПРИФФКИ ВСЕМ КТО ЗАШЕЛ ★ СПЕЦПРОЕКТЫ ★ FIGMA ★ PHOTOSHOP ★ ILLUSTRATOR ★ AFTER EFFECTS ★ СМОТРЕТЬ
+        <span>★ ПРИФФКИ ВСЕМ КТО ЗАШЁЛ ★ СПЕЦПРОЕКТЫ ★ FIGMA ★ PHOTOSHOP ★ ILLUSTRATOR ★ AFTER EFFECTS ★ ПОДПИШИТЕ МОЮ
+          ГОСТЕВУЮ ПЛИЗ ★ СМОТРЕТЬ
           ТОЛЬКО В СОЛНЦЕЗАЩИТНЫХ ОЧКАХ ★ </span>
-        <span>★ ПРИФФКИ ВСЕМ КТО ЗАШЕЛ ★ СПЕЦПРОЕКТЫ ★ FIGMA ★ PHOTOSHOP ★ ILLUSTRATOR ★ AFTER EFFECTS ★ СМОТРЕТЬ
+        <span>★ ПРИФФКИ ВСЕМ КТО ЗАШЁЛ ★ СПЕЦПРОЕКТЫ ★ FIGMA ★ PHOTOSHOP ★ ILLUSTRATOR ★ AFTER EFFECTS ★ ПОДПИШИТЕ МОЮ
+          ГОСТЕВУЮ ПЛИЗ ★ СМОТРЕТЬ
           ТОЛЬКО В СОЛНЦЕЗАЩИТНЫХ ОЧКАХ ★ </span>
       </div>
     </div>
@@ -83,7 +85,7 @@
         <img class="p-outline" src="assets/portrait/outline-glitter.webp" alt="" width="904" height="1500"
           decoding="async">
         <img class="p-base" src="assets/portrait/suit.webp"
-          alt="Лейла в черном костюме и темных очках с ноутбуком в руках" width="904" height="1500" decoding="async"
+          alt="Лейла в чёрном костюме и тёмных очках с ноутбуком в руках" width="904" height="1500" decoding="async"
           fetchpriority="high">
         <img class="p-lid" src="assets/portrait/laptop-glitter.webp" alt="" width="904" height="1500" decoding="async">
         <span class="spark s1" aria-hidden="true"></span><span class="spark s2" aria-hidden="true"></span>
@@ -118,21 +120,19 @@
           height="138">
         <div class="intro">
           <img class="intro-gif" data-gif src="assets/im-leyla.gif" alt="Привет! Я Лейла" width="802" height="125">
-          <p>Я веб- и UI/UX-дизайнер. Делаю макеты в <b>Figma</b>, собираю сайты в <b>Framer, Webflow</b>, но чаще сама
-            пишу
-            кастомные компоненты на React и Framer Motion с помощью Claude, когда стандартных кнопок маловато.</p>
-          <p>Этот сайт — мой мини-интернет из нулевых (лайк, если помнишь). Смотри проекты, черкни что-нибудь в гостевую
-            книжку, забирай
+          <p>Я веб- и UI/UX-дизайнер. Рисую макеты в <b>Figma</b>, собираю сайты в <b>Framer</b> и сама пишу
+            кастомные компоненты на React и Framer Motion, когда стандартных кнопок маловато.</p>
+          <p>Этот сайтик — мой мини-интернет из нулевых: смотри проекты, черкни что-нибудь в гостевую, забирай
             кнопку 88×31 или жми «Отдых для глаз», если монитор начал плавиться.</p>
         </div>
         <div class="divider" data-divider="heart,star,flower,star"></div>
         <div class="row-btns">
           <button class="btn btn-big" type="button" data-open="projects">▶ Смотреть проекты</button>
-          <button class="btn btn-alt" type="button" data-open="guestbook">✎ Черкнуть в гесте</button>
+          <button class="btn btn-alt" type="button" data-open="guestbook">✎ Черкнуть в гостевую</button>
         </div>
         <div class="shortcut-grid" id="shortcut-grid" aria-label="Все разделы"></div>
       </div>
-      <footer class="win-status" id="world-status">Тут должен быть плеер Winamp, но он подгружается </footer>
+      <footer class="win-status" id="world-status">1 анкета · 0 вирусов (проверено Касперским)</footer>
     </section>
 
     <!-- PROJECTS ARCHIVE -->
@@ -190,9 +190,9 @@
           <p>Делаю спецпроекты, рекламу и сайты: придумываю идею, рисую баннеры и презентации, собираю
             интерактив и сама довожу его до кода.</p>
           <p>Люблю чистую типографику, ламповые детали из прошлого и анимации, у которых есть смысл, а не просто
-            «чтобы все крутилось».</p>
+            «чтобы всё крутилось».</p>
           <p>Ищу команду, которая делает рекламу, брендированные digital-проекты и спецпроекты.</p>
-          <h4>Мой боевой арсенал</h4>
+          <h4>Мой арсенал</h4>
           <ul class="tags">
             <li>Figma</li>
             <li>Photoshop</li>
@@ -217,21 +217,21 @@
     <!-- GUESTBOOK -->
     <section class="win" id="win-guestbook" aria-labelledby="t-guestbook">
       <header class="win-bar"><span class="win-ico" data-pix="book" data-scale="2"></span>
-        <h2 class="win-title" id="t-guestbook">ГОСТЕВАЯ КНИГА.LOG</h2><span class="win-btns"></span>
+        <h2 class="win-title" id="t-guestbook">ГОСТЕВАЯ.LOG</h2><span class="win-btns"></span>
       </header>
       <div class="win-body gb">
         <div class="gb-head">
           <div class="gb-title" aria-hidden="true">Guestbook</div>
           <p class="gb-welcome"><img data-gif class="gb-glitter" src="assets/priffki-glitter.gif" alt="Приффки!"
               width="378" height="101" loading="lazy"></p>
-          <p>ОСТАВЬ СВОЙ КОММЕНТ В ГЕСТО4КЕ</p>
+          <p>Оставь след в истории интернета — черкни пару строк!</p>
           <div class="divider" data-divider="heart,star,heart,flower,heart"></div>
-          <p class="gb-links">[ <a href="#gb-form" data-gb="form">Черкнуть в гесту</a> ] [ <a href="#gb-table"
-              data-gb="list">Читать slay комментики</a> ] [ <a href="#win-contact" data-open="contact">Мыло</a> ]</p>
+          <p class="gb-links">[ <a href="#gb-form" data-gb="form">Черкнуть в гостевую</a> ] [ <a href="#gb-table"
+              data-gb="list">Читать записки</a> ] [ <a href="#win-contact" data-open="contact">Мыло</a> ]</p>
         </div>
 
         <p class="notice" role="note"><b>Внимание:</b> строчки с плашкой <span class="tag-demo">ДЕМО</span> — для
-          красоты. Сервера пока нет, поэтому твоя запись сохраняется только в твоем браузере — другие посетители ее не
+          красоты. Сервера пока нет, поэтому твоя запись сохраняется только в твоём браузере — другие посетители её не
           увидят (честно-честно).</p>
 
         <table class="gb-table" id="gb-table">
@@ -250,7 +250,7 @@
         <div class="divider" data-divider="star,heart,star,heart,star"></div>
 
         <form class="gb-form" id="gb-form" novalidate>
-          <h3>✎ Написать гостевую <span class="tag-local">только у тебя</span></h3>
+          <h3>✎ Подписать гостевую <span class="tag-local">только у тебя</span></h3>
           <div class="field">
             <label for="gb-name">Твой никнейм</label>
             <input id="gb-name" name="name" type="text" maxlength="24" autocomplete="nickname"
@@ -278,7 +278,7 @@
           <p class="form-status" id="gb-status" role="status"></p>
         </form>
       </div>
-      <footer class="win-status">рекомендуется смотреть в темных очках</footer>
+      <footer class="win-status">рекомендуется смотреть в тёмных очках</footer>
     </section>
 
     <!-- MY BUTTON -->
@@ -287,7 +287,7 @@
         <h2 class="win-title" id="t-button">ОБМЕН_КНОПКАМИ!</h2><span class="win-btns"></span>
       </header>
       <div class="win-body btn-win">
-        <p>Хочешь поставить ссылочку на меня у себя в блоге? Лови мою фирменную кнопо4ку <b>88 × 31 пиксель</b> —
+        <p>Хочешь поставить ссылочку на меня у себя в блоге? Лови мою фирменную кнопочку <b>88 × 31 пиксель</b> —
           тру-классику раннего веба.</p>
         <div class="btn-stage">
           <a id="my-button-link" href="./" class="btn88-link" aria-label="Лейла — портфолио (кнопка 88 на 31)">
@@ -328,7 +328,7 @@
               </div>
             </div>
             <div class="dialog-foot">
-              <button class="btn btn-big" type="button" data-eye="on" id="er-activate">Убрать блестки</button>
+              <button class="btn btn-big" type="button" data-eye="on" id="er-activate">Убрать блёстки</button>
             </div>
           </div>
           <p class="small">Выключает мерцание, шлейф за курсором, бегущую строку и гифки, а розовый гламур меняет на
@@ -343,7 +343,7 @@
           </div>
           <p class="calm-title">ДОБРО ПОЖАЛОВАТЬ В ТИХУЮ ГАВАНЬ</p>
           <p id="er-survived" class="calm-sub"></p>
-          <button class="btn btn-big" type="button" data-eye="off" id="er-restore">Вернуть блестки!</button>
+          <button class="btn btn-big" type="button" data-eye="off" id="er-restore">Вернуть блёстки!</button>
         </div>
       </div>
       <footer class="win-status" id="er-status">Отдых для глаз: ВЫКЛ</footer>
@@ -355,7 +355,7 @@
         <h2 class="win-title" id="t-contact">СВЯЗЬ.EXE</h2><span class="win-btns"></span>
       </header>
       <div class="win-body contact">
-        <p>Есть проект, вакансия мечты или просто хочешь обсудить верстку? Шли весточку.</p>
+        <p>Есть проект, вакансия мечты или просто хочешь обсудить вёрстку? Шли весточку.</p>
         <p id="contact-tg" class="row-btns"></p>
         <div id="contact-live" hidden>
           <form id="contact-form" novalidate>
@@ -410,9 +410,15 @@
       <!-- cases:start (generated by tools/build.mjs) -->
       <ul>
         <li><a href="work/orchestra-1703.html">Orchestra 1703: кто ты из мира музыки?</a></li>
+        <li><a href="work/orchestra-1703-site.html">Оркестр 1703: первый сайт</a></li>
         <li><a href="work/kladovka.html">Кладовка. Too many tabs</a></li>
         <li><a href="work/kvak.html">Квак, где мои вещи?!</a></li>
         <li><a href="work/pixel-train.html">Симулятор худшего соседа</a></li>
+      </ul>
+      <p>Другие работы:</p>
+      <ul>
+        <li><a href="work/paradai.html">Paradai</a></li>
+        <li><a href="work/artem-nazarov.html">Читает Артем Назаров</a></li>
       </ul>
       <!-- cases:end -->
     </div>

@@ -82,7 +82,7 @@ function specimen(pv, big) {
         </div>`;
 }
 function beforeAfter(ba) {
-  const side = (p, label) => (exists(p) ? `<img src="${esc(up(p))}" alt="${esc(label)}" loading="lazy">` : missing(`${label}: файл еще не добавлен`, p));
+  const side = (p, label) => (exists(p) ? `<img src="${esc(up(p))}" alt="${esc(label)}" loading="lazy">` : missing(`${label}: файл ещё не добавлен`, p));
   return `<figure class="ba-wrap">
           <div class="ba" style="--pos:50%">
             <div class="ba-pane ba-after">${side(ba.after, 'ПОСЛЕ — концепт')}</div>
@@ -113,7 +113,12 @@ function heroMedia(p) {
   const vids = p.media.filter(m => m.kind === 'video');
   switch (p.layout) {
     case 'game': case 'cinema': return vids[0] ? { html: video(vids[0], { hero: true }), used: vids[0] } : { html: '' };
-    case 'product': case 'editorial': return { html: p.preview && p.preview.kind === 'specimen' ? specimen(p.preview, true) : '' };
+    case 'product': case 'editorial': {
+      if (p.preview && p.preview.kind === 'specimen') return { html: specimen(p.preview, true) };
+      if (vids[0]) return { html: video(vids[0], { hero: true }), used: vids[0] };
+      if (p.preview && p.preview.kind === 'image' && exists(p.preview.src)) return { html: image({ src: p.preview.src, alt: p.preview.alt, device: 'desktop' }) };
+      return { html: '' };
+    }
     case 'moodboard': return { html: collage(p) };
     case 'before-after': return { html: p.beforeAfter ? beforeAfter(p.beforeAfter) : '' };
     case 'campaign': return { html: p.hero ? banners(p.hero) : '' };
@@ -246,7 +251,7 @@ ${SITE.SITE_URL ? `  <link rel="canonical" href="${esc(abs('work/' + p.slug + '.
         ${hero.html ? `<div class="hero-media">\n        ${hero.html}\n        </div>` : ''}
       </header>
 ${(p.todo || []).length ? `
-      <aside class="draft todo" aria-label="Черновик кейса"><b>ЧЕРНОВИК КЕЙСА</b> — еще не хватает: ${p.todo.map(esc).join(' · ')}.</aside>` : ''}
+      <aside class="draft todo" aria-label="Черновик кейса"><b>ЧЕРНОВИК КЕЙСА</b> — ещё не хватает: ${p.todo.map(esc).join(' · ')}.</aside>` : ''}
 ${S.join('\n')}
     </article>
 
