@@ -86,7 +86,7 @@
     const mini = $('#mode-mini');
     mini.setAttribute('aria-pressed', String(eye));
     mini.setAttribute('aria-label', eye ? 'Отдых для глаз включен. Нажми, чтобы вернуть блестки' : 'Отдых для глаз выключен. Нажми, чтобы убрать блестки');
-    $('.mm-txt', mini).textContent = eye ? 'ОТДЫХ: ВКЛ' : 'ОТДЫХ: ВЫКЛ';
+    $('.mm-txt', mini).textContent = eye ? 'ОТДЫХ ВКЛ' : 'ОТДЫХ ВЫКЛ';
     if (motion) { fxStart(); unfreezeAll(); } else { fxStop(); freezeAll(); stopClips(); }
     refreshStartMenu();
     lastEye = eye;
@@ -446,7 +446,7 @@
     OTHER.forEach(p => list.append(projItem(p)));
     $('#other-status').textContent = `${OTHER.length} ${plural(OTHER.length, 'объект', 'объекта', 'объектов')} · вне темы спецпроектов`;
   }
-  $('#world-status').textContent = `1 анкета · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} · 0 вирусов (проверено Касперским)`;
+  $('#world-status').textContent = `1 анкета · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} + ${OTHER.length} ${plural(OTHER.length, 'сайт', 'сайта', 'сайтов')} · 0 вирусов (проверено Касперским)`;
 
   /* ---------- 8. Guestbook (own entries stay in this browser only) ---------- */
   const GB_KEY = 'leyla-os:guestbook';
