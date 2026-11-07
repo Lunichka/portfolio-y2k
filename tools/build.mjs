@@ -64,7 +64,7 @@ function video(m, { hero = false } = {}) {
   if (!exists(m.src)) return m.soon ? soon(m) : missing(m.caption || 'Видео', m.src);
   return `<figure class="vid${hero ? ' is-hero' : ''}" style="--ratio:${esc(m.ratio || '16 / 9')}">
           <div class="vid-frame"><video src="${esc(up(m.src))}"${exists(m.poster) ? ` poster="${esc(up(m.poster))}"` : ''} controls muted playsinline loop preload="${hero ? 'metadata' : 'none'}"${hero ? ' data-autoplay' : ''}></video></div>
-          ${m.caption ? `<figcaption>${esc(m.caption)}${hero ? ' · без звука' : ''}</figcaption>` : ''}
+          ${m.caption ? `<figcaption>${esc(m.caption)}${hero ? ' (без звука)' : ''}</figcaption>` : ''}
         </figure>`;
 }
 function image(m) {
@@ -99,7 +99,7 @@ function collage(p) {
   return `<div class="collage" aria-hidden="true">
           ${c.map((hex, i) => `<span class="cb cb${i + 1}" style="background:${esc(hex)}"></span>`).join('')}
           <span class="halftone"></span>
-          <span class="collage-note">Направление мудборда · оттенки условные</span>
+          <span class="collage-note">Направление мудборда, оттенки условные</span>
         </div>`;
 }
 
@@ -161,7 +161,7 @@ function page(p, i) {
     p.sections.forEach(sec => {
       let body = (sec.text || []).length ? paras(sec.text) : '';
       if (sec.palette) body += `
-        <ul class="swatches">${sec.palette.map(c => `<li><i style="background:${esc(c.hex)}"></i><b>${esc(c.name)}</b><span>${esc(c.hex)}${c.role ? ' · ' + esc(c.role) : ''}</span></li>`).join('')}</ul>`;
+        <ul class="swatches">${sec.palette.map(c => `<li><i style="background:${esc(c.hex)}"></i><b>${esc(c.name)}</b><span>${esc(c.hex)}${c.role ? ' — ' + esc(c.role) : ''}</span></li>`).join('')}</ul>`;
       if (sec.media && sec.media.length) body += `
         <div class="gallery g-${esc(sec.gallery || p.layout)}">
         ${sec.media.map(m => (m.kind === 'video' ? video(m) : image(m))).join('\n        ')}
@@ -177,7 +177,7 @@ function page(p, i) {
       let b = p.concept.length ? paras(p.concept) : draft('творческую концепцию');
       if (p.palette.length) b += `
         <h3>Цвет</h3>
-        <ul class="swatches">${p.palette.map(c => `<li><i style="background:${esc(c.hex)}"></i><b>${esc(c.name)}</b><span>${esc(c.hex)}${c.role ? ' · ' + esc(c.role) : ''}</span></li>`).join('')}</ul>`;
+        <ul class="swatches">${p.palette.map(c => `<li><i style="background:${esc(c.hex)}"></i><b>${esc(c.name)}</b><span>${esc(c.hex)}${c.role ? ' — ' + esc(c.role) : ''}</span></li>`).join('')}</ul>`;
       if (p.fonts.length) b += `
         <h3>Шрифты</h3>
         <ul class="fonts">${p.fonts.map(f => `<li><span class="f-spec" style="font-family:'${esc(f.family)}',serif" aria-hidden="true">Аа Bb 123</span><b>${esc(f.name)}</b><span>${esc(f.role)}</span></li>`).join('')}</ul>`;
@@ -197,9 +197,7 @@ function page(p, i) {
   const ogImg = p.preview && p.preview.kind === 'image' && exists(p.preview.src) ? abs(p.preview.src) : '';
   const facts = [
     ['Роль', esc(p.role)],
-    ['Тип', esc(t.label)],
-    p.stage ? ['Статус', esc(p.stage.label)] : null,
-    ['Инструменты', p.tools.map(esc).join(' · ')],
+    ['Инструменты', p.tools.map(esc).join(', ')],
   ].filter(Boolean);
 
   return `<!doctype html>
@@ -208,7 +206,7 @@ function page(p, i) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>${esc(p.title)} — кейс · Лейла, веб и UI/UX дизайнер</title>
+  <title>${esc(p.title)} — кейс Лейлы, веб-дизайнера спецпроектов</title>
   <meta name="description" content="${esc(p.summary)}">
   <meta property="og:type" content="article">
   <meta property="og:title" content="${esc(p.title)} — кейс из портфолио Лейлы">
@@ -251,7 +249,7 @@ ${SITE.SITE_URL ? `  <link rel="canonical" href="${esc(abs('work/' + p.slug + '.
         ${hero.html ? `<div class="hero-media">\n        ${hero.html}\n        </div>` : ''}
       </header>
 ${(p.todo || []).length ? `
-      <aside class="draft todo" aria-label="Черновик кейса"><b>ЧЕРНОВИК КЕЙСА</b> — ещё не хватает: ${p.todo.map(esc).join(' · ')}.</aside>` : ''}
+      <aside class="draft todo" aria-label="Черновик кейса"><b>ЧЕРНОВИК КЕЙСА</b> — ещё не хватает: ${p.todo.map(esc).join(', ')}.</aside>` : ''}
 ${S.join('\n')}
     </article>
 
@@ -260,7 +258,7 @@ ${S.join('\n')}
       <a class="cn all" href="${backHref}"><span class="cn-k">${folder}.DIR</span><span class="cn-t">${backLabel}</span></a>
       <a class="cn next" href="${esc(next.slug)}.html" rel="next"><span class="cn-k">Следующий →</span><span class="cn-t">${esc(next.title)}</span></a>
     </nav>
-    <footer class="win-status">${esc(p.file)} · ${n} ${n < 5 ? 'раздела' : 'разделов'} · LEYLA OS 2.0</footer>
+    <footer class="win-status">${esc(p.file)}: ${n} ${n < 5 ? 'раздела' : 'разделов'}</footer>
   </main>
 
   <dialog class="lightbox" aria-label="Просмотр изображения"><button type="button" class="wbtn lb-close" aria-label="Закрыть">×</button><img alt=""></dialog>

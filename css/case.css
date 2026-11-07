@@ -58,7 +58,7 @@ html.eye-rest .facts dt { color: #34497a; }
 .vid { margin: 0; }
 .vid-frame { position: relative; aspect-ratio: var(--ratio, 16 / 9); background: #120d18; border: 3px solid var(--purple-d); border-radius: 4px; overflow: hidden; }
 .vid-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; background: #120d18; }
-.vid figcaption, .shot figcaption, .ba-wrap figcaption { margin-top: 8px; font: 14px var(--f-status); color: var(--muted); }
+.vid figcaption, .shot figcaption, .ba-wrap figcaption { margin-top: 8px; font: 14px/1.45 var(--f-ui); color: var(--muted); }
 .layout-game .vid.is-hero .vid-frame { border: 12px solid #2b2233; border-bottom-width: 26px; border-radius: 12px; box-shadow: 6px 6px 0 rgba(91,42,134,.45); }
 .layout-game .vid.is-hero .vid-frame::after { content: "LEYLA·TRON"; position: absolute; left: 50%; bottom: -21px; transform: translateX(-50%); font: 11px var(--f-brand); letter-spacing: .2em; color: #a993c2; }
 .layout-cinema .vid.is-hero .vid-frame { border: 0; border-radius: 0; box-shadow: 0 0 0 3px var(--purple-d), 8px 8px 0 rgba(91,42,134,.35); }
@@ -124,11 +124,11 @@ html.eye-rest .swatches li, html.eye-rest .fonts li { border: 0; border-radius: 
 html.eye-rest .f-spec { color: #1e2128; }
 
 .ux { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; counter-reset: ux; }
-.ux li { position: relative; padding: 16px 16px 14px; background: #fff; border: 2px solid var(--purple); border-top: 8px solid var(--accent); border-radius: 4px; box-shadow: 4px 4px 0 rgba(91,42,134,.2); counter-increment: ux; }
-.ux li::before { content: counter(ux, decimal-leading-zero); position: absolute; right: 10px; top: 8px; font: 15px var(--f-pixel); color: var(--muted); }
+.ux li { position: relative; padding: 12px 0 0; border-top: 4px solid var(--accent); counter-increment: ux; }
+.ux li::before { content: counter(ux, decimal-leading-zero); position: absolute; right: 0; top: 12px; font: 15px var(--f-pixel); color: var(--muted); }
 .ux h3 { margin: 0 34px 8px 0; font: 17px/1.2 var(--f-pixel); color: var(--purple-d); text-transform: uppercase; }
 .ux p { margin: 0; font-size: 15px; line-height: 1.6; }
-html.eye-rest .ux li { border: 0; border-radius: 0; background: var(--win-bg); box-shadow: inset -1px -1px 0 #4a4943, inset 1px 1px 0 #fff, inset -2px -2px 0 #8a877f, inset 0 8px 0 #34497a; padding-top: 22px; }
+html.eye-rest .ux li { border-top-color: #34497a; }
 html.eye-rest .ux h3 { color: #1d2b4f; }
 
 /* gallery with device frames */
@@ -203,7 +203,7 @@ html.eye-rest .lightbox { border: 0; border-radius: 0; box-shadow: 0 0 0 2px #4a
 .banners { display: grid; grid-template-columns: 1fr .72fr 1fr; gap: clamp(10px, 1.6vw, 20px); align-items: end; }
 .bn { margin: 0; }
 .bn img { display: block; width: 100%; height: auto; border: 3px solid var(--purple-d); border-radius: 6px; box-shadow: 5px 5px 0 rgba(91,42,134,.3); }
-.bn figcaption { margin-top: 6px; font: 13px var(--f-status); color: var(--muted); }
+.bn figcaption { margin-top: 6px; font: 13px/1.45 var(--f-ui); color: var(--muted); }
 .bn-feed:first-child { transform: rotate(-2deg); }
 .bn-feed:last-child { transform: rotate(2deg); }
 html.eye-rest .bn img { border: 0; border-radius: 0; box-shadow: 0 0 0 2px #4a4943, var(--win-shadow); }

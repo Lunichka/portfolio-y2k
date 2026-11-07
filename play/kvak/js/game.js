@@ -185,7 +185,7 @@
       var nm = el('div', 'item-name');
       nm.appendChild(document.createTextNode(it.name));
       var re = el('span', 'item-reopen');
-      re.textContent = 'Найдено · открыть историю';
+      re.textContent = 'Найдено — открыть историю';
       nm.appendChild(re);
       var st = el('span', 'item-state', { 'aria-hidden': 'true' });
       var btn = el('button', 'item-btn', { type: 'button' });
@@ -364,7 +364,7 @@
 
     dom.modalCard.className = 'modal-card ' + it.theme;
     $('#modal-app').textContent = APPS[id] + ' (концепт)';
-    dom.modalChip.textContent = 'Концепт · ' + it.partner;
+    dom.modalChip.textContent = 'Концепт: ' + it.partner;
     dom.modalProgress.textContent = 'Найдено ' + state.found.length + ' из ' + ITEMS.length;
     dom.modalImg.src = it.thumb || it.src;
     dom.modalQuote.innerHTML = '';

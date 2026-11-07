@@ -439,12 +439,12 @@
         el('span', {}, el('b', { text: `ДРУГИЕ_РАБОТЫ.DIR (${OTHER.length})` }), el('small', { text: 'Сайты, UI-концепты и Framer-компоненты для клиентов — отдельной папкой' })))));
     hydratePix(list);
     const vids = items.filter(p => p.preview && p.preview.clip).length;
-    $('#proj-status').textContent = `${items.length} ${plural(items.length, 'объект', 'объекта', 'объектов')} · ${vids} с видео · кейс открывается отдельной страницей`;
+    $('#proj-status').textContent = `${items.length} ${plural(items.length, 'объект', 'объекта', 'объектов')}, ${vids} с видео, кейс открывается отдельной страницей`;
   }
   function renderOther() {
     const list = $('#other-list'); list.textContent = '';
     OTHER.forEach(p => list.append(projItem(p)));
-    $('#other-status').textContent = `${OTHER.length} ${plural(OTHER.length, 'объект', 'объекта', 'объектов')} · вне темы спецпроектов`;
+    $('#other-status').textContent = `${OTHER.length} ${plural(OTHER.length, 'объект', 'объекта', 'объектов')}: сайты и UI для клиентов`;
   }
   $('#world-status').textContent = `1 анкета · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} + ${OTHER.length} ${plural(OTHER.length, 'сайт', 'сайта', 'сайтов')} · 0 вирусов (проверено Касперским)`;
 
@@ -461,7 +461,7 @@
   function gbRow(e, mine) {
     const tr = el('tr', { class: `c${gbN++ % 5}${mine ? ' mine' : ''}` },
       el('td', {}, el('span', { 'data-pix': e.icon, 'data-scale': '3' })),
-      el('td', {}, el('span', { class: 'nm', text: e.name }), el('span', { class: mine ? 'tag-local' : 'tag-demo', text: mine ? 'ТЫ · ТОЛЬКО У ТЕБЯ' : 'ДЕМО' }), el('span', { class: 'when-inline', text: e.date })),
+      el('td', {}, el('span', { class: 'nm', text: e.name }), el('span', { class: mine ? 'tag-local' : 'tag-demo', text: mine ? 'ТЫ (ВИДНО ТОЛЬКО ТЕБЕ)' : 'ДЕМО' }), el('span', { class: 'when-inline', text: e.date })),
       el('td', { class: 'when', text: e.date }),
       el('td', { text: e.msg }));
     hydratePix(tr); return tr;
