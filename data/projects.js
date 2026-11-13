@@ -228,8 +228,9 @@ window.LEYLA_PROJECTS = [
     tools: ['Illustrator', 'After Effects', 'Нейросети', 'HTML', 'CSS', 'JavaScript'],
     summary: 'Спецпроект в формате мини-игры: на рабочем месте Квака пропали 5 вещей, найти их нужно за 60 секунд, пока офис не сгорел. Каждая находка — концепт интеграции бренда: билет в кино ведёт к Кинопоиску, авиабилет — к Aviasales.',
     layout: 'game',
+    heroImage: 'assets/projects/kvak/game-play.webp',
     accent: '#D9FF43',
-    preview: { kind: 'image', src: 'assets/projects/kvak/cover-desktop.webp', alt: 'Обложка игры: объявление «Квак, где мои вещи?!» над рабочим столом в горящем офисе', clip: 'assets/projects/kvak/kvak-scene-preview.mp4', ratio: '1440 / 860' },
+    preview: { kind: 'image', src: 'assets/projects/kvak/cover-desktop.webp', alt: 'Обложка игры: объявление «Квак, где мои вещи?!» над рабочим столом в горящем офисе', ratio: '1440 / 860' },
     links: { live: '', play: 'play/kvak/index.html', behance: '', repo: '' },
     context: [
       'Концептуальный интерактивный спецпроект для портфолио. Формат — hidden object: игрок ищет предметы на одной насыщенной сцене.',

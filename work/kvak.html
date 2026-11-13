@@ -50,9 +50,9 @@
           </div>
         </div>
         <div class="hero-media">
-        <figure class="vid is-hero" style="--ratio:1024 / 558">
-          <div class="vid-frame"><video src="../assets/projects/kvak/kvak-scene.mp4" poster="../assets/projects/kvak/kvak-scene-poster.jpg" controls muted playsinline loop preload="metadata" data-autoplay></video></div>
-          <figcaption>Ролик в After Effects: огонь и лапы Квака — по нему собрана анимация в игре (без звука)</figcaption>
+        <figure class="shot dev-desktop" style="--span:12">
+          <a class="zoom" href="../assets/projects/kvak/game-play.webp" aria-label="Открыть крупно: Игровой экран: сцена офиса с отмеченными находками и чек-лист «Список Квака»"><span class="dev-frame"><img src="../assets/projects/kvak/game-play.webp" alt="Игровой экран: сцена офиса с отмеченными находками и чек-лист «Список Квака»" width="1600" height="721" loading="lazy" decoding="async"></span></a>
+          <figcaption>Поиск: найденные предметы отмечены на сцене и в списке</figcaption>
         </figure>
         </div>
       </header>
@@ -89,10 +89,6 @@
       <section class="cs" id="screens" aria-labelledby="screens-h">
         <h2 id="screens-h"><span class="cs-n">05</span> Экраны, макеты и адаптив</h2>
         <div class="gallery g-game">
-        <figure class="shot dev-desktop" style="--span:12">
-          <a class="zoom" href="../assets/projects/kvak/game-play.webp" aria-label="Открыть крупно: Игровой экран: сцена офиса с отмеченными находками и чек-лист «Список Квака»"><span class="dev-frame"><img src="../assets/projects/kvak/game-play.webp" alt="Игровой экран: сцена офиса с отмеченными находками и чек-лист «Список Квака»" width="1600" height="721" loading="lazy" decoding="async"></span></a>
-          <figcaption>Поиск: найденные предметы отмечены на сцене и в списке</figcaption>
-        </figure>
         <figure class="shot dev-desktop" style="--span:6">
           <a class="zoom" href="../assets/projects/kvak/game-popup.webp" aria-label="Открыть крупно: Карточка найденного билета в кино: концепт интеграции Кинопоиска с условной наградой"><span class="dev-frame"><img src="../assets/projects/kvak/game-popup.webp" alt="Карточка найденного билета в кино: концепт интеграции Кинопоиска с условной наградой" width="1600" height="790" loading="lazy" decoding="async"></span></a>
           <figcaption>Находка → концепт интеграции бренда</figcaption>
@@ -120,8 +116,16 @@
         </div>
       </section>
 
+      <section class="cs" id="video" aria-labelledby="video-h">
+        <h2 id="video-h"><span class="cs-n">06</span> Видео и анимация</h2>
+        <figure class="vid" style="--ratio:1024 / 558">
+          <div class="vid-frame"><video src="../assets/projects/kvak/kvak-scene.mp4" poster="../assets/projects/kvak/kvak-scene-poster.jpg" controls muted playsinline loop preload="none"></video></div>
+          <figcaption>Ролик в After Effects: огонь и лапы Квака — по нему собрана анимация в игре</figcaption>
+        </figure>
+      </section>
+
       <section class="cs" id="build" aria-labelledby="build-h">
-        <h2 id="build-h"><span class="cs-n">06</span> Реализация</h2>
+        <h2 id="build-h"><span class="cs-n">07</span> Реализация</h2>
         <ul class="impl"><li>Чистые HTML, CSS и JavaScript без сборщика — проект открывается двойным кликом по index.html.</li><li>Движение сначала собрала в After Effects: огонь, моргание и почёсывание лапой. По этому ролику с помощью нейросети перенесла анимацию в CSS, чтобы в игре не было тяжёлого видео. Пауза между движениями случайная — 10–20 секунд.</li><li>У каждого языка огня свой период, амплитуда и дрейф, поэтому пламя не выглядит зацикленным.</li><li>Шрифты подключены локально, без внешних запросов; лучший результат сохраняется в localStorage.</li></ul>
       </section>
     </article>
@@ -131,7 +135,7 @@
       <a class="cn all" href="../index.html#projects"><span class="cn-k">ПРОЕКТЫ.DIR</span><span class="cn-t">Все проекты</span></a>
       <a class="cn next" href="pixel-train.html" rel="next"><span class="cn-k">Следующий →</span><span class="cn-t">Симулятор худшего соседа</span></a>
     </nav>
-    <footer class="win-status">KVAK.EXE: 6 разделов</footer>
+    <footer class="win-status">KVAK.EXE: 7 разделов</footer>
   </main>
 
   <dialog class="lightbox" aria-label="Просмотр изображения"><button type="button" class="wbtn lb-close" aria-label="Закрыть">×</button><img alt=""></dialog>

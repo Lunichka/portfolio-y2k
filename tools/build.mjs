@@ -111,6 +111,7 @@ function banners(list) { // hero for ad campaigns: the real banners side by side
 
 function heroMedia(p) {
   const vids = p.media.filter(m => m.kind === 'video');
+  if (p.heroImage) { const m = p.media.find(x => x.src === p.heroImage); if (m && exists(m.src)) return { html: image(m), used: m }; }
   switch (p.layout) {
     case 'game': case 'cinema': return vids[0] ? { html: video(vids[0], { hero: true }), used: vids[0] } : { html: '' };
     case 'product': case 'editorial': {
