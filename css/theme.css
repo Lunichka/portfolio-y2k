@@ -73,7 +73,8 @@
   --focus: #ffe45e;
   --radius: 4px;
 
-  --wallpaper: url("../assets/glitter.webp") center / cover no-repeat, linear-gradient(135deg, #ffb3d9 0%, #d9c2ff 55%, #b9c8ff 100%);
+  /* calm gradient; small sparkles come from the canvas. Big glitter photo was: url("../assets/glitter.webp") center / cover no-repeat, */
+  --wallpaper: linear-gradient(135deg, #ffc7e4 0%, #e3d2ff 55%, #cbd6ff 100%);
 
   /* type */
   --f-pixel: "Bit Cell", "Tiny5", "Silkscreen", ui-monospace, "Courier New", monospace;

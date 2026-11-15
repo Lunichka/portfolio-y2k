@@ -50,6 +50,7 @@
     folder2: { map: { X: '#b79bff', Y: '#eadfff', K: '#5b2a86' }, rows: ['KKKK......', 'KXXXKKKKKK', 'KYYYYYYYYK', 'KYYYYYYYYK', 'KYYYYYYYYK', 'KYYYYYYYYK', 'KKKKKKKKKK'] },
     book: { map: { X: '#7c4dcc', W: '#fff6fc', P: '#ff8ac9' }, rows: ['XXXXXXXXXX', 'XWWWXXWWWX', 'XWPWXXWWWX', 'XWWWXXWWWX', 'XWWWXXWWWX', 'XWWWXXWWWX', 'XXXXXXXXXX'] },
     mail: { map: { X: '#ffe3f4', Y: '#7c4dcc' }, rows: ['YYYYYYYYYY', 'YXYXXXXYXY', 'YXXYXXYXXY', 'YXXXYYXXXY', 'YXXXXXXXXY', 'YYYYYYYYYY'] },
+    check: { map: { K: '#5b2a86', W: '#fff6fc', G: '#ff3d9a' }, rows: ['..KKKK..', 'KKWWWWKK', 'KWWWWWGK', 'KWWWWGWK', 'KGWWGWWK', 'KWGGWWWK', 'KWWGWWWK', 'KKKKKKKK'] },
     eye: { map: { W: '#ffffff', P: '#b79bff', K: '#3b1d55', Y: '#7c4dcc' }, rows: ['...YYYYY...', '.YYWWWWWYY.', 'YWWWPPPWWWY', 'YWWPPKPPWWY', 'YWWWPPPWWWY', '.YYWWWWWYY.', '...YYYYY...'] },
   };
   function pixSVG(name, scale) {
@@ -185,6 +186,7 @@
   const DEST = [
     { id: 'world', label: 'Мой мир', icon: 'heart', desk: false },
     { id: 'projects', label: 'Проекты', icon: 'folder', main: true },
+    { id: 'howiwork', label: 'Как я работаю', icon: 'check' },
     { id: 'about', label: 'Анкета', icon: 'flower' },
     { id: 'guestbook', label: 'Гостевая', icon: 'book' },
     { id: 'button', label: 'Кнопка 88×31', icon: 'star' },
@@ -193,7 +195,7 @@
     { id: 'other', label: 'Другие работы', icon: 'folder2' },
   ].filter(d => d.id !== 'other' || OTHER.length);
   // [left, top, width, height] — clamped to the viewport on open
-  const POS = { world: [128, 46, 540, 540], projects: [150, 38, 900, 680], about: [560, 70, 560, 540], guestbook: [250, 44, 680, 600], button: [520, 96, 480, 560], eyerest: [330, 110, 480, 460], contact: [420, 140, 440, 440], other: [230, 64, 820, 640] };
+  const POS = { world: [128, 46, 560, 640], howiwork: [600, 90, 500, 520], projects: [150, 38, 900, 680], about: [560, 70, 560, 540], guestbook: [250, 44, 680, 600], button: [520, 96, 480, 560], eyerest: [330, 110, 480, 460], contact: [420, 140, 440, 440], other: [230, 64, 820, 640] };
   const wins = {}; let zTop = 10, frontId = null, startOpen = false;
   const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
   const area = () => $('#desktop').getBoundingClientRect();
@@ -441,6 +443,16 @@
     const vids = items.filter(p => p.preview && p.preview.clip).length;
     $('#proj-status').textContent = `${items.length} ${plural(items.length, 'объект', 'объекта', 'объектов')}, ${vids} с видео, кейс открывается отдельной страницей`;
   }
+  function renderTop() { // «Лучшие кейсы» on the home window: projects with top: true
+    const list = $('#top-list'); list.textContent = '';
+    ALL_PROJECTS.filter(p => p.top).slice(0, 3).forEach(p => {
+      const pv = p.preview || {};
+      list.append(el('li', {}, el('a', { class: 'top-card', href: caseUrl(p) },
+        pv.kind === 'image' ? el('img', { src: pv.src, alt: '', loading: 'lazy', decoding: 'async' }) : el('span', { class: 'top-ph', text: p.file }),
+        el('span', { class: 'top-t', text: p.title }),
+        el('span', { class: 'top-s', text: (TYPES[p.type] || {}).short || '' }))));
+    });
+  }
   function renderOther() {
     const list = $('#other-list'); list.textContent = '';
     OTHER.forEach(p => list.append(projItem(p)));
@@ -572,6 +584,7 @@
     enter.focus({ preventScroll: true });
     enter.addEventListener('click', () => go());
     $('#boot-calm').addEventListener('click', () => { Mode.set('eyerest'); go(); });
+    $('#boot-skip').addEventListener('click', () => { go(false); openWin('projects'); });
     document.addEventListener('keydown', function onKey(e) {
       if (done) { document.removeEventListener('keydown', onKey); return; }
       if (e.key === 'Enter' && !e.target.closest('button, a, input, textarea')) { e.preventDefault(); go(); }
@@ -583,6 +596,7 @@
   buildFilters();
   renderProjects();
   renderOther();
+  renderTop();
   hydratePix();
   Mode.onChange(onMode);
   onMode();

@@ -151,7 +151,7 @@ function page(p, i) {
   const links = p.links || {};
   const cta = [
     links.play && `<a class="btn btn-big" href="${esc(href(links.play))}" target="_blank" rel="noopener">▶ Играть <span class="vh">(откроется в новой вкладке)</span></a>`,
-    links.live && `<a class="btn btn-big" href="${esc(links.live)}" target="_blank" rel="noopener">Живой сайт ↗ <span class="vh">(новая вкладка)</span></a>`,
+    links.live && `<a class="btn btn-big" href="${esc(links.live)}" target="_blank" rel="noopener">${esc(links.liveLabel || 'Живой сайт')} ↗ <span class="vh">(новая вкладка)</span></a>`,
     links.behance && `<a class="btn btn-alt" href="${esc(links.behance)}" target="_blank" rel="noopener">Behance ↗</a>`,
     links.repo && `<a class="btn btn-alt" href="${esc(links.repo)}" target="_blank" rel="noopener">Код ↗</a>`,
     links.pdf && exists(links.pdf) && `<a class="btn btn-alt" href="${esc(up(links.pdf))}" download>${esc(links.pdfLabel || 'Скачать PDF')} ↓</a>`,
@@ -173,6 +173,7 @@ function page(p, i) {
     });
   } else {
     S.push(section(++n, 'context', 'Контекст и цели', p.context.length ? paras(p.context) : draft('контекст и цели проекта')));
+    if ((p.timeline || []).length) S.push(section(++n, 'process', 'Как шла работа', `<ol class="tl">${p.timeline.map(t => `<li><span class="tl-step">${esc(t.step)}</span>${t.when ? `<span class="tl-when">${esc(t.when)}</span>` : ''}<p>${esc(t.text)}</p></li>`).join('')}</ol>`));
     S.push(section(++n, 'challenge', 'Задача', p.challenge.length ? paras(p.challenge) : draft('формулировку дизайн-задачи')));
     {
       let b = p.concept.length ? paras(p.concept) : draft('творческую концепцию');
@@ -187,11 +188,13 @@ function page(p, i) {
     S.push(section(++n, 'ux', 'Ключевые UX/UI-решения', p.ux.length
       ? `<ol class="ux">${p.ux.map(u => `<li><h3>${esc(u.title)}</h3><p>${esc(u.text)}</p></li>`).join('')}</ol>`
       : draft('ключевые UX/UI-решения и почему они такие')));
+    if ((p.constraints || []).length) S.push(section(++n, 'constraints', 'Ограничения заказчика', `<ul class="cons">${p.constraints.map(c => `<li><h3>${esc(c.title)}</h3><p class="cons-k">Ограничение</p><p>${esc(c.limit)}</p><p class="cons-k">Решение</p><p>${esc(c.solution)}</p></li>`).join('')}</ul>`));
     {
       const shots = images.map(image).join('\n        ') + miss.map(m => missing(m.what, m.file)).join('\n        ');
       S.push(section(++n, 'screens', 'Экраны, макеты и адаптив', shots ? `<div class="gallery g-${esc(p.layout)}">\n        ${shots}\n        </div>` : draft('скриншоты и макеты')));
     }
     if (vids.length) S.push(section(++n, 'video', 'Видео и анимация', vids.map(v => video(v)).join('\n')));
+    if ((p.results || []).length) S.push(section(++n, 'results', 'Результаты', paras(p.results)));
     if (p.implementation.length) S.push(section(++n, 'build', 'Реализация', `<ul class="impl">${p.implementation.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`));
   }
 
