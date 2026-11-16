@@ -247,3 +247,19 @@ html.eye-rest .soon-frame { border: 0; border-radius: 0; box-shadow: 0 0 0 2px #
 html.eye-rest .cons li { border: 0; border-radius: 0; background: var(--win-bg); box-shadow: inset -1px -1px 0 #4a4943, inset 1px 1px 0 #fff, inset -2px -2px 0 #8a877f; }
 html.eye-rest .tl li { background: #fff; border-left-color: #34497a; }
 @media (max-width: 640px) { .tl li { grid-template-columns: 1fr; } .tl li p { grid-column: 1; grid-row: auto; } }
+
+/* ---------- launch kit: carousel / stories / single banner ---------- */
+#launch h3 { margin-top: 28px; }
+.launch-t { max-width: 70ch; margin: 6px 0 14px; }
+.gallery.g-carousel { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 1.2vw, 14px); align-items: start; }
+.gallery.g-stories { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.6vw, 20px); align-items: start; }
+.gallery.g-carousel > *, .gallery.g-stories > * { grid-column: auto; }
+.gallery.g-single { grid-template-columns: 1fr; }
+.gallery.g-single > * { width: min(100%, 420px); }
+.gallery.g-carousel figcaption, .gallery.g-stories figcaption { font-size: 13px; }
+@media (max-width: 640px) {
+  .gallery.g-carousel { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .gallery.g-carousel > * { scroll-snap-align: start; }
+  .gallery.g-stories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery.g-carousel > *, .gallery.g-stories > * { grid-column: auto; }
+}

@@ -194,6 +194,20 @@ function page(p, i) {
       S.push(section(++n, 'screens', 'Экраны, макеты и адаптив', shots ? `<div class="gallery g-${esc(p.layout)}">\n        ${shots}\n        </div>` : draft('скриншоты и макеты')));
     }
     if (vids.length) S.push(section(++n, 'video', 'Видео и анимация', vids.map(v => video(v)).join('\n')));
+    if (p.launch) {
+      const L = p.launch;
+      let b = (L.text || []).length ? paras(L.text) : '';
+      (L.groups || []).forEach(g => {
+        b += `
+        <h3>${esc(g.title)}</h3>${g.text ? `
+        <p class="launch-t">${esc(g.text)}</p>` : ''}
+        <div class="gallery g-${esc(g.gallery || 'single')}">
+        ${(g.media || []).map(m => (m.kind === 'video' ? video(m) : image(m))).join('\n        ')}
+        </div>`;
+      });
+      if (L.note) b += `<p class="cs-note">${esc(L.note)}</p>`;
+      S.push(section(++n, 'launch', 'Запуск: анонс и реклама', b));
+    }
     if ((p.results || []).length) S.push(section(++n, 'results', 'Результаты', paras(p.results)));
     if (p.implementation.length) S.push(section(++n, 'build', 'Реализация', `<ul class="impl">${p.implementation.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`));
   }

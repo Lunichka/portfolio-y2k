@@ -18,6 +18,8 @@
    layout    : case-page composition: 'game' | 'cinema' | 'campaign' | 'product' | 'editorial' | 'moodboard' | 'before-after'
    sections  : optional custom story instead of the default UX sections (used for ad campaigns):
                [{ id, title, text: [...], palette?, media?, gallery?, note? }]
+   launch    : optional block «Запуск: анонс и реклама» on a default case page (after screens/video):
+               { text: [...], groups: [{ title, text?, gallery: 'carousel' | 'stories' | 'single', media: [...] }], note? }
    hero      : banners shown at the top of a 'campaign' case [{ src, alt, format: 'feed' | 'stories' }]
    preview   : archive preview
                { kind: 'image', src, alt, clip?, ratio }       clip = short muted mp4 played on hover
@@ -130,7 +132,7 @@ window.LEYLA_PROJECTS = [
     ],
     sections: [
       { id: 'task', title: 'Задача', text: ['Придумать запуск приложения, которое помогает выгружать из головы мысли, задачи и напоминания. Сделать рекламную кампанию для соцсетей и презентацию для инвесторов.'] },
-      { id: 'deadline', title: 'Срок', text: ['Кампанию я сделала под требования вакансии и дала себе на все один день: идея, система, баннеры и презентация для инвесторов.', 'Чтобы успеть, сознательно отложила моушн: преролл в After Effects доделала позже, отдельно.'] },
+      { id: 'deadline', title: 'Срок', text: ['Кампанию я сделала как концепт и дала себе на всё один день: идея, система, баннеры и презентация для инвесторов. Моё любимое — преролл, сделанный в After Effects.'] },
       { id: 'insight', title: 'Инсайт', text: ['Невыполненные дела не исчезают. Они занимают место в голове, как вещи, которые некуда убрать: утюг, молоко, запись к стоматологу.', 'В среднем человек держит внимание на одном экране 47 секунд. В голове у него примерно столько же открытых вкладок.'] },
       { id: 'idea', title: 'Идея', text: ['Мысли становятся физическими предметами и вытесняют человека из его собственной жизни. Огромный утюг, кровать, заваленная делами. Кладовка — место, куда все это можно убрать.'] },
       {
@@ -158,8 +160,8 @@ window.LEYLA_PROJECTS = [
         note: 'Целиком презентация — в PDF, кнопка вверху страницы.'
       },
       {
-        id: 'clip', title: 'Пре-ролл', text: ['6 секунд перед видео: тот же сюжет с утюгом — заголовок, шутка коралловым и в конце логотип с кнопкой «Скачать». Анимация в After Effects.'], gallery: 'clip',
-        media: [{ kind: 'video', src: 'assets/projects/kladovka/kladovka-clip.mp4', poster: 'assets/projects/kladovka/kladovka-clip-poster.jpg', caption: 'Пре-ролл 16:9 на 6 секунд, After Effects. Со звуком — включи в плеере', ratio: '16 / 9' }]
+        id: 'clip', title: 'Пре-ролл', text: ['6 секунд перед видео: тот же сюжет с утюгом. Анимация в After Effects.'], gallery: 'clip',
+        media: [{ kind: 'video', src: 'assets/projects/kladovka/kladovka-clip.mp4', poster: 'assets/projects/kladovka/kladovka-clip-poster.jpg', caption: 'Преролл 16:9 на 6 секунд, After Effects. Звук тоже есть, включи в плеере.', ratio: '16 / 9' }]
       },
     ],
     context: [], challenge: [], concept: [], palette: [], fonts: [], ux: [], implementation: [], media: [], missing: [], todo: [],
@@ -213,6 +215,31 @@ window.LEYLA_PROJECTS = [
       { title: 'Афишу меняют без меня', limit: 'Оркестру нужно самому обновлять концерты и тексты, не дожидаясь дизайнера.', solution: 'Сделала админку orchestra1703.com/admin: заказчик сам правит афишу и информацию об оркестре.' },
       { title: 'Измерять, а не просто сдать', limit: 'Красивый сайт — не цель. Цель — проданные билеты.', solution: 'Поставила Яндекс Метрику и цель на клик по кнопке «Билеты».' },
     ],
+    launch: {
+      text: [
+        'Сайт готов — теперь его нужно анонсировать. Я собрала комплект к запуску по брендбуку оркестра: карусель для ленты, сторис со ссылкой и таргет-баннер на ближайший концерт.',
+        'У каждого формата своя задача: карусель знакомит с сайтом, сторис ведут к покупке билета, баннер работает на людей, которые оркестр ещё не знают.',
+      ],
+      groups: [
+        { title: 'Карусель для ленты', text: 'Пять слайдов 4:5. Цвета чередуются по палитре оркестра, первый и последний слайды коралловые — карусель читается как одна история.', gallery: 'carousel', media: [
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/post-1.webp', alt: 'Слайд 1: «У оркестра теперь есть дом», фото в полутоне на коралловом фоне', caption: '1. Обложка', device: 'slide' },
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/post-2.webp', alt: 'Слайд 2: «Все концерты в одном месте» со скриншотом афиши сайта', caption: '2. Афиша', device: 'slide' },
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/post-3.webp', alt: 'Слайд 3: «Один клик — и вы в зале» с коралловой кнопкой «Билеты»', caption: '3. Билеты', device: 'slide' },
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/post-4.webp', alt: 'Слайд 4: «Кто вы из мира музыки?» — приглашение пройти тест', caption: '4. Тест', device: 'slide' },
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/post-5.webp', alt: 'Слайд 5: «Ждём вас в гости!» с адресом orchestra1703.com', caption: '5. Адрес сайта', device: 'slide' },
+        ] },
+        { title: 'Сторис', text: 'Четыре экрана 9:16: хук → сайт → концерт → билет. Важное держится вне верхней и нижней зон, которые закрывает интерфейс Instagram; на последнем экране стрелка ведёт к стикеру-ссылке.', gallery: 'stories', media: [
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/story-1.webp', alt: 'Сторис 1: «Мы переехали… из соцсетей на свой сайт»', caption: '1. Хук', device: 'banner' },
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/story-2.webp', alt: 'Сторис 2: «Это наш новый дом» — главная сайта в телефоне', caption: '2. Сайт', device: 'banner' },
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/story-3.webp', alt: 'Сторис 3: карточка ближайшего концерта «Музыка из кино на органе»', caption: '3. Концерт', device: 'banner' },
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/story-4.webp', alt: 'Сторис 4: «Купить билет» и стрелка к месту для стикера-ссылки', caption: '4. Билет', device: 'banner' },
+        ] },
+        { title: 'Таргет-баннер', text: 'Для холодной аудитории нужен крючок: шутка в заголовке, оффер в подзаголовке, кнопка внизу. Человек с дрелью — полутоновая вырезка, тот же приём, что в брендбуке.', gallery: 'single', media: [
+          { kind: 'image', src: 'assets/projects/orchestra-site/launch/banner-target.webp', alt: 'Баннер: «Орган громче соседа с перфоратором. Проверьте 19 ноября в Анненкирхе», кнопка «Билеты», человек с дрелью в полутоне', caption: 'Баннер 4:5 на концерт «Музыка из кино на органе»', device: 'banner' },
+        ] },
+      ],
+      note: 'Подготовлено к запуску. Работала в рамках фирменного стиля оркестра: шрифты Despair Display и Steppe, палитра, линии-каракули и полутоновые вырезки.',
+    },
     results: [
       'Сайт запущен в ноябре 2026 года, оркестр готовит анонс.',
       'Аналитика уже настроена: цель на кнопку «Билеты». Цифры добавлю после анонса.',
@@ -228,7 +255,6 @@ window.LEYLA_PROJECTS = [
     ],
     implementation: [
       'Свой домен orchestra1703.com и собственный хостинг.',
-      'На первом экране — видео с концертов вместо статичной фотографии: оркестр сразу виден «живым».',
     ],
     media: [
       { kind: 'video', src: 'assets/projects/orchestra-site/hero.mp4', poster: 'assets/projects/orchestra-site/hero-poster.jpg', caption: 'Первый экран: видео с концертов и карточка ближайшего концерта', ratio: '1280 / 642' },
