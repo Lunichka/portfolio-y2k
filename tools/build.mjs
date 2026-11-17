@@ -185,6 +185,13 @@ function page(p, i) {
         <ul class="fonts">${p.fonts.map(f => `<li><span class="f-spec" style="font-family:'${esc(f.family)}',serif" aria-hidden="true">Аа Bb 123</span><b>${esc(f.name)}</b><span>${esc(f.role)}</span></li>`).join('')}</ul>`;
       S.push(section(++n, 'concept', 'Концепция и визуальный стиль', b));
     }
+    if (p.evolution) { // process: how the project changed from version to version
+      const E = p.evolution;
+      S.push(section(++n, 'evolution', E.title || 'Как я к этому пришла', `${(E.text || []).length ? paras(E.text) : ''}
+        <ol class="evo">${E.steps.map(s => `
+          <li><p class="evo-k">${esc(s.label)}</p>${image(s)}<p>${esc(s.text)}</p></li>`).join('')}
+        </ol>`));
+    }
     S.push(section(++n, 'ux', 'Ключевые UX/UI-решения', p.ux.length
       ? `<ol class="ux">${p.ux.map(u => `<li><h3>${esc(u.title)}</h3><p>${esc(u.text)}</p></li>`).join('')}</ol>`
       : draft('ключевые UX/UI-решения и почему они такие')));

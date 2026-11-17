@@ -263,3 +263,12 @@ html.eye-rest .tl li { background: #fff; border-left-color: #34497a; }
   .gallery.g-stories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery.g-carousel > *, .gallery.g-stories > * { grid-column: auto; }
 }
+
+/* ---------- evolution: version-by-version process ---------- */
+.evo { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); counter-reset: none; }
+.evo > li { margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.evo .evo-k { margin: 0; font: 700 13px/1.3 var(--f-ui); letter-spacing: .06em; text-transform: uppercase; }
+.evo figure { margin: 0; }
+.evo > li > p:last-child { margin: 0; font-size: 15px; }
+@media (max-width: 760px) { .evo { grid-template-columns: 1fr; } }
+.evo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }
