@@ -195,7 +195,7 @@
     { id: 'other', label: 'Другие работы', icon: 'folder2' },
   ].filter(d => d.id !== 'other' || OTHER.length);
   // [left, top, width, height] — clamped to the viewport on open
-  const POS = { world: [128, 46, 560, 640], howiwork: [600, 90, 500, 520], projects: [150, 38, 900, 680], about: [560, 70, 560, 540], guestbook: [250, 44, 680, 600], button: [520, 96, 480, 560], eyerest: [330, 110, 480, 460], contact: [420, 140, 440, 440], other: [230, 64, 820, 640] };
+  const POS = { world: [128, 46, 660, 680], howiwork: [600, 90, 500, 520], projects: [150, 38, 900, 680], about: [560, 70, 560, 540], guestbook: [250, 44, 680, 600], button: [520, 96, 480, 560], eyerest: [330, 110, 480, 460], contact: [420, 140, 440, 440], other: [230, 64, 820, 640] };
   const wins = {}; let zTop = 10, frontId = null, startOpen = false;
   const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
   const area = () => $('#desktop').getBoundingClientRect();
@@ -450,7 +450,7 @@
       list.append(el('li', {}, el('a', { class: 'top-card', href: caseUrl(p) },
         pv.kind === 'image' ? el('img', { src: pv.src, alt: '', loading: 'lazy', decoding: 'async' }) : el('span', { class: 'top-ph', text: p.file }),
         el('span', { class: 'top-t', text: p.title }),
-        el('span', { class: 'top-s', text: (TYPES[p.type] || {}).short || '' }))));
+        el('span', { class: 'top-s', text: [p.topNote, (TYPES[p.type] || {}).short].filter(Boolean).join(' · ') }))));
     });
   }
   function renderOther() {
@@ -570,7 +570,15 @@
 
     lock(true);
     const msgs = ['Загружаем блестки и дофамин…', 'Полируем глиттер…', 'Сдуваем пыль с пикселей…', 'Раскладываем проекты по папкам…', 'Почти гламурно…'];
-    const finish = () => { fill.style.width = '100%'; bar.setAttribute('aria-valuenow', '100'); status.textContent = 'Готово! Жми ENTER ♥'; enter.classList.add('is-ready'); };
+    // The boot screen is a 1.5-second greeting, not a gate: once the bar fills, the desktop opens by itself.
+    // Hovering or focusing the boot buttons pauses the auto-enter, so the «Отдых для глаз» choice stays reachable.
+    let hold = false, autoT = 0;
+    bootEl.addEventListener('pointerover', e => { if (e.target.closest('button')) hold = true; });
+    bootEl.addEventListener('focusin', e => { if (e.target !== enter) hold = true; });
+    const finish = () => {
+      fill.style.width = '100%'; bar.setAttribute('aria-valuenow', '100'); status.textContent = 'Готово! Входим… ♥'; enter.classList.add('is-ready');
+      autoT = setTimeout(function auto() { if (done) return; if (hold) { hold = false; autoT = setTimeout(auto, 2500); return; } go(); }, 700);
+    };
     if (!Mode.motionOn()) finish();
     else {
       let p = 0;

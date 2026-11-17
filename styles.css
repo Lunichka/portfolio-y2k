@@ -455,7 +455,7 @@ html.eye-rest #startmenu hr { border-top: 1px solid #8a877f; border-bottom: 1px 
 .top-card:hover { background: var(--pink-soft); }
 .top-card img, .top-ph { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: 2px solid var(--purple-d); border-radius: 2px; background: #1b1424; }
 .top-ph { display: grid; place-items: center; color: #fff; font: 12px var(--f-pixel); }
-.top-t { font: 700 13px/1.25 var(--f-ui); }
+.top-t { font: 700 14px/1.25 var(--f-ui); }
 .top-s { font: 12px var(--f-status); color: var(--muted); }
 html.eye-rest .top-h { color: #1d2b4f; }
 html.eye-rest .top-card { border: 0; border-radius: 0; background: var(--win-bg); box-shadow: inset -1px -1px 0 #4a4943, inset 1px 1px 0 #fff, inset -2px -2px 0 #8a877f; }
