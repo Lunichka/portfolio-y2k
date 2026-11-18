@@ -134,6 +134,7 @@
     misses: 0,
     running: false,       // идет ли таймер
     modalOpen: false,
+    chatOpen: false,
     timeoutOpen: false,
     openedId: null,
     winPending: false,
@@ -266,7 +267,7 @@
   }
 
   document.addEventListener('visibilitychange', function () {
-    if (state.screen !== 'game' || state.modalOpen || state.timeoutOpen || state.winPending) return;
+    if (state.screen !== 'game' || state.modalOpen || state.chatOpen || state.timeoutOpen || state.winPending) return;
     if (document.hidden) pauseTimer(); else if (state.remaining > 0) startTimer();
   });
 
@@ -336,8 +337,8 @@
 
   /* промах по сцене */
   dom.stage.addEventListener('click', function (e) {
-    if (state.screen !== 'game' || state.modalOpen || state.timeoutOpen || !state.running) return;
-    if (e.target.closest && e.target.closest('.hotspot')) return;
+    if (state.screen !== 'game' || state.modalOpen || state.chatOpen || state.timeoutOpen || !state.running) return;
+    if (e.target.closest && e.target.closest('.hotspot, .laptop-zone')) return;
     var r = dom.stage.getBoundingClientRect();
     var x = (e.clientX - r.left) / r.width * 100, y = (e.clientY - r.top) / r.height * 100;
     state.misses++;
@@ -407,6 +408,40 @@
     dom.modal.classList.add('is-closing');
     setTimeout(finish, 220);
   }
+
+  /* ---------------------------------------------------------
+     НОУТБУК: рабочий чат крупно. Не промах, таймер на паузе.
+     --------------------------------------------------------- */
+  var chatEl = $('#chat'), chatCard = $('#chat-card'), laptopZone = $('#laptop-zone');
+  function openChat() {
+    if (state.screen !== 'game' || state.modalOpen || state.chatOpen || state.timeoutOpen) return;
+    pauseTimer();
+    state.chatOpen = true;
+    state.chatLastFocus = document.activeElement;
+    chatEl.classList.remove('is-closing');
+    chatEl.hidden = false;
+    dom.app.inert = true;
+    chatCard.scrollTop = 0;
+    chatCard.focus({ preventScroll: true });
+  }
+  function closeChat() {
+    if (!state.chatOpen) return;
+    var finish = function () {
+      chatEl.hidden = true;
+      chatEl.classList.remove('is-closing');
+      dom.app.inert = false;
+      state.chatOpen = false;
+      var f = state.chatLastFocus;
+      if (f && document.contains(f)) { try { f.focus({ preventScroll: true }); } catch (e) { } }
+      if (state.remaining > 0 && state.screen === 'game') startTimer();
+    };
+    if (reduceMotion) { finish(); return; }
+    chatEl.classList.add('is-closing');
+    setTimeout(finish, 220);
+  }
+  laptopZone.addEventListener('click', function (e) { e.stopPropagation(); openChat(); });
+  $('#chat-x').addEventListener('click', closeChat);
+  $('.modal-backdrop', chatEl).addEventListener('click', closeChat);
 
   dom.modalX.addEventListener('click', closeModal);
   dom.modalBack.addEventListener('click', closeModal);
@@ -522,9 +557,10 @@
      КЛАВИАТУРА: Esc закрывает окно, Tab не уходит за его пределы
      --------------------------------------------------------- */
   document.addEventListener('keydown', function (e) {
-    var openCard = state.timeoutOpen ? dom.timeoutCard : (state.modalOpen ? dom.modalCard : null);
+    var openCard = state.timeoutOpen ? dom.timeoutCard : (state.modalOpen ? dom.modalCard : (state.chatOpen ? chatCard : null));
     if (!openCard) return;
     if (e.key === 'Escape' && state.modalOpen) { e.preventDefault(); closeModal(); return; }
+    if (e.key === 'Escape' && state.chatOpen) { e.preventDefault(); closeChat(); return; }
     if (e.key !== 'Tab') return;
     var f = $$(focusableSel, openCard).filter(function (n) { return n.offsetParent !== null; });
     if (!f.length) { e.preventDefault(); openCard.focus(); return; }

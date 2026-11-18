@@ -272,3 +272,8 @@ html.eye-rest .tl li { background: #fff; border-left-color: #34497a; }
 .evo > li > p:last-child { margin: 0; font-size: 15px; }
 @media (max-width: 760px) { .evo { grid-template-columns: 1fr; } }
 .evo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }
+/* четвёртый шаг (свой персонаж) — во всю ширину: картинка «было → стало» читается крупно */
+.evo > li:nth-child(4):last-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); column-gap: clamp(12px, 2vw, 24px); align-items: start; }
+.evo > li:nth-child(4):last-child .evo-k { grid-column: 1 / -1; }
+.evo > li:nth-child(4):last-child img { aspect-ratio: 1200 / 717; object-fit: contain; }
+@media (max-width: 760px) { .evo > li:nth-child(4):last-child { grid-template-columns: 1fr; } }
