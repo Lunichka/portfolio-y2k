@@ -662,3 +662,29 @@ h1,h2,h3{word-spacing:.04em;font-family:var(--font-display);font-weight:var(--fw
 .frog-rig.is-burnt{aspect-ratio:864/1171}
 .frog-eyes.is-full{left:0;top:0;width:100%;height:100%;z-index:3}
 .peek .frog-rig.is-clean{top:calc(var(--pw) * .06)}
+
+
+/* Муха (рисунок Лейлы) кружит вокруг головы обгоревшего Квака и смотрит туда, куда летит */
+.final-rig{position:relative}
+.fly-orbit{position:absolute;inset:0;z-index:4;pointer-events:none}
+.fly{position:absolute;width:clamp(36px,15%,62px);height:auto;left:90%;top:20%;transform:translate(-50%,-50%);
+  animation:fly-orbit 7s linear infinite;filter:drop-shadow(0 3px 0 rgba(32,39,43,.18))}
+.fly-orbit::after{content:""}
+@keyframes fly-orbit{
+  0.00%{left:90.0%;top:20.0%;transform:translate(-50%,-50%) rotate(225deg) scale(1.0)}
+  8.33%{left:84.6%;top:26.5%;transform:translate(-50%,-50%) rotate(286deg) scale(1.0)}
+  16.67%{left:70.0%;top:31.3%;transform:translate(-50%,-50%) rotate(304deg) scale(1.0)}
+  25.00%{left:50.0%;top:33.0%;transform:translate(-50%,-50%) rotate(315deg) scale(1.0)}
+  33.33%{left:30.0%;top:31.3%;transform:translate(-50%,-50%) rotate(326deg) scale(1.0)}
+  41.67%{left:15.4%;top:26.5%;transform:translate(-50%,-50%) rotate(344deg) scale(1.0)}
+  50.00%{left:10.0%;top:20.0%;transform:translate(-50%,-50%) rotate(405deg) scale(1.0)}
+  58.33%{left:15.4%;top:13.5%;transform:translate(-50%,-50%) rotate(466deg) scale(0.82)}
+  66.67%{left:30.0%;top:8.7%;transform:translate(-50%,-50%) rotate(484deg) scale(0.82)}
+  75.00%{left:50.0%;top:7.0%;transform:translate(-50%,-50%) rotate(495deg) scale(0.82)}
+  83.33%{left:70.0%;top:8.7%;transform:translate(-50%,-50%) rotate(506deg) scale(0.82)}
+  91.67%{left:84.6%;top:13.5%;transform:translate(-50%,-50%) rotate(524deg) scale(0.82)}
+  100.00%{left:90.0%;top:20.0%;transform:translate(-50%,-50%) rotate(585deg) scale(0.82)}
+}
+.fly-orbit{animation:fly-buzz .16s ease-in-out infinite alternate}
+@keyframes fly-buzz{from{translate:0 -1.5px}to{translate:0 1.5px}}
+@media (prefers-reduced-motion:reduce){.fly,.fly-orbit{animation:none}.fly{left:84%;top:12%}}
