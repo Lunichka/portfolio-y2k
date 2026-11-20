@@ -115,7 +115,8 @@
                 </div>
                 <div id="props" class="props"></div>
                 <div id="hotspots" class="hotspots"></div>
-                <button class="laptop-zone" id="laptop-zone" type="button" aria-label="Открыть ноутбук Квака: рабочий чат">
+                <button class="laptop-zone" id="laptop-zone" type="button"
+                  aria-label="Открыть ноутбук Квака: рабочий чат">
                   <span class="lz-tip" aria-hidden="true">Открыть чат</span>
                 </button>
                 <div class="stage-fire" id="stage-fire" aria-hidden="true">
@@ -183,7 +184,8 @@
       <div class="final-inner">
         <div class="final-hero">
           <div class="frog-rig final-rig is-burnt">
-            <img class="final-frog" src="assets/frog-burnt.webp" alt="Квак после дедлайна: галстук обгорел, пиджак в копоти, над головой дым — но он выжил">
+            <img class="final-frog" src="assets/frog-burnt.webp"
+              alt="Квак после дедлайна: галстук обгорел, пиджак в копоти, над головой дым — но он выжил">
             <img class="frog-eyes is-full" src="assets/frog-burnt-eyes-closed.png" alt="" aria-hidden="true">
             <span class="fly-orbit" aria-hidden="true"><img class="fly" src="assets/fly.webp" alt=""></span>
           </div>
@@ -192,13 +194,14 @@
 
         <div class="final-text">
           <p class="caption caption-lime">Статус: задача закрыта</p>
-          <h2 id="final-title" class="final-title">Офис выжил.<br><em>Менталка Квака тоже.</em></h2>
+          <h2 id="final-title" class="final-title">Офис выжил, ура.<br><em>Менталка Квака тоже.</em></h2>
           <p class="final-lead">Все пять предметов найдены. Ты официально спас рабочий день.</p>
 
           <div class="pass" id="pass">
             <div class="pass-main">
               <p class="pass-kicker">Золотой пропуск</p>
-              <p class="pass-title">Сертификат выжившего в дедлайне</p>
+              <p class="pass-title">Сертификат выжившего
+                в дедлайне</p>
               <dl class="pass-stats">
                 <div>
                   <dt>Найдено</dt>
@@ -213,11 +216,11 @@
                   <dd id="res-miss">0</dd>
                 </div>
               </dl>
-              <p class="pass-rank" id="res-rank">Старший спасатель</p>
+              <p class="pass-rank" id="res-rank">Великий спасатель</p>
             </div>
-            <div class="pass-stub" aria-hidden="true"><span>ДЕМО</span><span>№ 0001</span></div>
+            <div class="pass-stub" aria-hidden="true"><span>ДЕМО</span><span>№ 4242</span></div>
           </div>
-          <p class="pass-note">Игровая награда. Не является финансовым продуктом или реальным пропуском.</p>
+          <p class="pass-note">Сертификат шуточный. Отгул на работе по нему не дадут (но попробовать можно).</p>
           <p class="pass-best" id="res-best" hidden></p>
 
           <div class="final-actions">
@@ -279,7 +282,8 @@
   <!-- ============ НОУТБУК: РАБОЧИЙ ЧАТ ============ -->
   <div id="chat" class="modal" hidden>
     <div class="modal-backdrop"></div>
-    <div class="modal-card chat-card" id="chat-card" role="dialog" aria-modal="true" aria-labelledby="chat-title" tabindex="-1">
+    <div class="modal-card chat-card" id="chat-card" role="dialog" aria-modal="true" aria-labelledby="chat-title"
+      tabindex="-1">
       <div class="titlebar"><span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span
           class="tb-name">Ноутбук Квака · Мессенджер</span></div>
       <button class="modal-x" id="chat-x" type="button" aria-label="Закрыть чат и вернуться к игре"><span
@@ -288,20 +292,38 @@
         <aside class="chat-list" aria-label="Чаты">
           <div class="chat-search" aria-hidden="true"></div>
           <ul>
-            <li class="is-active"><img class="c-ava" src="assets/chat/group.webp" alt=""><div><b>Квалоквиум</b><span>Пал Квасилич, завтра..</span></div></li>
-            <li><img class="c-ava" src="assets/chat/wife.webp" alt=""><div><b>Жена</b><span>Подошва порвалась(</span></div></li>
-            <li><span class="c-ava" aria-hidden="true">В</span><div><b>Васян</b><span>На озере рыбачить с...</span></div></li>
+            <li class="is-active"><img class="c-ava" src="assets/chat/group.webp" alt="">
+              <div><b>Квалоквиум</b><span>Пал Квасилич, завтра..</span></div>
+            </li>
+            <li><img class="c-ava" src="assets/chat/wife.webp" alt="">
+              <div><b>Жена</b><span>Подошва порвалась(</span></div>
+            </li>
+            <li><span class="c-ava" aria-hidden="true">В</span>
+              <div><b>Васян</b><span>На озере рыбачить с...</span></div>
+            </li>
           </ul>
         </aside>
         <section class="chat-main">
           <header class="chat-head"><img class="c-ava" src="assets/chat/group.webp" alt="">
-            <div><h2 id="chat-title">Квалоквиум</h2><span>33 жабки, 10 жабятся</span></div></header>
+            <div>
+              <h2 id="chat-title">Квалоквиум</h2><span>33 жабки, 10 жабятся</span>
+            </div>
+          </header>
           <ol class="chat-feed">
-            <li class="msg me msg-sticker"><img src="assets/chat/sticker-help.webp" alt="Стикер: жаба в панике с надписью «хелб»"></li>
-            <li class="msg me"><p>чисто я сегодня</p></li>
-            <li class="msg me"><p>Ребят, го на перекур?</p><img class="c-ava" src="assets/chat/kvak.webp" alt=""></li>
-            <li class="msg them"><img class="c-ava" src="assets/chat/boss.webp" alt="Пал Квасилич"><p><b>Жабцов!</b><br>Где отчет за предыдущий квартал?</p></li>
-            <li class="msg me"><p>Пал Квасилич, завтра, чесслово</p><img class="c-ava" src="assets/chat/kvak.webp" alt=""></li>
+            <li class="msg me msg-sticker"><img src="assets/chat/sticker-help.webp"
+                alt="Стикер: жаба в панике с надписью «хелб»"></li>
+            <li class="msg me">
+              <p>чисто я сегодня</p>
+            </li>
+            <li class="msg me">
+              <p>Ребят, го на перекур?</p><img class="c-ava" src="assets/chat/kvak.webp" alt="">
+            </li>
+            <li class="msg them"><img class="c-ava" src="assets/chat/boss.webp" alt="Пал Квасилич">
+              <p><b>Жабцов!</b><br>Где отчет за предыдущий квартал?</p>
+            </li>
+            <li class="msg me">
+              <p>Пал Квасилич, завтра, чесслово</p><img class="c-ava" src="assets/chat/kvak.webp" alt="">
+            </li>
           </ol>
           <div class="chat-input" aria-hidden="true">Квак...</div>
         </section>
