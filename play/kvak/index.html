@@ -23,7 +23,7 @@
          Квак выглядывает из-за объявления, моргает и прячется обратно -->
       <div class="cover-decor" aria-hidden="true">
         <img class="dc dc-folder" src="assets/decor/folder.png" alt="">
-        <img class="dc dc-mug" src="assets/decor/mug-magistr.svg" alt="">
+        <img class="dc dc-mug" src="assets/decor/mug-magistr.png" alt="">
         <img class="dc dc-st-kva" src="assets/decor/st-kva.png" alt="">
         <img class="dc dc-st-report" src="assets/decor/st-report.png" alt="">
         <img class="dc dc-receipt" src="assets/decor/receipt.svg" alt="">
@@ -56,7 +56,7 @@
           <h1 id="cover-title" class="cover-title">Квак, где мои вещи?!</h1>
           <p class="notice-text">На рабочем месте пропали 5&nbsp;вещей. Найди их, пока офис не&nbsp;сгорел.</p>
         </div>
-        <button id="btn-start" class="btn btn-verb" type="button"><span class="play" aria-hidden="true">▶</span> Спасти
+        <button id="btn-start" class="btn btn-primary btn-cta" type="button"><span class="play" aria-hidden="true">▶</span> Спасти
           рабочий день</button>
       </div>
 
@@ -73,7 +73,7 @@
 
         <header class="game-head">
           <div class="head-title">
-            <p class="caption caption-light">Срочное дело № 4242</p>
+            <p class="caption">Срочное дело № 4242</p>
             <h2 id="game-title">Помоги Кваку собраться</h2>
             <p class="instr" id="game-instr">Квак потерял пять вещей где-то на столе. Нажимай на найденное, пока все не
               сгорело.</p>
@@ -153,12 +153,13 @@
             <ul id="items" class="items"></ul>
 
             <div class="side-foot">
-              <button id="btn-restart" class="btn btn-ghost" type="button">Начать заново</button>
+              <button id="btn-rules" class="btn btn-link" type="button">Правила</button>
+              <button id="btn-restart" class="btn btn-link" type="button">Начать заново</button>
               <div id="restart-confirm" class="restart-confirm" hidden>
                 <p>Сбросить найденное и таймер?</p>
                 <div>
                   <button id="btn-restart-yes" class="btn btn-small btn-danger" type="button">Да, сбросить</button>
-                  <button id="btn-restart-no" class="btn btn-small btn-ghost" type="button">Нет</button>
+                  <button id="btn-restart-no" class="btn btn-small" type="button">Нет</button>
                 </div>
               </div>
             </div>
@@ -172,62 +173,57 @@
 
     <!-- ============ ЭКРАН 3 · ФИНАЛ ============ -->
     <section id="screen-final" class="screen" aria-labelledby="final-title">
-      <div class="final-bg" aria-hidden="true">
-        <div class="rays"></div>
-      </div>
-      <div class="fire-layer final-fire" aria-hidden="true">
-        <img class="fire flick ff-a" src="assets/fire/fire9.png" alt="">
-        <img class="fire flick ff-b" src="assets/fire/fire5.png" alt="">
-      </div>
-      <div class="confetti" id="confetti" aria-hidden="true"></div>
-
       <div class="final-inner">
-        <div class="final-hero">
-          <div class="frog-rig final-rig is-burnt">
-            <img class="final-frog" src="assets/frog-burnt.webp"
-              alt="Квак после дедлайна: галстук обгорел, пиджак в копоти, над головой дым — но он выжил">
-            <img class="frog-eyes is-full" src="assets/frog-burnt-eyes-closed.png" alt="" aria-hidden="true">
-            <span class="fly-orbit" aria-hidden="true"><img class="fly" src="assets/fly.webp" alt=""></span>
-          </div>
-          <div class="stamp" aria-hidden="true">Выжил!</div>
-        </div>
-
         <div class="final-text">
-          <p class="caption caption-lime">Статус: задача закрыта</p>
-          <h2 id="final-title" class="final-title">Офис выжил, ура.<br><em>Менталка Квака тоже.</em></h2>
+          <p class="caption caption-stamp">Статус: задача закрыта</p>
+          <h2 id="final-title" class="final-title">Офис выжил, ура. <em>Менталка Квака тоже.</em></h2>
           <p class="final-lead">Все пять предметов найдены. Ты официально спас рабочий день.</p>
 
-          <div class="pass" id="pass">
+          <div class="final-actions">
+            <button id="btn-again" class="btn btn-primary btn-cta" type="button">Играть еще раз <span class="arrow"
+                aria-hidden="true">↻</span></button>
+            <button id="btn-home" class="btn btn-link" type="button">← На обложку</button>
+          </div>
+        </div>
+
+        <div class="final-pass">
+          <article class="pass" id="pass" aria-label="Сертификат выжившего в дедлайне">
             <div class="pass-main">
-              <p class="pass-kicker">Золотой пропуск</p>
-              <p class="pass-title">Сертификат выжившего
-                в дедлайне</p>
-              <dl class="pass-stats">
-                <div>
-                  <dt>Найдено</dt>
-                  <dd>5 из 5</dd>
+              <p class="pass-kicker"><span>Золотой пропуск</span><span>Выдан: офис 4242</span></p>
+              <div class="pass-body">
+                <figure class="pass-photo">
+                  <div class="frog-rig final-rig is-burnt">
+                    <img class="final-frog" src="assets/frog-burnt.webp"
+                      alt="Квак после дедлайна: галстук обгорел, пиджак в копоти, над головой дым — но он выжил">
+                    <img class="frog-eyes is-full" src="assets/frog-burnt-eyes-closed.png" alt="" aria-hidden="true">
+                    <span class="fly-orbit" aria-hidden="true"><img class="fly" src="assets/fly.webp" alt=""></span>
+                  </div>
+                </figure>
+                <div class="pass-info">
+                  <p class="pass-title">Сертификат выжившего в&nbsp;дедлайне</p>
+                  <p class="pass-holder"><span>Предъявитель</span>Квак Жабцов</p>
+                  <dl class="pass-stats">
+                    <div>
+                      <dt>Найдено</dt>
+                      <dd>5 из 5</dd>
+                    </div>
+                    <div>
+                      <dt>Время</dt>
+                      <dd id="res-time">0 сек</dd>
+                    </div>
+                    <div>
+                      <dt>Промахи</dt>
+                      <dd id="res-miss">0</dd>
+                    </div>
+                  </dl>
                 </div>
-                <div>
-                  <dt>Время</dt>
-                  <dd id="res-time">0 сек</dd>
-                </div>
-                <div>
-                  <dt>Промахи</dt>
-                  <dd id="res-miss">0</dd>
-                </div>
-              </dl>
+              </div>
               <p class="pass-rank" id="res-rank">Великий спасатель</p>
             </div>
-            <div class="pass-stub" aria-hidden="true"><span>ДЕМО</span><span>№ 4242</span></div>
-          </div>
+            <div class="pass-stub" aria-hidden="true"><span>Демо</span><span>№ 4242</span></div>
+          </article>
           <p class="pass-note">Сертификат шуточный. Отгул на работе по нему не дадут (но попробовать можно).</p>
           <p class="pass-best" id="res-best" hidden></p>
-
-          <div class="final-actions">
-            <button id="btn-again" class="btn btn-hero btn-hero-sm" type="button">Играть еще раз <span class="arrow"
-                aria-hidden="true">↻</span></button>
-            <button id="btn-home" class="btn btn-ghost btn-ghost-light" type="button">← На обложку</button>
-          </div>
         </div>
       </div>
     </section>
@@ -238,10 +234,11 @@
     <div class="modal-backdrop" data-close="1"></div>
     <div class="modal-card" id="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title"
       aria-describedby="modal-text" tabindex="-1">
-      <div class="titlebar"><span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="tb-name"
-          id="modal-app"></span></div>
-      <button class="modal-x" id="modal-x" type="button" aria-label="Закрыть окно и вернуться к игре"><span
-          aria-hidden="true">×</span></button>
+      <div class="titlebar">
+        <span class="tb-name" id="modal-app"></span>
+        <button class="modal-x" id="modal-x" type="button" aria-label="Закрыть окно и вернуться к игре"><span
+            aria-hidden="true">×</span></button>
+      </div>
 
       <div class="modal-top">
         <span class="chip" id="modal-chip">Концепт: партнёр</span>
@@ -269,14 +266,13 @@
           </div>
 
           <div class="modal-actions">
-            <button class="btn btn-modal" id="modal-cta" type="button"></button>
-            <button class="btn btn-ghost btn-modal-back" id="modal-back" type="button">Вернуться к поиску</button>
+            <button class="btn btn-primary" id="modal-cta" type="button"></button>
+            <button class="btn btn-link" id="modal-back" type="button">Вернуться к поиску</button>
           </div>
         </div>
       </div>
-
-      <p class="modal-legal"><strong>Концепт рекламной интеграции.</strong> Не является действующим предложением.</p>
     </div>
+    <p class="modal-legal">Концепт рекламной интеграции. Не является действующим предложением.</p>
   </div>
 
   <!-- ============ НОУТБУК: РАБОЧИЙ ЧАТ ============ -->
@@ -284,10 +280,11 @@
     <div class="modal-backdrop"></div>
     <div class="modal-card chat-card" id="chat-card" role="dialog" aria-modal="true" aria-labelledby="chat-title"
       tabindex="-1">
-      <div class="titlebar"><span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span
-          class="tb-name">Ноутбук Квака · Мессенджер</span></div>
-      <button class="modal-x" id="chat-x" type="button" aria-label="Закрыть чат и вернуться к игре"><span
-          aria-hidden="true">×</span></button>
+      <div class="titlebar">
+        <span class="tb-name">Ноутбук Квака · Мессенджер</span>
+        <button class="modal-x" id="chat-x" type="button" aria-label="Закрыть чат и вернуться к игре"><span
+            aria-hidden="true">×</span></button>
+      </div>
       <div class="chat-app">
         <aside class="chat-list" aria-label="Чаты">
           <div class="chat-search" aria-hidden="true"></div>
@@ -336,17 +333,23 @@
     <div class="modal-backdrop"></div>
     <div class="modal-card modal-timeout m-alert" role="alertdialog" aria-modal="true" aria-labelledby="timeout-title"
       aria-describedby="timeout-text" tabindex="-1" id="timeout-card">
-      <div class="titlebar"><span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span
-          class="tb-name">Системное уведомление</span></div>
-      <div class="modal-body modal-body-single">
+      <div class="titlebar"><span class="tb-name">Системное уведомление</span></div>
+      <div class="modal-body modal-body-panic">
+        <figure class="panic-photo">
+          <div class="frog-rig is-panic">
+            <img src="assets/frog-panic.webp" alt="Квак в панике: у него нервно дергается глаз">
+            <img class="tic tic-1" src="assets/frog-panic-twitch-1.png" alt="" aria-hidden="true">
+            <img class="tic tic-2" src="assets/frog-panic-twitch-2.png" alt="" aria-hidden="true">
+          </div>
+        </figure>
         <div class="modal-copy">
-          <p class="chip chip-found">Время вышло</p>
+          <p class="chip chip-alert">Время вышло</p>
           <h2 id="timeout-title">Дедлайн наступил. Квак в панике.</h2>
           <p id="timeout-text">Ты нашел <b id="timeout-found">0</b> из 5. Найденное сохранено — можно добавить времени и
             продолжить.</p>
           <div class="modal-actions">
-            <button class="btn btn-modal" id="btn-more-time" type="button">Еще 30 секунд — продолжить</button>
-            <button class="btn btn-ghost" id="btn-timeout-restart" type="button">Начать заново <small>(прогресс
+            <button class="btn btn-primary" id="btn-more-time" type="button">Еще 30 секунд — продолжить</button>
+            <button class="btn btn-link" id="btn-timeout-restart" type="button">Начать заново <small>(прогресс
                 сбросится)</small></button>
           </div>
         </div>
@@ -354,8 +357,52 @@
     </div>
   </div>
 
-  <!-- переходы между экранами -->
-  <div id="wipe" class="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <!-- ============ ПРАВИЛА: появляются перед первой игрой ============ -->
+  <div id="rules" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card modal-rules" role="dialog" aria-modal="true" aria-labelledby="rules-title" tabindex="-1"
+      id="rules-card">
+      <div class="titlebar"><span class="tb-name">Инструкция · Срочное дело № 4242</span></div>
+      <div class="rules-body">
+        <p class="chip chip-found">Как играть</p>
+        <h2 id="rules-title">Офис горит. Помоги Кваку собрать вещи</h2>
+        <ol class="rules-steps">
+          <li><span class="rs-n" aria-hidden="true">1</span>
+            <div><b>Найди 5 вещей Квака</b>
+              <p>Они спрятаны на рабочем столе. Список — рядом со сценой.</p>
+            </div>
+          </li>
+          <li><span class="rs-n" aria-hidden="true">2</span>
+            <div><b>Нажми на находку</b>
+              <p>Откроется карточка. Пока ты ее читаешь, время стоит.</p>
+            </div>
+          </li>
+          <li><span class="rs-n" aria-hidden="true">3</span>
+            <div><b>Уложись в 60 секунд</b>
+              <p>Не успел — можно взять еще 30. Найденное не пропадет.</p>
+            </div>
+          </li>
+        </ol>
+        <ul class="rules-items" id="rules-items" aria-label="Что нужно найти"></ul>
+        <p class="rules-tip">Ноутбук на столе тоже открывается: загляни в рабочий чат.</p>
+        <div class="modal-actions">
+          <button class="btn btn-primary btn-cta" id="btn-rules-go" type="button">Поехали! <span class="play"
+              aria-hidden="true">▶</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- загрузка и переходы между экранами: муха летает восьмёркой -->
+  <div id="wipe" class="loader is-on is-boot" aria-hidden="true">
+    <div class="loader-box">
+      <svg class="loader-trail" viewBox="0 0 320 180" aria-hidden="true">
+        <path d="M160 90 C200 30 290 30 290 90 C290 150 200 150 160 90 C120 30 30 30 30 90 C30 150 120 150 160 90 Z" />
+      </svg>
+      <span class="loader-fly"><img src="assets/fly.webp" alt=""></span>
+    </div>
+    <p class="loader-label">Ква-загрузка…</p>
+  </div>
 
   <noscript>
     <p

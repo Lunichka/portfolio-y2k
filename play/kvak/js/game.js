@@ -267,14 +267,16 @@
   }
 
   document.addEventListener('visibilitychange', function () {
-    if (state.screen !== 'game' || state.modalOpen || state.chatOpen || state.timeoutOpen || state.winPending) return;
+    if (state.screen !== 'game' || state.modalOpen || state.chatOpen || state.timeoutOpen || state.rulesOpen || state.winPending) return;
     if (document.hidden) pauseTimer(); else if (state.remaining > 0) startTimer();
   });
 
   /* ---------------------------------------------------------
      ПЕРЕХОДЫ МЕЖДУ ЭКРАНАМИ
      --------------------------------------------------------- */
+  /* Переход: бумажный экран с мухой появляется, под ним меняется экран, затем он уходит */
   var transitioning = false;
+  var LOADER_FADE = 280, LOADER_HOLD = 650;
   function showScreen(name) {
     Object.keys(dom.screens).forEach(function (k) { dom.screens[k].classList.toggle('is-active', k === name); });
     state.screen = name;
@@ -284,19 +286,27 @@
     if (transitioning) return;
     if (reduceMotion) { showScreen(name); if (after) after(); return; }
     transitioning = true;
-    var strips = $$('i', dom.wipe);
-    strips.forEach(function (s, i) { s.style.setProperty('--i', i); });
-    dom.wipe.className = 'wipe is-in';
+    dom.wipe.classList.add('is-on');
     setTimeout(function () {
       showScreen(name);
-      dom.wipe.className = 'wipe is-out';
       setTimeout(function () {
-        dom.wipe.className = 'wipe';
-        transitioning = false;
-        if (after) after();
-      }, 340 + strips.length * 40);
-    }, 340 + strips.length * 40);
+        dom.wipe.classList.remove('is-on');
+        setTimeout(function () {
+          transitioning = false;
+          if (after) after();
+        }, LOADER_FADE);
+      }, LOADER_HOLD);
+    }, LOADER_FADE);
   }
+  /* Первая загрузка: муха летает, пока не догрузятся картинки (но не меньше 0,8 с) */
+  (function bootLoader() {
+    var t0 = performance.now();
+    function hide() {
+      var wait = Math.max(0, 800 - (performance.now() - t0));
+      setTimeout(function () { dom.wipe.classList.remove('is-on', 'is-boot'); }, reduceMotion ? 0 : wait);
+    }
+    if (document.readyState === 'complete') hide(); else window.addEventListener('load', hide);
+  })();
 
   /* ---------------------------------------------------------
      ИГРОВОЙ ПРОЦЕСС
@@ -317,12 +327,44 @@
   function startGame() {
     resetGame();
     go('game', function () {
+      if (!state.rulesSeen) { openRules(true); return; }   // перед первой игрой — правила
       startTimer();
       scratchSoon();
-      var first = $('.stage-scroller');
-      if (first) { /* фокус не крадем: пользователь сам тянется к сцене */ }
     });
   }
+
+  /* ---------------------------------------------------------
+     ПРАВИЛА: окно перед первой игрой и по кнопке «Правила»
+     --------------------------------------------------------- */
+  var rulesEl = $('#rules'), rulesCard = $('#rules-card'), rulesFirst = false;
+  (function fillRules() {
+    var ul = $('#rules-items');
+    ITEMS.forEach(function (it) {
+      var li = el('li'); var img = el('img'); img.src = it.thumb || it.src; img.alt = it.name; li.appendChild(img); ul.appendChild(li);
+    });
+  })();
+  function openRules(first) {
+    rulesFirst = !!first;
+    pauseTimer();
+    state.rulesOpen = true;
+    state.lastFocus = document.activeElement;
+    rulesEl.hidden = false;
+    dom.app.inert = true;
+    rulesCard.focus({ preventScroll: true });
+  }
+  function closeRules() {
+    rulesEl.hidden = true;
+    dom.app.inert = false;
+    state.rulesOpen = false;
+    state.rulesSeen = true;
+    if (rulesFirst) { startTimer(); scratchSoon(); }
+    else {
+      if (state.remaining > 0 && state.screen === 'game') startTimer();
+      var f = state.lastFocus; if (f && document.contains(f)) { try { f.focus({ preventScroll: true }); } catch (e) { } }
+    }
+  }
+  $('#btn-rules-go').addEventListener('click', closeRules);
+  $('#btn-rules').addEventListener('click', function () { openRules(false); });
 
   function onItemClick(id, opener) {
     if (state.screen !== 'game' || state.modalOpen || state.timeoutOpen) return;
@@ -369,8 +411,9 @@
     dom.modalProgress.textContent = 'Найдено ' + state.found.length + ' из ' + ITEMS.length;
     dom.modalImg.src = it.thumb || it.src;
     dom.modalQuote.innerHTML = '';
-    var qh = el('span', 'qh'); var qt = el('span');
-    qt.textContent = 'Квак: ' + it.quote;
+    var qh = el('span', 'qh'); var qt = el('p', 'bubble'); var qn = el('b');
+    qn.textContent = 'Квак';
+    qt.appendChild(qn); qt.appendChild(document.createTextNode(it.quote));
     dom.modalQuote.appendChild(qh); dom.modalQuote.appendChild(qt);
     dom.modalTitle.textContent = it.title;
     dom.modalText.textContent = it.text;
@@ -525,25 +568,7 @@
       bestEl.hidden = best === null;
       if (best !== null) { bestEl.textContent = 'Новый личный рекорд: ' + sec + ' сек (было ' + best + ').'; bestEl.hidden = false; }
     } else { bestEl.textContent = 'Твой лучший результат: ' + best + ' сек.'; bestEl.hidden = false; }
-    go('final', function () { confetti(); var t = $('#final-title'); if (t) { t.setAttribute('tabindex', '-1'); t.focus({ preventScroll: true }); } });
-  }
-
-  function confetti() {
-    if (reduceMotion) return;
-    var box = $('#confetti'); box.innerHTML = '';
-    var colors = ['#D9FF43', '#F28B32', '#8AABBE', '#FFFFFF', '#20272B'];
-    for (var i = 0; i < 46; i++) {
-      var s = el('span');
-      var w = 8 + Math.random() * 12;
-      s.style.left = (Math.random() * 100) + '%';
-      s.style.width = w + 'px'; s.style.height = (w * (0.5 + Math.random() * 0.9)) + 'px';
-      s.style.background = colors[i % colors.length];
-      s.style.animationDuration = (3.2 + Math.random() * 3.2) + 's';
-      s.style.animationDelay = (Math.random() * 1.6) + 's';
-      s.style.setProperty('--spin', (360 + Math.random() * 720) + 'deg');
-      box.appendChild(s);
-    }
-    setTimeout(function () { box.innerHTML = ''; }, 9000);
+    go('final', function () { var t = $('#final-title'); if (t) { t.setAttribute('tabindex', '-1'); t.focus({ preventScroll: true }); } });
   }
 
   /* ---------------------------------------------------------
@@ -557,8 +582,9 @@
      КЛАВИАТУРА: Esc закрывает окно, Tab не уходит за его пределы
      --------------------------------------------------------- */
   document.addEventListener('keydown', function (e) {
-    var openCard = state.timeoutOpen ? dom.timeoutCard : (state.modalOpen ? dom.modalCard : (state.chatOpen ? chatCard : null));
+    var openCard = state.rulesOpen ? rulesCard : state.timeoutOpen ? dom.timeoutCard : (state.modalOpen ? dom.modalCard : (state.chatOpen ? chatCard : null));
     if (!openCard) return;
+    if (e.key === 'Escape' && state.rulesOpen) { e.preventDefault(); closeRules(); return; }
     if (e.key === 'Escape' && state.modalOpen) { e.preventDefault(); closeModal(); return; }
     if (e.key === 'Escape' && state.chatOpen) { e.preventDefault(); closeChat(); return; }
     if (e.key !== 'Tab') return;

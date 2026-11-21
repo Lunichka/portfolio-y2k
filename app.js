@@ -458,7 +458,7 @@
     OTHER.forEach(p => list.append(projItem(p)));
     $('#other-status').textContent = `${OTHER.length} ${plural(OTHER.length, 'объект', 'объекта', 'объектов')}: сайты и UI для клиентов`;
   }
-  $('#world-status').textContent = `1 анкета · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} + ${OTHER.length} ${plural(OTHER.length, 'сайт', 'сайта', 'сайтов')} · 0 вирусов (проверено Касперским)`;
+  // $('#world-status').textContent = `1 анкета · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} + ${OTHER.length} ${plural(OTHER.length, 'сайт', 'сайта', 'сайтов')} · 0 вирусов (проверено Касперским)`;
 
   /* ---------- 8. Guestbook (own entries stay in this browser only) ---------- */
   const GB_KEY = 'leyla-os:guestbook';
@@ -488,7 +488,7 @@
   gbForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = gbName.value.trim().replace(/\s+/g, ' '), msg = gbMsg.value.trim();
-    const okN = setErr(gbName, 'gb-name-err', name.length < 2 ? 'Напиши ник — хотя бы 2 символа.' : '');
+    const okN = setErr(gbName, 'gb-name-err', name.length < 2 ? 'Напиши ник —    хотя бы 2 символа.' : '');
     const okM = setErr(gbMsg, 'gb-msg-err', msg.length < 3 ? 'Напиши пару слов — хотя бы 3 символа.' : '');
     const st = $('#gb-status');
     if (!okN || !okM) { st.textContent = 'Почти! Поправь подсвеченное поле.'; (okN ? gbMsg : gbName).focus(); return; }
