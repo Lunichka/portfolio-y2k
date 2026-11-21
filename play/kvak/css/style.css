@@ -39,13 +39,13 @@
 
 :root{
   /* ---- 1. ЦВЕТА ---- */
-  --paper:#F6F3EB;       /* фон-бумага */
-  --ink:#181816;         /* чернила вместо чистого чёрного */
+  --paper:#edebe5;       /* фон-бумага */
+  --ink:#1e1e18;         /* чернила вместо чистого чёрного */
   --paper-2:#EAE5D9;     /* бумажный серый: плашки, подложки */
-  --lime:#D4FF33;        /* главное действие, прогресс */
-  --coral:#FF6B35;       /* срочность, огонь, печать */
-  --sheet:#FFFDF7;       /* лист поверх бумаги: окна, пропуск */
-  --muted:#5E5B54;       /* вторичный текст на бумаге (контраст ≈6:1) */
+  --lime:#9acf93;        /* главное действие, прогресс */
+  --coral:#cc4b1c;       /* срочность, огонь, печать */
+  --sheet:#f5f0e1;       /* лист поверх бумаги: окна, пропуск */
+  --muted:#2d2827;       /* вторичный текст на бумаге (контраст ≈6:1) */
   --line:rgba(24,24,22,.16);
   --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .26 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
   --fiber:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .09' numOctaves='2' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .44 0 0 0 0 .32 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23f)'/%3E%3C/svg%3E");
@@ -61,6 +61,8 @@
   /* ---- 3. БУМАЖНАЯ ФИЗИКА ---- */
   --tilt-l:-1.5deg;
   --tilt-r:1.5deg;
+  --shadow-sticker: 3px 3px 0 rgba(24, 24, 22, 0.85);
+  --shadow-sheet: 6px 6px 0 rgba(24, 24, 22, 0.9);
   --shadow-sticker:0 1px 1px rgba(24,24,22,.10),0 4px 10px -6px rgba(24,24,22,.45);
   --shadow-sheet:0 1px 2px rgba(24,24,22,.08),0 14px 30px -18px rgba(24,24,22,.55);
   --shadow-lift:0 2px 3px rgba(24,24,22,.10),0 26px 50px -24px rgba(24,24,22,.6);
@@ -425,7 +427,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 .modal{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;padding:clamp(12px,3vw,32px) clamp(10px,3vw,32px) 56px;overflow-y:auto}
 .modal-backdrop{position:fixed;inset:0;background:rgba(24,24,22,.62);backdrop-filter:blur(3px);animation:fade .25s ease both}
 @keyframes fade{from{opacity:0}}
-.modal-card{--art-bg:var(--paper-2);position:relative;width:min(840px,100%);margin:auto;background:var(--noise),var(--sheet);color:var(--ink);
+.modal-card{--art-bg:var(--paper-2);position:relative;flex-shrink:0;width:min(840px,100%);margin:auto;background:var(--noise),var(--sheet);color:var(--ink);
   border-radius:4px;box-shadow:var(--shadow-lift),0 0 0 1px rgba(24,24,22,.06);overflow:hidden;animation:modal-in .45s var(--ease) both}
 @keyframes modal-in{0%{opacity:0;transform:translateY(40px) rotate(-1.5deg) scale(.95)}100%{opacity:1;transform:none}}
 .modal.is-closing .modal-card{animation:modal-out .22s ease-in both}
@@ -433,6 +435,29 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 @keyframes modal-out{to{opacity:0;transform:translateY(24px) scale(.96)}}
 .modal-card:focus{outline:none}
 .modal-card .titlebar{position:sticky;top:0;z-index:3}
+.modal-card {
+  border: 2.5px solid var(--ink);
+  border-radius: 2px;
+  box-shadow: 8px 8px 0 var(--ink);
+  rotate: -0.6deg;
+}
+
+.btn-primary {
+  background: var(--lime);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  font-weight: 700;
+}
+.btn-primary:hover {
+  background: #DDFF5E;
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
 
 /* штампы-наклейки над карточкой */
 .modal-top{display:flex;flex-wrap:wrap;gap:10px;padding:20px 26px 0}
@@ -651,8 +676,12 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
    ========================================================== */
 .modal-timeout{width:min(780px,100%)}
 .modal-body-panic{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);align-items:center;padding:24px 26px 28px}
-.panic-photo{margin:6px 4px;position:relative;background:rgba(255,107,53,.22);border-radius:2px;rotate:2deg;aspect-ratio:833/918;
-  box-shadow:0 0 0 7px #fff,0 1px 2px 7px rgba(24,24,22,.1),0 12px 18px 4px rgba(24,24,22,.18)}
+.panic-photo {
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 rgba(24, 24, 22, 0.25);
+  rotate: 3.5deg;
+}
+
 .panic-photo .frog-rig{position:absolute;inset:0;width:100%;height:100%;animation:panic-jitter 2.6s steps(1,end) infinite}
 .panic-photo .frog-rig>img{position:absolute;inset:0;width:100%;height:100%;display:block}
 .tic{opacity:0}

@@ -222,11 +222,14 @@
   });
 
   function place(w) {
-    const a = area(), [x, y, pw, ph] = POS[w.id], g = topGap();
+    const a = area(), [, , pw, ph] = POS[w.id], g = topGap();
     const width = Math.min(pw, a.width - 16), height = Math.min(ph, a.height - g - 12);
     w.el.style.width = width + 'px'; w.el.style.height = height + 'px';
+    // new windows open in the centre of the desktop and stack with a small diagonal step
+    const n = Object.values(wins).filter(o => o !== w && o.open).length % 5, step = 28 * (n - 2);
+    const x = (a.width - width) / 2 + step, y = g + (a.height - g - height) / 2 + step;
     w.el.style.left = clamp(x, 8, Math.max(8, a.width - width - 8)) + 'px';
-    w.el.style.top = clamp(y + g - 28, g + 6, Math.max(g + 6, a.height - height - 6)) + 'px';
+    w.el.style.top = clamp(y, g + 6, Math.max(g + 6, a.height - height - 6)) + 'px';
   }
   function bringFront(id) {
     const w = wins[id]; if (!w || !w.open) return;
@@ -254,7 +257,7 @@
     try { history.replaceState(null, '', id === 'world' ? location.pathname + location.search : '#' + id); } catch (e) { /* ignore */ }
   }
   function closeWin(id) {
-    const w = wins[id]; w.open = false; w.min = false; w.el.classList.remove('max');
+    const w = wins[id]; w.open = false; w.min = false; w.placed = false; w.el.classList.remove('max');
     if (id === 'projects' || id === 'other') stopClips();
     if (frontId === id) { frontId = null; const next = Object.values(wins).filter(o => o.open && !o.min).sort((a, b) => (+b.el.style.zIndex || 0) - (+a.el.style.zIndex || 0))[0]; if (next) { frontId = next.id; next.el.focus({ preventScroll: true }); } }
     syncWins();

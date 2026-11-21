@@ -85,7 +85,7 @@
     }
   ];
 
-  var APPS = { avia: 'Почта · Входящие', kino: 'Сообщения · Вечер', card: 'Банк · Уведомление', receipt: 'Чек № 0001', pills: 'Чат · Пауза' };
+  var APPS = { avia: 'Почта: Входящие', kino: 'Премьера кинца', card: 'Алерт от банка', receipt: 'Чек из любимой закусочной', pills: 'Спасение от стресса' };
   var MISS_WORDS = ['КВА?', 'Мимо!', 'Не то', 'Холодно', 'Ква-ква…', 'Тут пусто'];
   var HIT_PAD = 10; // запас вокруг предмета для области клика, px сцены
 
@@ -406,9 +406,9 @@
     state.lastFocus = opener || document.activeElement;
 
     dom.modalCard.className = 'modal-card ' + it.theme;
-    $('#modal-app').textContent = APPS[id] + ' (концепт)';
-    dom.modalChip.textContent = 'Концепт: ' + it.partner;
-    dom.modalProgress.textContent = 'Найдено ' + state.found.length + ' из ' + ITEMS.length;
+    // $('#modal-app').textContent = APPS[id];
+    // dom.modalChip.textContent = 'Концепт: ' + it.partner;
+    // dom.modalProgress.textContent = 'Найдено ' + state.found.length + ' из ' + ITEMS.length;
     dom.modalImg.src = it.thumb || it.src;
     dom.modalQuote.innerHTML = '';
     var qh = el('span', 'qh'); var qt = el('p', 'bubble'); var qn = el('b');
@@ -426,7 +426,7 @@
     dom.modalCta.setAttribute('aria-expanded', 'false');
     dom.modalCta.setAttribute('aria-controls', 'reward-reveal');
     dom.btnCopy.textContent = 'Скопировать';
-    dom.modalBack.textContent = state.winPending ? 'К финалу →' : 'Вернуться к поиску';
+    dom.modalBack.textContent = state.winPending ? 'К финалу' : 'Вернуться к поиску';
 
     dom.modal.classList.remove('is-closing');
     dom.modal.hidden = false;

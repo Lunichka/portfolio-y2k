@@ -365,7 +365,6 @@ window.LEYLA_PROJECTS = [
       { kind: 'image', src: 'assets/projects/pixel-train/inventory.webp', alt: 'Шкалы раздражения, шума и запаха, рюкзак с предметами и лог их использования', caption: 'Шкалы, рюкзак и лог', device: 'desktop', span: 6 },
       { kind: 'image', src: 'assets/projects/pixel-train/routes.webp', alt: 'Выбор маршрута: три поездки разной сложности и ачивки', caption: 'Выбор маршрута', device: 'desktop', span: 6 },
       { kind: 'image', src: 'assets/projects/pixel-train/final.webp', alt: 'Финал: «Конечная станция! Вы выжили!» с пройденным расстоянием и остатком менталки', caption: 'Финал и ачивки', device: 'desktop', span: 6 },
-      { kind: 'video', src: 'assets/projects/pixel-train/doomtrain.mp4', poster: 'assets/projects/pixel-train/doomtrain-poster.jpg', caption: 'Ролик поездки, анимация в After Effects', ratio: '1376 / 746' },
     ],
     missing: [],
     todo: [],
