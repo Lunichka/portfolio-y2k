@@ -15,7 +15,7 @@
 /* Заголовки: Shantell Sans 700/800 (свободный аналог Comic Zine OT с кириллицей).
    Если купишь Comic Zine OT — подключи его здесь же через @font-face с именем "Comic Zine OT",
    он встанет первым в --font-display. Текст: Onest. Штампы и номера: JetBrains Mono. */
-@font-face{font-family:"Onest";font-weight:100 500;font-display:swap;src:url("../assets/fonts/Onest-Regular.woff2") format("woff2")}
+@font-face{font-family:"Onest";font-weight:300 500;font-display:swap;src:url("../assets/fonts/Onest-Regular.woff2") format("woff2")}
 @font-face{font-family:"Onest";font-weight:600 900;font-display:swap;src:url("../assets/fonts/Onest-SemiBold.woff2") format("woff2")}
 @font-face{font-family:"Shantell Sans";font-weight:700;font-display:swap;src:url("../assets/fonts/shantell-sans-cyrillic-700-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:"Shantell Sans";font-weight:700;font-display:swap;src:url("../assets/fonts/shantell-sans-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -40,7 +40,7 @@
 :root{
   /* ---- 1. ЦВЕТА ---- */
   --paper:#edebe5;       /* фон-бумага */
-  --ink:#1e1e18;         /* чернила вместо чистого чёрного */
+  --ink:#2f2f1d;         /* чернила вместо чистого чёрного */
   --paper-2:#EAE5D9;     /* бумажный серый: плашки, подложки */
   --lime:#9acf93;        /* главное действие, прогресс */
   --coral:#cc4b1c;       /* срочность, огонь, печать */
@@ -446,7 +446,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
   background: var(--lime);
   border: 2px solid var(--ink);
   box-shadow: 4px 4px 0 var(--ink);
-  font-weight: 700;
+  font-weight: 500;
 }
 .btn-primary:hover {
   background: #DDFF5E;
@@ -682,6 +682,33 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
   rotate: 3.5deg;
 }
 
+/* Вместо оранжевой плашки — оттиск штампа */
+.stamp-alert {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 10px;
+  border: 2px solid var(--coral);
+  /* border-radius: 4px;
+  color: var(--coral); */
+  font: 800 12px/1.1 var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  rotate: -2.5deg;
+}
+
+/* Возвращаем пропавшее фото Квака на место */
+.panic-photo {
+  margin: 6px 4px;
+  position: relative;
+  aspect-ratio: 833/918;
+  background: rgba(204, 75, 28, .16);
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 rgba(24, 24, 22, 0.25);
+  rotate: 2.5deg;
+}
+
+
 .panic-photo .frog-rig{position:absolute;inset:0;width:100%;height:100%;animation:panic-jitter 2.6s steps(1,end) infinite}
 .panic-photo .frog-rig>img{position:absolute;inset:0;width:100%;height:100%;display:block}
 .tic{opacity:0}
@@ -718,3 +745,211 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 }
 @media (max-width:560px){.rules-body{padding:18px 18px 22px}}
 @media (prefers-reduced-motion:reduce){.tic,.panic-photo .frog-rig{animation:none}}
+
+.stamp-alert {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 10px;
+  border: 2px solid var(--coral);
+  border-radius: 4px;
+  color: var(--coral);
+  font: 800 12px/1.1 var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  rotate: -2.5deg;
+}
+
+/* 1. Убираем "нейросетевую" карточку — оставляем чистый плакатный воздух */
+.notice {
+  background: none;
+  filter: none;
+  rotate: 0deg;
+  text-align: center;
+  padding: 0 12px;
+}
+.notice::before,
+.tape-l,
+.tape-r {
+  display: none;
+}
+
+/* 2. Делаем заголовок огромным и плотным, как на обложке зина */
+.cover-title {
+  font-size: clamp(44px, 11vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 rgb(140, 177, 146);
+}
+
+.notice-text {
+  margin: 16px auto 0;
+  font-size: clamp(16px, 4.2vw, 20px);
+  max-width: 26em;
+  color: var(--ink);
+}
+
+/* 3. Сажаем Квака прямо на верхнюю строчку заголовка */
+.peek {
+  right: 50%;
+  transform: translateX(50%);
+  bottom: calc(100% - 14px);
+}
+
+/* 4. Убираем наезд кактуса и таблеток на кнопку на телефоне */
+@media (max-width: 860px) {
+  .dc-cactus {
+    right: -4vw;
+    bottom: 34%;
+    width: 15vw;
+  }
+  .dc-pills {
+    display: none; /* прячем на узком экране, чтобы кнопка дышала */
+  }
+  .dc-st-e {
+    right: 6vw;
+    top: 24%; /* стикер "КВА!" заходит на край заголовка */
+    z-index: 6;
+  }
+}
+
+/* 1. Закругляем углы окна */
+.modal-card {
+  border-radius: 40px; /* можно поставить от 16px до 24px по вкусу */
+}
+
+/* 2. Убираем пунктирную линию в шапке окна */
+.modal-card .titlebar {
+  border-bottom: none;
+  background: transparent; /* заодно уберем серую полосу сверху, чтобы крестик лежал прямо на карточке */
+}
+
+/* 1. Делаем счетчики похожими на наклейки, а не на виджеты */
+.stat {
+  border: 1.5px solid var(--ink);
+  box-shadow: 2px 1px 0 var(--ink); 
+    border-radius: 15px;
+}
+
+/* 2. Превращаем серые кружки в списке в чекбоксы */
+.item-state {
+  border-radius: 4px;
+  border: 1.5px solid var(--ink);
+  background: var(--sheet);
+}
+
+/* 3. Впечатываем предметы в стол тенью */
+.prop {
+  filter: drop-shadow(2px 3px 0 rgba(30, 30, 24, 0.6));
+}
+
+/* ==========================================================
+   СПИСОК КВАКА: вырванный листок из клетчатого блокнота
+   ========================================================== */
+
+/* 1. Обертка-тень для рваного края и кусочек скотча сверху */
+.side {
+  position: relative;
+  background: transparent;
+  box-shadow: none;
+  padding: 28px 20px 22px;
+  rotate: 1.4deg;
+  filter: drop-shadow(3px 5px 0 rgba(30, 30, 24, 0.25))
+          drop-shadow(0 12px 20px rgba(30, 30, 24, 0.14));
+}
+
+/* 2. Сам листок с рваным верхним краем и текстурой клетки + шума */
+.side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: none;
+  height: auto;
+  background-color: var(--sheet);
+  background-image:
+    var(--noise),
+    linear-gradient(rgba(30, 30, 24, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 30, 24, 0.06) 1px, transparent 1px);
+  background-size: 220px 220px, 20px 20px, 20px 20px;
+  /* Рваный верхний край (будто вырвали из пружины блокнота) + слегка неровный низ */
+  clip-path: polygon(
+    0% 3%, 4% 0.5%, 8% 3.2%, 12% 0.8%, 16% 3.5%, 20% 0.4%, 25% 3%, 29% 0.7%,
+    34% 3.4%, 38% 0.6%, 43% 3.1%, 48% 0.5%, 52% 3.3%, 57% 0.8%, 62% 3.2%,
+    67% 0.4%, 71% 3.5%, 76% 0.7%, 81% 3.1%, 86% 0.5%, 91% 3.4%, 96% 0.8%, 100% 3%,
+    100% 98.5%, 92% 100%, 78% 98.8%, 61% 99.8%, 44% 98.6%, 26% 100%, 11% 98.9%, 0% 99.6%
+  );
+}
+
+/* 3. Полупрозрачный салатовый скотч сверху, который «держит» листок */
+.side::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 92px;
+  height: 22px;
+  background: rgba(154, 207, 147, 0.78);
+  box-shadow: 0 1px 2px rgba(30, 30, 24, 0.15);
+  clip-path: polygon(2% 0%, 98% 6%, 95% 52%, 100% 96%, 0% 100%, 4% 48%);
+  pointer-events: none;
+}
+
+/* 4. Убираем стандартные серые подложки под иконками и делаем живые чекбоксы */
+.item {
+  border-bottom: 1px solid rgba(30, 30, 24, 0.14);
+  padding: 10px 4px;
+}
+
+.item-thumb {
+  background: transparent;
+  width: 48px;
+  height: 38px;
+}
+
+.item-state {
+  border-radius: 4px;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+  width: 22px;
+  height: 22px;
+}
+
+.item.is-found .item-state {
+  background: var(--lime);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* ==========================================================
+   ОБЛОЖКА: сдвигаем декор ближе к краям экрана (Десктоп)
+   ========================================================== */
+/* Левый край */
+.dc-st-kva    { left: 1.5vw; top: 5%; }
+.dc-st-report { left: 6.5vw; top: 16%; }
+.dc-receipt   { left: 11vw;  top: 3%; }
+.dc-mug       { left: -1.5vw; top: 34%; }
+.dc-folder    { left: -4vw;  bottom: -2vh; }
+.dc-laptop    { left: 12vw;  bottom: 4%; }
+
+/* Правый край */
+.dc-st-q      { right: 9vw;   top: 3%; }
+.dc-st-e      { right: 1.5vw; top: 11%; }
+.dc-ball      { right: 12vw;  top: 24%; }
+.dc-cactus    { right: -1vw;  top: 30%; }
+.dc-can       { right: 8vw;   top: 45%; }
+.dc-pills     { right: 1vw;   top: 56%; }
+
+/* ==========================================================
+   ОБЛОЖКА: сдвигаем декор к краям на телефонах
+   ========================================================== */
+@media (max-width: 860px) {
+  .dc-mug    { left: -3vw;  top: 4%; }
+  .dc-st-kva { left: 15vw;  top: 1%; }
+  .dc-folder { left: -9vw;  bottom: -1vh; }
+
+  .dc-st-q   { right: 15vw; top: 1%; }
+  .dc-st-e   { right: -2vw; top: 4%; }
+  .dc-cactus { right: -3vw; bottom: 26%; }
+  .dc-pills  { right: -2vw; bottom: 14%; }
+}
