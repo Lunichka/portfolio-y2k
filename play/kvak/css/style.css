@@ -1022,3 +1022,64 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
     padding-top: calc(var(--peek-h) + 28px);
   }
 }
+
+/* ==========================================================
+   ОТКЛИК НА НАХОДКУ, ТРЕВОГА ТАЙМЕРА, КНОПКИ ПОД СПИСКОМ
+   (добавлено поверх; цвета и тени берутся из переменных выше)
+   ========================================================== */
+/* всплеск бумажек из найденного предмета */
+.cheer-burst{position:absolute;width:0;height:0;z-index:5;pointer-events:none}
+.cheer-burst i{position:absolute;left:-5px;top:-4px;width:10px;height:8px;border-radius:1px;background:var(--lime);
+  box-shadow:0 0 0 1.5px var(--ink);animation:bit-fly .9s cubic-bezier(.2,.8,.3,1) forwards}
+.cheer-burst i:nth-child(3n){background:var(--coral)}
+.cheer-burst i:nth-child(3n+1){background:var(--sheet)}
+@keyframes bit-fly{0%{transform:translate(0,0) rotate(0) scale(.4);opacity:1}
+  70%{opacity:1}100%{transform:translate(var(--dx),calc(var(--dy) + 26px)) rotate(var(--r)) scale(1);opacity:0}}
+/* реплика Квака над находкой */
+.cheer-say{position:absolute;z-index:6;transform:translate(-50%,-100%) rotate(-3deg);white-space:nowrap;pointer-events:none;
+  background:var(--sheet);color:var(--ink);border:2px solid var(--ink);border-radius:14px;padding:6px 12px 7px;
+  font:700 15px/1.15 var(--font-display);box-shadow:var(--shadow-sticker);animation:say-pop 1.25s cubic-bezier(.3,1.5,.5,1) forwards}
+.cheer-say::after{content:"";position:absolute;left:22px;bottom:-9px;width:12px;height:12px;background:var(--sheet);
+  border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg) skew(8deg,8deg)}
+@keyframes say-pop{0%{opacity:0;transform:translate(-50%,-60%) rotate(-10deg) scale(.5)}
+  18%{opacity:1;transform:translate(-50%,-100%) rotate(-3deg) scale(1.06)}
+  80%{opacity:1;transform:translate(-50%,-104%) rotate(-3deg) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-125%) rotate(-3deg) scale(.95)}}
+/* галочка в списке ставится штампом */
+.item.just-found .item-state{animation:check-stamp .5s cubic-bezier(.3,1.7,.5,1)}
+@keyframes check-stamp{0%{transform:scale(2.2) rotate(-25deg);opacity:0}100%{transform:none;opacity:1}}
+
+/* тревога: последние 10 секунд */
+.stage::after{content:"";position:absolute;inset:0;z-index:7;pointer-events:none;opacity:0;transition:opacity .4s;
+  box-shadow:inset 0 0 70px 18px rgba(204,75,28,.55)}
+.stage.is-alarm::after{opacity:1;animation:alarm-glow 1s ease-in-out infinite}
+@keyframes alarm-glow{50%{box-shadow:inset 0 0 110px 34px rgba(204,75,28,.75)}}
+.stage.is-alarm .stage-smoke{opacity:1;filter:saturate(1.3)}
+.stat-time.tick .stat-value{animation:sec-tick .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes sec-tick{0%{transform:scale(1.35);color:var(--sheet)}100%{transform:none}}
+.stat-time.is-danger{animation:shake .35s linear infinite}
+
+/* тост сверху экрана */
+.game-toast{position:fixed;left:50%;top:18px;z-index:90;margin:0;transform:translate(-50%,-140%) rotate(-1.5deg);
+  background:var(--sheet);color:var(--ink);border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow-sticker);
+  padding:10px 18px;font:700 18px/1.2 var(--font-display);transition:transform .35s cubic-bezier(.3,1.4,.5,1);pointer-events:none}
+.game-toast.is-hot{background:var(--coral);color:#fff}
+.game-toast.is-on{transform:translate(-50%,0) rotate(-1.5deg)}
+
+/* «Как играть» и «Начать заново» — две равные кнопки-наклейки */
+.side-foot{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+.side-foot>#btn-rules,.side-foot>#btn-restart{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
+  padding:10px 12px;text-decoration:none;background:var(--sheet);color:var(--ink);border:2px solid var(--ink);border-radius:12px;
+  box-shadow:3px 3px 0 var(--ink);font:600 14.5px/1.15 var(--font-body);transition:transform .15s,box-shadow .15s,background .15s}
+.side-foot>#btn-rules::before,.side-foot>#btn-restart::before{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;
+  font:800 14px/1 var(--font-body);background:var(--ink);color:var(--sheet)}
+.side-foot>#btn-rules::before{content:"?"}
+.side-foot>#btn-restart::before{content:"↺";background:var(--coral)}
+.side-foot>#btn-rules:hover,.side-foot>#btn-restart:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink);background:var(--lime)}
+.side-foot>#btn-rules:active,.side-foot>#btn-restart:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.side-foot .restart-confirm{grid-column:1/-1}
+
+@media (prefers-reduced-motion:reduce){
+  .cheer-burst,.cheer-say{display:none}
+  .stage.is-alarm::after{animation:none}
+}

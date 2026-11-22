@@ -233,7 +233,27 @@
     dom.timer.classList.toggle('is-danger', sec <= 10 && state.screen === 'game' && state.running);
     dom.timer.classList.toggle('is-paused', !state.running && state.screen === 'game' && state.remaining > 0);
     dom.timer.setAttribute('aria-label', 'Осталось ' + sec + ' секунд');
+    alarm(sec);
     updateFire();   // огонь привязан к тому же таймеру, второго таймера нет
+  }
+
+  /* Тревога на таймере: тосты на 20 и 10 секундах, пульс цифры и красная виньетка */
+  var lastSec = null, toastEl = null, toastT = 0;
+  function toast(text, hot) {
+    if (!toastEl) { toastEl = el('p', 'game-toast'); toastEl.setAttribute('role', 'status'); document.body.appendChild(toastEl); }
+    toastEl.textContent = text; toastEl.classList.toggle('is-hot', !!hot);
+    toastEl.classList.remove('is-on'); void toastEl.offsetWidth; toastEl.classList.add('is-on');
+    clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove('is-on'); }, 2200);
+  }
+  function alarm(sec) {
+    var hot = sec <= 10 && state.screen === 'game' && state.running;
+    dom.stage.classList.toggle('is-alarm', hot);
+    if (sec === lastSec) return;
+    var prev = lastSec; lastSec = sec;
+    if (!state.running || state.screen !== 'game' || prev === null || prev < sec) return;
+    if (sec === 20) toast('Пахнет гарью: осталось 20 секунд');
+    if (sec === 10) toast('Ква-а-а! 10 секунд!', true);
+    if (sec <= 10 && sec > 0) { dom.timer.classList.remove('tick'); void dom.timer.offsetWidth; dom.timer.classList.add('tick'); }
   }
 
   function tick() {
@@ -366,13 +386,41 @@
   $('#btn-rules-go').addEventListener('click', closeRules);
   $('#btn-rules').addEventListener('click', function () { openRules(false); });
 
+  /* Реакция на находку: всплеск бумажек, реплика Квака, затем карточка */
+  var CHEERS = {
+    avia: 'Ква! Билет на свободу!', kino: 'Кино вместо отчёта!', card: 'Карта спасена!',
+    receipt: 'Бургер был не зря!', pills: 'Нервы, держитесь!'
+  };
+  function celebrate(id) {
+    var hs = $('.hotspot[data-id="' + id + '"]'); if (!hs) return;
+    var x = parseFloat(hs.style.left), y = parseFloat(hs.style.top);
+    var box = el('div', 'cheer-burst'); box.style.left = x + '%'; box.style.top = y + '%';
+    for (var i = 0; i < 10; i++) {
+      var b = el('i'); var a = (i / 10) * Math.PI * 2 + Math.random() * .4, d = 34 + Math.random() * 30;
+      b.style.setProperty('--dx', (Math.cos(a) * d).toFixed(1) + 'px');
+      b.style.setProperty('--dy', (Math.sin(a) * d - 10).toFixed(1) + 'px');
+      b.style.setProperty('--r', Math.round(Math.random() * 360) + 'deg');
+      box.appendChild(b);
+    }
+    var say = el('span', 'cheer-say'); say.textContent = CHEERS[id] || 'Ква! Нашёл!';
+    say.style.left = Math.min(82, Math.max(18, x)) + '%'; say.style.top = Math.max(10, y - 9) + '%';
+    dom.misses.appendChild(box); dom.misses.appendChild(say);
+    setTimeout(function () { box.remove(); say.remove(); }, 1300);
+    scratchNow();   // лапа радостно дергается
+  }
+  var celebrating = false;
   function onItemClick(id, opener) {
-    if (state.screen !== 'game' || state.modalOpen || state.timeoutOpen) return;
+    if (state.screen !== 'game' || state.modalOpen || state.timeoutOpen || celebrating) return;
     var already = state.found.indexOf(id) !== -1;
     if (!already) {
       state.found.push(id);       // повторно предмет не засчитывается
       renderState(id);
       if (state.found.length === ITEMS.length) state.winPending = true;
+      if (!reduceMotion) {
+        celebrating = true; pauseTimer(); celebrate(id);
+        setTimeout(function () { celebrating = false; openModal(id, opener); }, 750);
+        return;
+      }
     }
     openModal(id, opener);
   }
