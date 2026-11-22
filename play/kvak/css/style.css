@@ -1115,3 +1115,12 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 .ci-sticker{--r:7deg;--t:6.6s;--d:-5s;right:10vw;top:40vh;width:clamp(110px,10vw,170px)}
 .ci-can{--r:-10deg;--t:7.8s;--d:-2.5s;left:25vw;bottom:5vh;width:clamp(50px,4.6vw,80px)}
 @media (max-width:860px){.ci-sticker,.ci-can{display:none}}
+
+/* огонь на обложке: рисунок Лейлы, по нижним углам, мягко качается */
+.cover-fire{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.cf{position:absolute;bottom:-9vh;height:auto;transform-origin:50% 100%;animation:cf-sway 2.6s ease-in-out infinite}
+.cf-l{left:-5vw;width:clamp(200px,24vw,380px)}
+.cf-r{right:-4vw;width:clamp(170px,19vw,300px);scale:-1 1;animation-duration:3.1s;animation-delay:-1.2s}
+@keyframes cf-sway{0%,100%{rotate:-2.5deg;transform:scaleY(1)}50%{rotate:2.5deg;transform:scaleY(1.05)}}
+@media (max-width:860px){.cf-l{width:42vw;bottom:-6vh}.cf-r{width:34vw;bottom:-6vh}}
+@media (prefers-reduced-motion:reduce){.cf{animation:none}}

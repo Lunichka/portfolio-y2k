@@ -352,11 +352,8 @@
   /* ---------- 7. Projects archive (data: data/projects.js) ---------- */
   const FILTERS = [
     { id: 'all', label: 'Все', test: () => true },
-    { id: 'special', label: 'Спецпроекты', test: p => p.type === 'special' },
     { id: 'client', label: 'Клиентские', test: p => p.type === 'client' },
-    { id: 'personal', label: 'Личные', test: p => p.type === 'personal' },
-    { id: 'concept', label: 'Концепты', test: p => p.type === 'concept' },
-    { id: 'wip', label: 'В работе', test: p => !!p.stage && ['wip', 'moodboard'].includes(p.stage.key) },
+    { id: 'concept', label: 'Концепты', test: p => p.type !== 'client' },
   ];
   let projFilter = 'all';
   const caseUrl = p => `work/${p.slug}.html`;
