@@ -1083,3 +1083,35 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
   .cheer-burst,.cheer-say{display:none}
   .stage.is-alarm::after{animation:none}
 }
+
+/* ==========================================================
+   ОБЛОЖКА v2: как у MAAG — однотонная бумага, вещи по краям,
+   заголовок и кнопка строго по центру. Перекрывает блок
+   «ОБЛОЖКА: цельная иллюстрация» выше (cover-bg больше не нужен).
+   ========================================================== */
+#screen-cover{background:var(--noise),var(--paper)}
+#screen-cover .cover-center{align-items:center;justify-content:center;text-align:center;max-width:none;
+  padding:calc(var(--peek-h) + 24px) 16px clamp(28px,6vh,64px)}
+#screen-cover .notice{width:min(760px,100%);text-align:center}
+#screen-cover .notice-text{margin-left:auto;margin-right:auto}
+#screen-cover .peek{left:50%;right:auto;transform:translateX(-50%)}
+.cover-items{position:absolute;inset:0;z-index:1;pointer-events:none}
+.ci{position:absolute;height:auto;display:block;rotate:var(--r);animation:ci-float var(--t,7s) ease-in-out var(--d,0s) infinite}
+@keyframes ci-float{50%{translate:0 -8px;rotate:calc(var(--r) + 2.5deg)}}
+.ci-avia{--r:-14deg;--t:7.5s;left:5vw;top:9vh;width:clamp(150px,17vw,280px)}
+.ci-card{--r:12deg;--t:6.4s;--d:-2s;left:9vw;top:44vh;width:clamp(120px,12vw,200px)}
+.ci-receipt{--r:-8deg;--t:8s;--d:-4s;left:2vw;bottom:6vh;width:clamp(170px,19vw,320px)}
+.ci-kino{--r:16deg;--t:6.8s;--d:-1s;right:6vw;top:11vh;width:clamp(140px,15vw,250px)}
+.ci-mug{--r:-6deg;--t:7.2s;--d:-3s;right:5vw;bottom:7vh;width:clamp(170px,19vw,320px)}
+@media (max-width:860px){
+  #screen-cover .cover-center{justify-content:center}
+  .ci-avia{left:-6vw;top:3vh;width:34vw}
+  .ci-kino{right:-5vw;top:4vh;width:30vw}
+  .ci-card{left:auto;right:-7vw;top:auto;bottom:17vh;width:22vw}
+  .ci-receipt{left:-8vw;bottom:3vh;width:40vw}
+  .ci-mug{right:2vw;bottom:2vh;width:32vw}
+}
+@media (prefers-reduced-motion:reduce){.ci{animation:none}}
+.ci-sticker{--r:7deg;--t:6.6s;--d:-5s;right:10vw;top:40vh;width:clamp(110px,10vw,170px)}
+.ci-can{--r:-10deg;--t:7.8s;--d:-2.5s;left:25vw;bottom:5vh;width:clamp(50px,4.6vw,80px)}
+@media (max-width:860px){.ci-sticker,.ci-can{display:none}}

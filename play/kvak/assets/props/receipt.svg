@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 263.36"><!-- Чек: в одном стиле с остальными предметами (контур 9, плоская заливка) -->
-<g stroke="#14171f" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+<g stroke="#14171f" stroke-width="4.05" stroke-linejoin="round" stroke-linecap="round">
 <path d="M24 40 L250 30 L262 38 L476 34 L492 46 L476 58 L492 70 L476 82 L492 94 L476 106 L492 118 L476 130 L492 142 L476 154 L492 166 L476 178 L492 190 L476 202 L492 214 L480 228 L262 232 L250 240 L30 226 Z" fill="#f4ecd6"/>
 <path d="M250 30 L262 38 L262 232 L250 240 Z" fill="#e3d6b6"/>
 <g transform="translate(70 70)">
 <path d="M0 22 A26 22 0 0 1 52 22 Z" fill="#ffb23b"/>
-<path d="M-2 30 H54" stroke="#ff6a13" stroke-width="10"/>
+<path d="M-2 30 H54" stroke="#ff6a13" stroke-width="4.50"/>
 <path d="M0 38 H52 A26 12 0 0 1 0 38 Z" fill="#ffb23b"/>
 </g>
-<path d="M140 76 H220 M140 100 H200" stroke-width="7"/>
-<path d="M60 144 H150 M178 144 H222 M60 168 H130 M178 168 H222 M60 192 H160 M190 192 H222" stroke-width="6"/>
-<path d="M290 62 H380 M410 62 H450 M290 88 H360 M410 88 H450 M290 114 H390 M420 114 H450" stroke-width="6"/>
-<path d="M290 146 H452" stroke-dasharray="2 14" stroke-width="6"/>
-<path d="M290 178 H350" stroke-width="10"/>
-<path d="M392 178 H452" stroke="#ff6a13" stroke-width="10"/>
-<path d="M290 206 H330 M342 206 H360 M372 206 H384 M396 206 H420" stroke-width="7"/>
+<path d="M140 76 H220 M140 100 H200" stroke-width="3.15"/>
+<path d="M60 144 H150 M178 144 H222 M60 168 H130 M178 168 H222 M60 192 H160 M190 192 H222" stroke-width="2.70"/>
+<path d="M290 62 H380 M410 62 H450 M290 88 H360 M410 88 H450 M290 114 H390 M420 114 H450" stroke-width="2.70"/>
+<path d="M290 146 H452" stroke-dasharray="2 14" stroke-width="2.70"/>
+<path d="M290 178 H350" stroke-width="4.50"/>
+<path d="M392 178 H452" stroke="#ff6a13" stroke-width="4.50"/>
+<path d="M290 206 H330 M342 206 H360 M372 206 H384 M396 206 H420" stroke-width="3.15"/>
 </g></svg>
