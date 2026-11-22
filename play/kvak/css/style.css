@@ -953,3 +953,72 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
   .dc-cactus { right: -3vw; bottom: 26%; }
   .dc-pills  { right: -2vw; bottom: 14%; }
 }
+/* ==========================================================
+   ОБЛОЖКА: цельная иллюстрация в стиле спецпроекта
+   ========================================================== */
+#screen-cover {
+  background: url("../assets/cover-bg.webp") right center / cover no-repeat, var(--paper);
+}
+
+/* Прячем старые разбросанные стикеры и CSS-огонь — теперь всё нарисовано на фоне */
+.cover-decor,
+.fire-layer {
+  display: none;
+}
+
+/* Выравниваем контент по левой половине экрана (в пустую зону фона) */
+.cover-center {
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(24px, 5vh, 60px) clamp(20px, 5vw, 72px);
+  gap: 24px;
+}
+
+/* Убираем серую подложку и скотч у текста — ставим прямо на бумагу */
+.notice {
+  background: none;
+  filter: none;
+  rotate: 0deg;
+  padding: 0;
+  width: min(560px, 100%);
+}
+.notice::before,
+.tape-l,
+.tape-r {
+  display: none;
+}
+
+/* Крупный акцентный заголовок слева */
+.cover-title {
+  font-size: clamp(42px, 5.4vw, 78px);
+  line-height: 1.02;
+  text-shadow: 3px 3px 0 rgba(204, 75, 28, 0.28);
+}
+
+.notice-text {
+  margin-top: 16px;
+  font-size: clamp(17px, 1.4vw, 20px);
+  max-width: 28em;
+}
+
+/* Сажаем Квака так, чтобы он выглядывал сбоку у стола или над заголовком */
+.peek {
+  right: auto;
+  left: 12px;
+  bottom: calc(100% - 6px);
+  --pw: clamp(170px, 18vw, 250px);
+}
+
+/* Адаптив для телефонов, чтобы текст не наезжал на горящий стол */
+@media (max-width: 860px) {
+  #screen-cover {
+    background-position: 78% bottom;
+    background-size: auto 75%;
+  }
+  .cover-center {
+    justify-content: flex-start;
+    padding-top: calc(var(--peek-h) + 28px);
+  }
+}
