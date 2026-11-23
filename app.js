@@ -187,7 +187,7 @@
     { id: 'world', label: 'Мой мир', icon: 'heart', desk: false },
     { id: 'projects', label: 'Проекты', icon: 'folder', main: true },
     { id: 'howiwork', label: 'Как я работаю', icon: 'check' },
-    { id: 'about', label: 'Анкета', icon: 'flower' },
+    { id: 'about', label: 'Обо мне', icon: 'flower' },
     { id: 'guestbook', label: 'Гостевая', icon: 'book' },
     { id: 'button', label: 'Кнопка 88×31', icon: 'star' },
     { id: 'eyerest', label: 'Отдых для глаз', icon: 'eye' },
@@ -458,7 +458,7 @@
     OTHER.forEach(p => list.append(projItem(p)));
     $('#other-status').textContent = `${OTHER.length} ${plural(OTHER.length, 'объект', 'объекта', 'объектов')}: сайты и UI для клиентов`;
   }
-  // $('#world-status').textContent = `1 анкета · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} + ${OTHER.length} ${plural(OTHER.length, 'сайт', 'сайта', 'сайтов')} · 0 вирусов (проверено Касперским)`;
+  // $('#world-status').textContent = `1 Обо мне · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} + ${OTHER.length} ${plural(OTHER.length, 'сайт', 'сайта', 'сайтов')} · 0 вирусов (проверено Касперским)`;
 
   /* ---------- 8. Guestbook (own entries stay in this browser only) ---------- */
   const GB_KEY = 'leyla-os:guestbook';
