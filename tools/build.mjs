@@ -283,7 +283,7 @@ ${S.join('\n')}
       <a class="cn all" href="${backHref}"><span class="cn-k">${folder}.DIR</span><span class="cn-t">${backLabel}</span></a>
       <a class="cn next" href="${esc(next.slug)}.html" rel="next"><span class="cn-k">Следующий →</span><span class="cn-t">${esc(next.title)}</span></a>
     </nav>
-    <footer class="win-status">${esc(p.file)}: ${n} ${n < 5 ? 'раздела' : 'разделов'}</footer>
+    
   </main>
 
   <dialog class="lightbox" aria-label="Просмотр изображения"><button type="button" class="wbtn lb-close" aria-label="Закрыть">×</button><img alt=""></dialog>
