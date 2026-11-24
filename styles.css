@@ -481,11 +481,14 @@ html.eye-rest .hiw-team { border: 1px dashed #4a4943; border-radius: 0; backgrou
   background:rgba(255,190,230,.75)}
 .hiw-meme img{display:block;width:100%;height:auto}
 .hiw-meme figcaption{margin-top:6px;text-align:center;font:13px/1.3 var(--f-status,monospace);opacity:.75}
-.fairy{position:fixed;z-index:9999;width:150px;height:auto;pointer-events:none;transition:transform .9s cubic-bezier(.3,1.4,.5,1)}
-.fairy.from-left{left:0;transform:translateX(-110%) rotate(25deg)}
-.fairy.from-left.is-out{transform:translateX(-35%) rotate(18deg)}
-.fairy.from-right{right:0;transform:translateX(110%) rotate(-25deg)}
-.fairy.from-right.is-out{transform:translateX(35%) rotate(-18deg)}
-.fairy.from-bottom{bottom:0;transform:translateY(110%)}
-.fairy.from-bottom.is-out{transform:translateY(38%)}
+.fairy{position:absolute;left:0;top:0;width:150px;height:auto;pointer-events:none;visibility:hidden;
+  transition:transform .9s cubic-bezier(.3,1.4,.5,1),visibility 0s .9s}
+.fairy.is-out{visibility:visible;transition:transform .9s cubic-bezier(.3,1.4,.5,1),visibility 0s}
+/* спрятана за окном; при is-out выезжает наружу */
+.fairy.at-left{transform:translateX(0) rotate(-14deg)}
+.fairy.at-left.is-out{transform:translateX(-62%) rotate(-14deg)}
+.fairy.at-right{transform:translateX(0) rotate(14deg)}
+.fairy.at-right.is-out{transform:translateX(62%) rotate(14deg)}
+.fairy.at-top{transform:translateY(0)}
+.fairy.at-top.is-out{transform:translateY(-58%)}
 @media (max-width:700px){.fairy{width:100px}}

@@ -116,7 +116,7 @@
         <div class="intro">
           <p class="glit glit-hot intro-hi" lang="en">Hi! I'm Leyla</p>
           <p class="intro-lead">Я веб-дизайнер рекламных спецпроектов. Придумываю игры, тесты и промо, пишу к ним
-            тексты, рисую баннеры и моушн в Figma, Photoshop и After Effects, а при необходимости сама собираю всё в
+            тексты, рисую баннеры и моушн в Figma, Photoshop, Illustrator и After Effects, а при необходимости сама собираю всё в
             коде.</p>
         </div>
         <section class="top-cases" aria-labelledby="t-top">
@@ -434,7 +434,7 @@
       <ul>
         <li><a href="work/kladovka.html">Кладовка. Too many tabs</a></li>
         <li><a href="work/kvak.html">Квак, где мои вещи?!</a></li>
-        <li><a href="work/orchestra-1703.html">Orchestra 1703: кто ты из мира музыки?</a></li>
+        <li><a href="work/orchestra-1703.html">Оркестр 1703: кто ты из мира музыки?</a></li>
         <li><a href="work/orchestra-1703-site.html">Оркестр 1703: первый сайт</a></li>
         <li><a href="work/pixel-train.html">Симулятор худшего соседа</a></li>
       </ul>
@@ -452,21 +452,37 @@
   <script src="js/mode.js"></script>
   <script src="app.js"></script>
   <!-- пасхалка: раз в минуту из-за края выглядывает феечка -->
+  <!-- пасхалка: феечка выглядывает из-за открытого окна и прячется обратно -->
   <img class="fairy" id="fairy" src="assets/easter/fairy.webp" alt="" aria-hidden="true">
   <script>
   (function () {
-    var f = document.getElementById('fairy'); if (!f || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var sides = ['left', 'right', 'bottom'];
+    var f = document.getElementById('fairy'), desk = document.getElementById('desktop');
+    if (!f || !desk || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    desk.appendChild(f);                                   // живёт в слое окон, чтобы прятаться за ними
+    var rnd = function (a, b) { return a + Math.random() * (b - a); };
     function peek() {
-      var s = sides[Math.floor(Math.random() * sides.length)];
-      f.className = 'fairy from-' + s;
-      f.style.top = f.style.left = '';
-      if (s === 'bottom') f.style.left = (15 + Math.random() * 65) + 'vw';
-      else f.style.top = (20 + Math.random() * 50) + 'vh';
-      requestAnimationFrame(function () { f.classList.add('is-out'); });
+      var wins = [].filter.call(desk.querySelectorAll('.win'), function (w) {
+        var r = w.getBoundingClientRect(); return r.width > 200 && r.height > 150 && getComputedStyle(w).visibility !== 'hidden';
+      });
+      var d = desk.getBoundingClientRect(), fw = f.offsetWidth || 150, side, x, y, z = 4;
+      if (wins.length) {
+        var w = wins[Math.floor(Math.random() * wins.length)], r = w.getBoundingClientRect();
+        z = Math.max(1, (parseInt(w.style.zIndex, 10) || 10) - 1);
+        var room = { left: r.left - d.left, right: d.right - r.right, top: r.top - d.top };
+        var opts = Object.keys(room).filter(function (k) { return room[k] > 60; });
+        side = opts.length ? opts[Math.floor(Math.random() * opts.length)] : 'top';
+        if (side === 'left')  { x = r.left - d.left;  y = r.top - d.top + rnd(.15, .6) * r.height; }
+        if (side === 'right') { x = r.right - d.left - fw; y = r.top - d.top + rnd(.15, .6) * r.height; }
+        if (side === 'top')   { x = r.left - d.left + rnd(.15, .75) * (r.width - fw); y = r.top - d.top - 4; }
+      } else {                                             // окон нет: из-за края экрана
+        side = Math.random() < .5 ? 'left' : 'right';
+        x = side === 'left' ? 0 : d.width - fw; y = rnd(.25, .6) * d.height;
+      }
+      f.className = 'fairy at-' + side; f.style.left = x + 'px'; f.style.top = y + 'px'; f.style.zIndex = z;
+      requestAnimationFrame(function () { requestAnimationFrame(function () { f.classList.add('is-out'); }); });
       setTimeout(function () { f.classList.remove('is-out'); }, 2600);
     }
-    setTimeout(function loop() { peek(); setTimeout(loop, 60000); }, 20000);
+    setTimeout(function loop() { peek(); setTimeout(loop, 60000); }, rnd(10000, 20000));
   })();
   </script>
 </body>
