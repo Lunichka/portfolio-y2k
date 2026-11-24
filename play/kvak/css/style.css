@@ -1,5 +1,5 @@
 /* ==========================================================
-   КВАК, ГДЕ МОИ ВЕЩИ?!  ·  стили (v3: «инди-зин и ризограф»)
+   КВАК, ГДЕ МОИ ВЕЩИ?!
    ----------------------------------------------------------
    Интерфейс как напечатанный зин: тёплая бумага, наклейки, вырезки,
    перфорация билетов. Никаких жёстких чёрных теней, вложенных рамок
@@ -143,7 +143,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 .fire.f-f{animation-duration:1.9s;animation-delay:-.3s}
 
 /* ==========================================================
-   ЭКРАН 1 · ОБЛОЖКА
+   ЭКРАН 1
    ========================================================== */
 #screen-cover{min-height:100vh;min-height:100svh;overflow:hidden;color:var(--ink)}
 
@@ -205,7 +205,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 #btn-start{z-index:3}
 
 /* ==========================================================
-   ЭКРАН 2 · ИГРА
+   ЭКРАН 2 
    ========================================================== */
 #screen-game{min-height:100vh;min-height:100svh}
 .game-wrap{position:relative;max-width:1360px;margin:0 auto;padding:clamp(14px,2.2vw,30px) clamp(12px,2.4vw,30px) 26px}
@@ -374,7 +374,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 .legal{margin:22px 2px 0;color:var(--muted);font-size:12.5px;line-height:1.45;max-width:70em}
 
 /* ==========================================================
-   ЭКРАН 3 · ФИНАЛ: пропуск выжившего
+   ЭКРАН 3
    ========================================================== */
 #screen-final{min-height:100vh;min-height:100svh;overflow:hidden}
 .final-inner{position:relative;max-width:1240px;margin:0 auto;min-height:100vh;min-height:100svh;padding:clamp(28px,6vh,64px) clamp(18px,4vw,56px);

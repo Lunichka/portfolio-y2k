@@ -262,7 +262,7 @@ ${SITE.SITE_URL ? `  <link rel="canonical" href="${esc(abs('work/' + p.slug + '.
     <article class="case-body">
       <header class="hero">
         <div class="hero-text">
-          <p class="eyebrow">№ ${esc(p.num)} · ${esc(p.file)}</p>
+          <p class="eyebrow">№ ${esc(p.num)}. ${esc(p.file)}</p>
           <h1>${esc(p.title)}</h1>
           <p class="tagline">${esc(p.tagline)}</p>
           <div class="badges"><span class="badge t-${esc(p.type)}">${esc(t.label)}</span>${p.stage ? `<span class="badge s-${esc(p.stage.key)}">${esc(p.stage.label)}</span>` : ''}</div>

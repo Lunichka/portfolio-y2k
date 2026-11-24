@@ -401,7 +401,7 @@
       p.links && p.links.play ? el('a', { class: 'btn btn-alt', href: p.links.play, target: '_blank', rel: 'noopener', 'aria-label': `Играть в «${p.title}» (откроется в новой вкладке)` }, '▶ Играть') : null,
       p.links && p.links.live ? el('a', { class: 'btn btn-alt', href: p.links.live, target: '_blank', rel: 'noopener', 'aria-label': `Живой сайт ${p.title} (новая вкладка)` }, 'Сайт ↗') : null);
     const info = el('div', { class: 'proj-info' },
-      el('p', { class: 'proj-num', text: `№ ${p.num} · ${p.file}` }),
+      el('p', { class: 'proj-num', text: `№ ${p.num}.${p.file}` }),
       el('h3', { class: 'proj-title' }, el('a', { href: caseUrl(p) }, p.title)),
       badges,
       el('p', { class: 'proj-role' }, el('b', { text: 'Роль: ' }), p.role),
@@ -449,7 +449,7 @@
       list.append(el('li', {}, el('a', { class: 'top-card', href: caseUrl(p) },
         pv.kind === 'image' ? el('img', { src: pv.src, alt: '', loading: 'lazy', decoding: 'async' }) : el('span', { class: 'top-ph', text: p.file }),
         el('span', { class: 'top-t', text: p.title }),
-        el('span', { class: 'top-s', text: [p.topNote, (TYPES[p.type] || {}).short].filter(Boolean).join(' · ') }))));
+        el('span', { class: 'top-s', text: [p.topNote, (TYPES[p.type] || {}).short].filter(Boolean).join('.') }))));
     });
   }
   function renderOther() {
@@ -457,7 +457,7 @@
     OTHER.forEach(p => list.append(projItem(p)));
     $('#other-status').textContent = `${OTHER.length} ${plural(OTHER.length, 'объект', 'объекта', 'объектов')}: сайты и UI для клиентов`;
   }
-  // $('#world-status').textContent = `1 Обо мне · ${PROJECTS.length} ${plural(PROJECTS.length, 'проект', 'проекта', 'проектов')} + ${OTHER.length} ${plural(OTHER.length, 'сайт', 'сайта', 'сайтов')} · 0 вирусов (проверено Касперским)`;
+
 
   /* ---------- 8. Guestbook (own entries stay in this browser only) ---------- */
   const GB_KEY = 'leyla-os:guestbook';
