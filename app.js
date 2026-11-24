@@ -82,7 +82,8 @@
     if (eye && lastEye === false) {
       const secs = Math.max(1, Math.round((Date.now() - pageStart) / 1000));
       const t = secs >= 60 ? `${Math.floor(secs / 60)} мин ${secs % 60} сек` : `${secs} сек`;
-      $('#er-survived').textContent = `Ты выдержал(а) ${t} блесток. Мы тобой гордимся.`;
+      $('#er-survived').textContent = `Пережито ${t} блёсток — респект таким гламурным котикам.`;
+
     }
     const mini = $('#mode-mini');
     mini.setAttribute('aria-pressed', String(eye));
@@ -188,7 +189,7 @@
     { id: 'projects', label: 'Проекты', icon: 'folder', main: true },
     { id: 'howiwork', label: 'Как я работаю', icon: 'check' },
     { id: 'about', label: 'Обо мне', icon: 'flower' },
-    { id: 'guestbook', label: 'Гостевая', icon: 'book' },
+    { id: 'guestbook', label: 'Гостевая книга', icon: 'book' },
     { id: 'button', label: 'Кнопка 88×31', icon: 'star' },
     { id: 'eyerest', label: 'Отдых для глаз', icon: 'eye' },
     { id: 'contact', label: 'Связь', icon: 'mail' },
@@ -487,8 +488,8 @@
   gbForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = gbName.value.trim().replace(/\s+/g, ' '), msg = gbMsg.value.trim();
-    const okN = setErr(gbName, 'gb-name-err', name.length < 2 ? 'Напиши ник —    хотя бы 2 символа.' : '');
-    const okM = setErr(gbMsg, 'gb-msg-err', msg.length < 3 ? 'Напиши пару слов — хотя бы 3 символа.' : '');
+    const okN = setErr(gbName, 'gb-name-err', name.length < 2 ? 'Напиши ник,  хотя бы 2 символа.' : '');
+    const okM = setErr(gbMsg, 'gb-msg-err', msg.length < 3 ? 'Напиши пару слов, хотя бы 3 символа.' : '');
     const st = $('#gb-status');
     if (!okN || !okM) { st.textContent = 'Почти! Поправь подсвеченное поле.'; (okN ? gbMsg : gbName).focus(); return; }
     const d = new Date();
