@@ -190,6 +190,10 @@
           <li><b>Довожу до релиза и не пропадаю</b><span>настраиваю простую админку, чтобы вы могли менять контент без
               меня, и подключаю аналитику для оценки результата</span></li>
         </ol>
+        <figure class="hiw-meme">
+          <img src="assets/easter/alo-office.webp" alt="Мем «Ало, офис? Да-да, документы»" loading="lazy">
+          <figcaption>я на созвоне с клиентом, этап 2</figcaption>
+        </figure>
         <p class="hiw-team"><b>Опыт в команде:</b> руководила редакцией из 15 авторов в remusik.org, вместе с
           разработчиками проектировала интерфейсы в 5DHUB и однажды брала 2-е место на хакатоне.</p>
         <p class="hiw-link">Посмотреть этот процесс на реальном примере — <a href="work/orchestra-1703-site.html">кейс
@@ -447,6 +451,24 @@
   <script src="data/projects.js"></script>
   <script src="js/mode.js"></script>
   <script src="app.js"></script>
+  <!-- пасхалка: раз в минуту из-за края выглядывает феечка -->
+  <img class="fairy" id="fairy" src="assets/easter/fairy.webp" alt="" aria-hidden="true">
+  <script>
+  (function () {
+    var f = document.getElementById('fairy'); if (!f || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var sides = ['left', 'right', 'bottom'];
+    function peek() {
+      var s = sides[Math.floor(Math.random() * sides.length)];
+      f.className = 'fairy from-' + s;
+      f.style.top = f.style.left = '';
+      if (s === 'bottom') f.style.left = (15 + Math.random() * 65) + 'vw';
+      else f.style.top = (20 + Math.random() * 50) + 'vh';
+      requestAnimationFrame(function () { f.classList.add('is-out'); });
+      setTimeout(function () { f.classList.remove('is-out'); }, 2600);
+    }
+    setTimeout(function loop() { peek(); setTimeout(loop, 60000); }, 20000);
+  })();
+  </script>
 </body>
 
 </html>

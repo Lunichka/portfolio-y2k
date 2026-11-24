@@ -78,7 +78,7 @@
   function onMode() {
     const eye = Mode.eyeRest, motion = Mode.motionOn();
     $('#er-warn').hidden = eye; $('#er-calm').hidden = !eye;
-    $('#er-status').textContent = 'Отдых для глаз: ' + (eye ? 'ВКЛ' : 'ВЫКЛ');
+    const ers = $('#er-status'); if (ers) ers.textContent = 'Отдых для глаз: ' + (eye ? 'ВКЛ' : 'ВЫКЛ');
     if (eye && lastEye === false) {
       const secs = Math.max(1, Math.round((Date.now() - pageStart) / 1000));
       const t = secs >= 60 ? `${Math.floor(secs / 60)} мин ${secs % 60} сек` : `${secs} сек`;
@@ -440,8 +440,7 @@
         el('span', { 'data-pix': 'folder2', 'data-scale': '3' }),
         el('span', {}, el('b', { text: `ДРУГИЕ_РАБОТЫ.DIR (${OTHER.length})` }), el('small', { text: 'Сайты, UI-концепты и Framer-компоненты для клиентов — отдельной папкой' })))));
     hydratePix(list);
-    const vids = items.filter(p => p.preview && p.preview.clip).length;
-    $('#proj-status').textContent = `${items.length} ${plural(items.length, 'объект', 'объекта', 'объектов')}, ${vids} с видео, кейс открывается отдельной страницей`;
+    $('#proj-status').textContent = `${items.length} ${plural(items.length, 'объект', 'объекта', 'объектов')}`;
   }
   function renderTop() { // «Лучшие кейсы» on the home window: projects with top: true
     const list = $('#top-list'); list.textContent = '';
