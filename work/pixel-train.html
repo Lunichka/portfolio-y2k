@@ -91,8 +91,9 @@
 
       <section class="cs" id="concept" aria-labelledby="concept-h">
         <h2 id="concept-h"><span class="cs-n">03</span> Концепция и визуальный стиль</h2>
-        <p>За основу визуала я взяла эстетику пиксельных игр нулевых для первой PlayStation со старыми шкалами здоровья,
-          грубыми рамками, ачивками и титульным экраном «FIGHT!», как в классических файтингах той эпохи.</p>
+        <p>За основу визуала я взяла ретро-RPG с первой PlayStation: синие окна диалогов, меню с курсором, шкалы
+          менталки и ярости, ачивки. В первой версии титульный экран был в духе файтингов («FIGHT!»), но игра про выбор
+          реплик, а не про драку, поэтому во второй версии я переделала обложку под RPG.</p>
         <p>Весь юмор строится на доведённых до абсурда бытовых сценках постсоветской электрички. Баба Зина (владелица
           четырёх сумок и форточки) требует закрыть окно, сосед разворачивает курицу в фольге, из динамиков орёт радио,
           а в вагоне нечем дышать. Игрок сам решает, как на всё это реагировать, и расплачивается за выбор собственными
@@ -137,8 +138,55 @@
         </ol>
       </section>
 
+      <section class="cs" id="redraw" aria-labelledby="redraw-h">
+        <h2 id="redraw-h"><span class="cs-n">05</span> Версия 2: нарисовала всё сама</h2>
+        <p>В первой версии персонажи и вагон были сгенерированы нейросетью: картинки мыльные, стиль чужой, у каждого
+          персонажа свой размер пикселя. Во второй версии я перерисовала вручную в Piskel всех восьмерых персонажей
+          (у каждого спокойное и злое лицо), вагон, лес за окном и обложку.</p>
+        <p>Главное правило: один размер пикселя для всей сцены и увеличение только целым числом, без сглаживания.
+          Поэтому вагон и люди теперь из одного мира. Обложка стала живой: за окном едет лес, а вагон потряхивает
+          на стыках.</p>
+        <div class="gallery g-cinema">
+          <figure class="shot dev-desktop" style="--span:12">
+            <a class="zoom" href="../assets/projects/pixel-train/v2-cover.webp"
+              aria-label="Открыть крупно: Новая обложка: окно электрички, за ним едет лес, на столике наушники, Дошик и валерьянка"><span
+                class="dev-frame"><img src="../assets/projects/pixel-train/v2-cover.webp"
+                  alt="Новая обложка: окно электрички, за ним едет лес, на столике наушники, Дошик и валерьянка" width="1280" height="960" loading="lazy" decoding="async"></span></a>
+            <figcaption>Обложка: лес за окном едет</figcaption>
+          </figure>
+          <figure class="shot dev-desktop" style="--span:6">
+            <a class="zoom" href="../assets/projects/pixel-train/v2-game.webp"
+              aria-label="Открыть крупно: Игровой экран: игрок и Баба Зина в перерисованном вагоне, шкалы менталки и ярости, меню реплик"><span
+                class="dev-frame"><img src="../assets/projects/pixel-train/v2-game.webp"
+                  alt="Игровой экран: игрок и Баба Зина в перерисованном вагоне, шкалы менталки и ярости, меню реплик" width="1280" height="960" loading="lazy" decoding="async"></span></a>
+            <figcaption>Сцена в новом стиле</figcaption>
+          </figure>
+          <figure class="shot dev-desktop" style="--span:6">
+            <a class="zoom" href="../assets/projects/pixel-train/v2-angry.webp"
+              aria-label="Открыть крупно: Баба Зина злится после ответа игрока, в журнале игровое время"><span
+                class="dev-frame"><img src="../assets/projects/pixel-train/v2-angry.webp"
+                  alt="Баба Зина злится после ответа игрока, в журнале игровое время" width="1280" height="960" loading="lazy" decoding="async"></span></a>
+            <figcaption>Соседи злятся по-разному</figcaption>
+          </figure>
+          <figure class="shot dev-desktop" style="--span:6">
+            <a class="zoom" href="../assets/projects/pixel-train/v2-valera.webp"
+              aria-label="Открыть крупно: Новый сосед: Валера-Бригадир с баулом в проходе"><span
+                class="dev-frame"><img src="../assets/projects/pixel-train/v2-valera.webp"
+                  alt="Новый сосед: Валера-Бригадир с баулом в проходе" width="1280" height="960" loading="lazy" decoding="async"></span></a>
+            <figcaption>Валера-Бригадир</figcaption>
+          </figure>
+          <figure class="shot dev-desktop" style="--span:6">
+            <a class="zoom" href="../assets/projects/pixel-train/v2-routes.webp"
+              aria-label="Открыть крупно: Выбор маршрута в новом интерфейсе"><span
+                class="dev-frame"><img src="../assets/projects/pixel-train/v2-routes.webp"
+                  alt="Выбор маршрута в новом интерфейсе" width="1280" height="960" loading="lazy" decoding="async"></span></a>
+            <figcaption>Выбор маршрута</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="cs" id="screens" aria-labelledby="screens-h">
-        <h2 id="screens-h"><span class="cs-n">05</span> Экраны, макеты и адаптив</h2>
+        <h2 id="screens-h"><span class="cs-n">06</span> Версия 1: экраны с нейросетевой графикой</h2>
         <div class="gallery g-cinema">
           <figure class="shot dev-desktop" style="--span:12">
             <a class="zoom" href="../assets/projects/pixel-train/title.webp"
@@ -184,7 +232,7 @@
       </section>
 
       <section class="cs" id="build" aria-labelledby="build-h">
-        <h2 id="build-h"><span class="cs-n">06</span> Реализация</h2>
+        <h2 id="build-h"><span class="cs-n">07</span> Реализация</h2>
         <ul class="impl">
           <li>Сцену поездки собрала из отдельных слоёв и отрендерила в After Effects: интерьер вагона остаётся
             неподвижным, а пейзаж за окнами плавно прокручивается, создавая ощущение движения без тяжёлой анимации всего
