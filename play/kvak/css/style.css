@@ -365,7 +365,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 .item-btn:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
 .item.is-found:hover{background:var(--paper-2)}
 .item-reopen{display:none;font:500 12px var(--font-body);color:var(--muted);margin-top:2px;text-decoration:none}
-.item.is-found .item-reopen{display:block}
+.item.is-found .item-reopen{display:inline-block;width:100%}  /* inline-block не наследует зачёркивание родителя */
 .side-foot{margin-top:12px;text-align:center}
 .restart-confirm{margin-top:8px;background:var(--paper-2);border-radius:4px;padding:12px;text-align:left}
 .restart-confirm p{margin:0 0 8px;font-weight:600;font-size:14px}
