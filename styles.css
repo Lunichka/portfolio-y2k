@@ -521,3 +521,8 @@ html.eye-rest .hiw-team { border: 1px dashed #4a4943; border-radius: 0; backgrou
   66%  { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .glit { animation: none; } }
+
+/* Ярлыки: если по высоте не влезают — переносятся во вторую колонку, а не уходят под таскбар */
+.icons { display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start; width: auto;
+  max-height: calc(100% - var(--mq) - 28px); }
+.icons .icon { width: 100px; }

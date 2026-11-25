@@ -357,7 +357,7 @@ window.LEYLA_PROJECTS = [
       kind: 'image',
       src: 'assets/projects/pixel-train/v2-cover.webp',
       alt: 'Обложка игры: окно электрички, за ним лес, на столике наушники, Дошик и валерьянка',
-      ratio: '1280 / 960'
+      ratio: '1350 / 790'
     },
     links: { live: '', play: 'https://doom-train-ps1.vercel.app/', behance: '', repo: '' },
     context: [
