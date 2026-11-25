@@ -400,7 +400,7 @@
     const actions = el('div', { class: 'proj-actions' },
       el('a', { class: 'btn', href: caseUrl(p), 'aria-label': `Открыть кейс: ${p.title}` }, 'OPEN CASE ↗'),
       p.links && p.links.play ? el('a', { class: 'btn btn-alt', href: p.links.play, target: '_blank', rel: 'noopener', 'aria-label': `Играть в «${p.title}» (откроется в новой вкладке)` }, '▶ Играть') : null,
-      p.links && p.links.live ? el('a', { class: 'btn btn-alt', href: p.links.live, target: '_blank', rel: 'noopener', 'aria-label': `Живой сайт ${p.title} (новая вкладка)` }, 'Сайт ↗') : null);
+      p.links && p.links.live ? el('a', { class: 'btn btn-alt', href: p.links.live, target: '_blank', rel: 'noopener', 'aria-label': `Сайт ${p.title} (новая вкладка)` }, 'Сайт ↗') : null);
     const info = el('div', { class: 'proj-info' },
       el('p', { class: 'proj-num', text: `№ ${p.num}.${p.file}` }),
       el('h3', { class: 'proj-title' }, el('a', { href: caseUrl(p) }, p.title)),
