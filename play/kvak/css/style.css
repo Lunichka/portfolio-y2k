@@ -239,10 +239,10 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
 .game-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(14px,2vw,28px);align-items:start}
 .stage-col{min-width:0;position:relative}
 /* сцена — фотография, приклеенная скотчем; это единственный контурный блок на экране */
-.stage-col::before,.stage-col::after{content:"";position:absolute;z-index:5;top:-10px;width:84px;height:22px;pointer-events:none;
+/* .stage-col::before,.stage-col::after{content:"";position:absolute;z-index:5;top:-10px;width:84px;height:22px;pointer-events:none;
   background:rgba(234,229,217,.88);box-shadow:0 1px 2px rgba(24,24,22,.1);clip-path:polygon(0 8%,5% 0,100% 6%,96% 50%,100% 100%,4% 94%,0 55%)}
-.stage-col::before{left:-14px;rotate:-24deg}
-.stage-col::after{right:-14px;rotate:21deg;background:rgba(212,255,51,.7)}
+.stage-col::before{left:-14px;rotate:-24deg} */
+/* .stage-col::after{right:-14px;rotate:21deg;background:rgba(212,255,51,.7)} */
 .stage-scroller{border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:var(--shadow-sheet);background:#fff;overflow:hidden}
 .stage{position:relative;aspect-ratio:1024/559;width:100%;line-height:0;background:#fff;user-select:none;-webkit-user-select:none;cursor:crosshair;
   -webkit-tap-highlight-color:transparent;touch-action:manipulation;overflow:hidden}
@@ -888,11 +888,11 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
   top: -10px;
   left: 50%;
   transform: translateX(-50%) rotate(-3deg);
-  width: 92px;
-  height: 22px;
-  background: rgba(154, 207, 147, 0.78);
-  box-shadow: 0 1px 2px rgba(30, 30, 24, 0.15);
-  clip-path: polygon(2% 0%, 98% 6%, 95% 52%, 100% 96%, 0% 100%, 4% 48%);
+  width: 102px;
+  height: 32px;
+  background: rgba(138, 157, 28, 0.78);
+  box-shadow: 0 1px 2px rgba(40, 40, 24, 0.15);
+  clip-path: polygon(2% 0%, 98% 8%, 95% 52%, 100% 96%, 0% 100%, 4% 48%);
   pointer-events: none;
 }
 
@@ -1084,11 +1084,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;l
   .stage.is-alarm::after{animation:none}
 }
 
-/* ==========================================================
-   ОБЛОЖКА v2: как у MAAG — однотонная бумага, вещи по краям,
-   заголовок и кнопка строго по центру. Перекрывает блок
-   «ОБЛОЖКА: цельная иллюстрация» выше (cover-bg больше не нужен).
-   ========================================================== */
+
 #screen-cover{background:var(--noise),var(--paper)}
 #screen-cover .cover-center{align-items:center;justify-content:center;text-align:center;max-width:none;
   padding:calc(var(--peek-h) + 24px) 16px clamp(28px,6vh,64px)}
