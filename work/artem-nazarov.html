@@ -39,7 +39,7 @@
           <path fill="#ff8ac9" d="M1 1h3v1H1z" />
           <path fill="#ffd1ec" d="M1 2h8v4H1z" />
         </svg></span>
-      <span class="win-title">NAZAROV.HTML — LEYLA OS</span>
+      <span class="win-title">NAZAROV.HTML</span>
       <span class="win-btns"><span class="wbtn" aria-hidden="true">_</span><span class="wbtn"
           aria-hidden="true">□</span><a class="wbtn" href="../index.html#other"
           aria-label="Закрыть кейс и вернуться к списку">×</a></span>
@@ -82,27 +82,28 @@
 
       <section class="cs" id="context" aria-labelledby="context-h">
         <h2 id="context-h"><span class="cs-n">01</span> Контекст и цели</h2>
-        <p>«Читает Артем Назаров» (Artem Nazarov Reads) — YouTube-проект о чтении и аудиокнигах, канал @ArtNazarovBooks.
-          Интерфейс сайта — на русском.</p>
-        <p>Основная аудитория — русскоязычные люди примерно 40+, в большинстве живущие за пределами России. Они ценят
-          ясность и знакомые паттерны больше, чем дизайн-тренды.</p>
-        <p>Сайт работает как мостик между YouTube и платными платформами: зритель видит свежие выпуски, может послушать
-          книгу прямо на странице и в один клик перейти на Boosty, Patreon или Sponsr.</p>
-        <p>Сайт запущен 16 сентября 2026 года. За первый месяц после запуска канал вырос примерно на 1000 подписчиков,
-          на Boosty пришли 20 новых. Сколько из них пришло именно с сайта, пока отдельно не измеряется.</p>
+        <p>«Читает Артём Назаров» (Artem Nazarov Reads) — русскоязычный YouTube-проект об аудиокнигах и литературе
+          (@ArtNazarovBooks).</p>
+        <p>Основная аудитория канала — зрители старше 40 лет, многие из которых живут за пределами России. Они ценят
+          ясность и привычную логику сайтов больше, чем сложные дизайн-тренды.</p>
+        <p>Сайт работает как удобный хаб между YouTube и платными площадками: здесь можно сразу увидеть свежие выпуски,
+          послушать фрагмент книги прямо на странице и в один клик перейти на Boosty, Patreon или Sponsr.</p>
+        <p>Проект запустили 16 сентября 2026 года. За первый месяц канал вырос примерно на 1 000 подписчиков, а на
+          Boosty пришли 20 новых донатеров (отдельную сквозную аналитику с сайта пока не подключали).</p>
       </section>
 
       <section class="cs" id="challenge" aria-labelledby="challenge-h">
         <h2 id="challenge-h"><span class="cs-n">02</span> Задача</h2>
-        <p>Сделать сайт современным, не делая его непривычным: без тяжёлого моушна, WebGL и перехвата скролла.</p>
+        <p>Сделать сайт визуально свежим и аккуратным, но при этом понятным и привычным для взрослой аудитории — без
+          тяжёлого моушна, WebGL и перехвата скролла.</p>
       </section>
 
       <section class="cs" id="concept" aria-labelledby="concept-h">
         <h2 id="concept-h"><span class="cs-n">03</span> Концепция и визуальный стиль</h2>
-        <p>Принцип — «дизайн для привычки, а не для трендов». Современность передаётся типографикой, композицией и
-          фотографией.</p>
-        <p>Тёмная редакционная система: графитовые фоны, пыльная роза как единственный акцент, никаких теней и мягкое
-          замедление easeOutExpo.</p>
+        <p>Хотелось сделать спокойный интерфейс, к которому приятно возвращаться за новыми выпусками без визуального
+          шума. Вся выразительность держится на крупной книжной типографике, чистой сетке и живых портретах автора.</p>
+        <p>За основу я взяла тёмную палитру с глубоким графитовым фоном и приглушённым акцентом пыльной розы, отказалась
+          от лишних теней и добавила мягкую, неспешную анимацию при появлении блоков.</p>
         <h3>Цвет</h3>
         <ul class="swatches">
           <li><i style="background:#2D2D2D"></i><b>Графит</b><span>#2D2D2D — фон</span></li>
@@ -124,21 +125,24 @@
         <h2 id="ux-h"><span class="cs-n">04</span> Ключевые UX/UI-решения</h2>
         <ol class="ux">
           <li>
-            <h3>Свежие выпуски — сами</h3>
-            <p>Блок LatestEpisodes подтягивает новые видео через YouTube Data API v3: сайт не устаревает без ручных
-              правок.</p>
+            <h3>Автообновление выпусков</h3>
+            <p>Блок с новыми видео сам подтягивает свежие ролики с канала через YouTube API, поэтому сайт остаётся
+              актуальным без ручных правок.</p>
           </li>
           <li>
-            <h3>Каталог с поиском</h3>
-            <p>BooksCatalog — сетка книг с поиском и карточкой-оверлеем для каждой книги, со ссылками на платформы.</p>
+            <h3>Каталог книг с поиском</h3>
+            <p>Собрала удобную сетку аудиокниг с живым поиском и карточкой-оверлеем, где сразу видны ссылки на все
+              площадки.</p>
           </li>
           <li>
-            <h3>Слушать прямо на сайте</h3>
-            <p>Аудиокниги из SoundCloud встроены в страницу — не нужно уходить на другую платформу.</p>
+            <h3>Плеер прямо на странице</h3>
+            <p>Встроила плеер SoundCloud внутрь сайта, чтобы зритель мог послушать отрывок книги, не уходя на сторонний
+              сервис.</p>
           </li>
           <li>
-            <h3>Поддержать проект</h3>
-            <p>Отдельные компоненты для подписки и донатов, способы оплаты раскрываются по клику.</p>
+            <h3>Удобная поддержка автора</h3>
+            <p>Сделала отдельные блоки для подписки и разовых донатов, где реквизиты и способы оплаты аккуратно
+              раскрываются по клику.</p>
           </li>
         </ol>
       </section>
@@ -162,16 +166,16 @@
           </figure>
           <figure class="shot dev-desktop" style="--span:6">
             <a class="zoom" href="../assets/projects/artem-nazarov/story.webp"
-              aria-label="Открыть крупно: О проекте: чёрно-белое фото и текст"><span class="dev-frame"><img
-                  src="../assets/projects/artem-nazarov/story.webp" alt="О проекте: чёрно-белое фото и текст"
+              aria-label="Открыть крупно: О проекте — чёрно-белое фото и текст"><span class="dev-frame"><img
+                  src="../assets/projects/artem-nazarov/story.webp" alt="О проекте — чёрно-белое фото и текст"
                   width="2048" height="1032" loading="lazy" decoding="async"></span></a>
             <figcaption>О проекте</figcaption>
           </figure>
           <figure class="shot dev-desktop" style="--span:6">
             <a class="zoom" href="../assets/projects/artem-nazarov/support.webp"
-              aria-label="Открыть крупно: Блок подписки: Boosty, Telegram, Patreon, Sponsr"><span class="dev-frame"><img
-                  src="../assets/projects/artem-nazarov/support.webp"
-                  alt="Блок подписки: Boosty, Telegram, Patreon, Sponsr" width="2048" height="1032" loading="lazy"
+              aria-label="Открыть крупно: Блок подписки на Boosty, Telegram, Patreon и Sponsr"><span
+                class="dev-frame"><img src="../assets/projects/artem-nazarov/support.webp"
+                  alt="Блок подписки на Boosty, Telegram, Patreon и Sponsr" width="2048" height="1032" loading="lazy"
                   decoding="async"></span></a>
             <figcaption>Поддержать проект в один клик</figcaption>
           </figure>
@@ -188,25 +192,26 @@
       <section class="cs" id="build" aria-labelledby="build-h">
         <h2 id="build-h"><span class="cs-n">06</span> Реализация</h2>
         <ul class="impl">
-          <li>Framer code components на React и TypeScript: LatestEpisodes, BooksCatalog, SoundCloudAudiobooks,
-            SubscribeLinks, SupportProject и другие.</li>
-          <li>Ссылки на платформы и поля метаданных книги вынесены в property controls — каталог редактируется без кода.
-          </li>
-          <li>Адаптивные брейкпоинты — через scoped &lt;style&gt; внутри компонента.</li>
-          <li>В режиме редактирования Framer компоненты не обращаются к API, чтобы не тратить квоту.</li>
+          <li>Сайт собрала во Framer, а кастомные интерактивные блоки (автоподгрузку видео, каталог с поиском, плеер и
+            формы поддержки) делала в связке с Claude.</li>
+          <li>Вынесла все ссылки на площадки и поля карточек книг в визуальные настройки Framer, чтобы заказчик мог
+            сам обновлять каталог без правки кода.</li>
+          <li>Настроила адаптив под мобильные экраны и отключила фоновые запросы к API в режиме редактора Framer, чтобы
+            не расходовать лишнюю квоту YouTube.</li>
         </ul>
       </section>
-    </article>
 
-    <nav class="case-nav" aria-label="Другие проекты">
-      <a class="cn prev" href="paradai.html" rel="prev"><span class="cn-k">← Предыдущий</span><span
-          class="cn-t">Paradai</span></a>
-      <a class="cn all" href="../index.html#other"><span class="cn-k">ДРУГИЕ_РАБОТЫ.DIR</span><span class="cn-t">Другие
-          работы</span></a>
-      <a class="cn next" href="paradai.html" rel="next"><span class="cn-k">Следующий →</span><span
-          class="cn-t">Paradai</span></a>
-    </nav>
-    <footer class="win-status">NAZAROV.HTML: 6 разделов</footer>
+
+      <nav class="case-nav" aria-label="Другие проекты">
+        <a class="cn prev" href="paradai.html" rel="prev"><span class="cn-k">← Предыдущий</span><span
+            class="cn-t">Paradai</span></a>
+        <a class="cn all" href="../index.html#other"><span class="cn-k">ДРУГИЕ_РАБОТЫ.DIR</span><span
+            class="cn-t">Другие
+            работы</span></a>
+        <a class="cn next" href="paradai.html" rel="next"><span class="cn-k">Следующий →</span><span
+            class="cn-t">Paradai</span></a>
+      </nav>
+      <footer class="win-status">NAZAROV.HTML: 6 разделов</footer>
   </main>
 
   <dialog class="lightbox" aria-label="Просмотр изображения"><button type="button" class="wbtn lb-close"
