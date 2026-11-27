@@ -439,7 +439,7 @@
     if (OTHER.length) list.append(el('li', { class: 'ex-more' },
       el('button', { type: 'button', class: 'ex-more-btn', 'data-open': 'other' },
         el('span', { 'data-pix': 'folder2', 'data-scale': '3' }),
-        el('span', {}, el('b', { text: `ДРУГИЕ_РАБОТЫ.DIR (${OTHER.length})` }), el('small', { text: 'Сайты, UI-концепты и Framer-компоненты для клиентов — отдельной папкой' })))));
+        el('span', {}, el('b', { text: `ДРУГИЕ_РАБОТЫ.DIR (${OTHER.length})` }), el('small', { text: 'Отдельная папка с клиентскими сайтами, UI-концептами и компонентами во Framer.' })))));
     hydratePix(list);
     $('#proj-status').textContent = `${items.length} ${plural(items.length, 'объект', 'объекта', 'объектов')}`;
   }
