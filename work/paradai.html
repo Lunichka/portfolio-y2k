@@ -65,8 +65,8 @@
             </div>
           </dl>
           <div class="cta">
-            <a class="btn btn-big" href="https://lunichka.github.io/paradai-site/" target="_blank" rel="noopener">Живой
-              сайт ↗ <span class="vh">(новая вкладка)</span></a>
+            <a class="btn btn-big" href="https://lunichka.github.io/paradai-site/" target="_blank" rel="noopener">Сайт ↗
+              <span class="vh">(новая вкладка)</span></a>
           </div>
         </div>
         <div class="hero-media">
@@ -187,13 +187,16 @@
       <section class="cs" id="build" aria-labelledby="build-h">
         <h2 id="build-h"><span class="cs-n">06</span> Реализация</h2>
         <ul class="impl">
-          <li>Собрала прототип во Framer с кастомными код-компонентами (делала их в связке с Claude): страницу товара,
-            раздел «Наша история», таймлайн Bean-to-Bar и магазин с конструктором коробки и выезжающей корзиной.</li>
-          <li>Для графика раскрытия вкуса и аромата (ScentVolatilityTimeline) настроила отрисовку через HTML5 Canvas.
-          </li>
-          <li>По ходу сборки отловила особенность Framer: он передаёт цвета в формате rgba(), из-за чего стандартный
-            градиент в Canvas не срабатывал — обошла это через управление прозрачностью globalAlpha.</li>
-        </ul>
+          <ul class="impl">
+            <li>Сначала попробовала собрать сайт во Framer, но стандартных возможностей конструктора не хватило для
+              единого стиля интерфейсов.</li>
+            <li>В итоге по готовому макету из Figma собрала отдельный рабочий прототип в браузере с помощью Claude — с
+              полноценным каталогом, сборкой своего набора бонбонов, страницей товара и плавными анимациями при скролле.
+            </li>
+            <li>Настроила в интерактивном таймлайне Bean-to-Bar плавное раскрытие вкуса и аромата шоколада, чтобы
+              история бренда считывалась не через скучный текст, а через движение.</li>
+          </ul>
+
       </section>
 
       <nav class="case-nav" aria-label="Другие проекты">
