@@ -111,192 +111,193 @@
           доделывала уже в Inkscape, разобравшись в программе за один день.</p>
 
       </section>
-        <section class="cs" id="evolution" aria-labelledby="evolution-h">
-          <h2 id="evolution-h"><span class="cs-n">04</span> Как я к этому пришла</h2>
-          <p>Игра прошла четыре версии. В каждой я проверяла одно: понятно ли за пару секунд, что делать, и есть ли у
-            игры характер.</p>
-          <ol class="evo">
-            <li>
-              <p class="evo-k">Версия 1: Прототип</p>
-              <figure class="shot dev-desktop">
-                <a class="zoom" href="../assets/projects/kvak/process-1-prototype.webp"
-                  aria-label="Открыть крупно: Первый прототип «Квак на работе»: сцена офиса и простой список из пяти предметов"><span
-                    class="dev-frame"><img src="../assets/projects/kvak/process-1-prototype.webp"
-                      alt="Первый прототип «Квак на работе»: сцена офиса и простой список из пяти предметов"
-                      width="1200" height="717" loading="lazy" decoding="async"></span></a>
-                <figcaption>Прототип «Квак на работе»</figcaption>
-              </figure>
-              <p>Попробовала изобразить свою задумку с помощью Claude Code.</p>
-            </li>
-            <li>
-              <p class="evo-k">Версия 2: Персонаж</p>
-              <figure class="shot dev-desktop">
-                <a class="zoom" href="../assets/projects/kvak/process-2-iteration.webp"
-                  aria-label="Открыть крупно: Вторая версия: сцена на весь экран, Квак в пиджаке и розовых очках, плашка с правилами внизу"><span
-                    class="dev-frame"><img src="../assets/projects/kvak/process-2-iteration.webp"
-                      alt="Вторая версия: сцена на весь экран, Квак в пиджаке и розовых очках, плашка с правилами внизу"
-                      width="1200" height="607" loading="lazy" decoding="async"></span></a>
-                <figcaption>Сцена на весь экран и образ Квака</figcaption>
-              </figure>
-              <p> Добавила Квака – офисного сотрудника, которому осточертело всё на свете и он мечтает угнать в отпуск.
-                Поняла, что персонаж теряется на фоне главного экрана, где нужно искать предметы, убрала. </p>
-            </li>
-            <li>
-              <p class="evo-k">Версия 3: Переосмыслила первый экран</p>
-              <figure class="shot dev-desktop">
-                <a class="zoom" href="../assets/projects/kvak/process-3-final.webp"
-                  aria-label="Открыть крупно: Финальная обложка: объявление «Квак, где мои вещи?!» и кнопка «Спасти рабочий день»"><span
-                    class="dev-frame"><img src="../assets/projects/kvak/process-3-final.webp"
-                      alt="Финальная обложка: объявление «Квак, где мои вещи?!» и кнопка «Спасти рабочий день»"
-                      width="1200" height="717" loading="lazy" decoding="async"></span></a>
-                <figcaption>Обложка-объявление</figcaption>
-              </figure>
-              <p>Вся вводная собралась на одном листке «Срочное дело», кнопка одна.</p>
-            </li>
-            <li>
-              <p class="evo-k">Версия 4: Свой Квак</p>
-              <figure class="shot dev-desktop">
-                <a class="zoom" href="../assets/projects/kvak/process-4-frog.webp"
-                  aria-label="Открыть крупно: Слева сгенерированный Квак с сигаретой, справа три Квака, нарисованные вручную в Inkscape: чистый, в панике и обгоревший, и муха"><span
-                    class="dev-frame"><img src="../assets/projects/kvak/process-4-frog.webp"
-                      alt="Слева сгенерированный Квак с сигаретой, справа три Квака, нарисованные вручную в Inkscape: чистый, в панике и обгоревший, и муха"
-                      width="1600" height="827" loading="lazy" decoding="async"></span></a>
-                <figcaption>Черновик от нейросети, потом дорисовала сама</figcaption>
-              </figure>
-              <p>Сгенерированный Квак курил и был нарисован в чужой манере — для игры с брендами не хотелось
-                представлять такого персонажа. Поэтому я перерисовала его сама в Inkscape. </p>
-            </li>
-          </ol>
-        </section>
-
-        <section class="cs" id="ux" aria-labelledby="ux-h">
-          <h2 id="ux-h"><span class="cs-n">05</span> Ключевые UX/UI-решения</h2>
-          <ol class="ux">
-            <li>
-              <h3>Правила в одну строчку</h3>
-              <p>На обложке сразу даётся суть игры («На рабочем месте пропали 5 вещей. Найди их, пока офис не сгорел») и
-                единственная кнопка «Спасти рабочий день».</p>
-            </li>
-            <li>
-              <h3>Цветовое кодирование</h3>
-              <p>Лаймовый оттенок отвечает только за интерактив и прогресс, а оранжевый закреплён за огнём и тревогой.
-                Игрок считывает эту логику с первых секунд без подсказок.</p>
-            </li>
-            <li>
-              <h3>Нативная механика интеграций</h3>
-              <p>Когда игрок находит предмет, открывается карточка партнёра в его фирменном стиле с шуткой про Квака,
-                репликой героя и бонусом вроде промокода или пробной подписки. Бренд органично вплетается в сюжет и не
-                ломает темп.</p>
-            </li>
-            <li>
-              <h3>Визуальный чек-лист</h3>
-              <p>Справа висит список пропавших вещей с иконками. Найденные предметы загораются лаймом и вычёркиваются,
-                поэтому прогресс понятен даже без цифр.</p>
-            </li>
-            <li>
-              <h3>Сертификат в финале</h3>
-              <p>В конце игрок получает карточку «Офис выжил. Менталка Квака тоже.» со временем прохождения, количеством
-                находок и промахов, чтобы её можно было заскринить и скинуть друзьям.</p>
-            </li>
-            <li>
-              <h3>Интерактивный ноутбук</h3>
-              <p>Если кликнуть по ноутбуку на столе, крупно откроется рабочий чат Квака, который в общей сцене слишком
-                мелкий. Этот клик не засчитывается как ошибка, а таймер на время чтения ставится на паузу.</p>
-            </li>
-            <li>
-              <h3>Пожар вместо скучного таймера</h3>
-              <p>Пламя разгорается в три этапа по мере того, как истекает минута, и замирает во время пауз. Игрок
-                чувствует, сколько времени осталось, буквально периферийным зрением.</p>
-            </li>
-            <li>
-              <h3>Отдельная вёрстка под разные экраны</h3>
-              <p>Для обложки я сделала три разные композиции под десктоп, планшет и смартфон, чтобы листок с правилами и
-                кнопка старта всегда помещались в первый экран без скролла.</p>
-            </li>
-          </ol>
-        </section>
-
-        <section class="cs" id="screens" aria-labelledby="screens-h">
-          <h2 id="screens-h"><span class="cs-n">06</span> Экраны, макеты и адаптив</h2>
-          <div class="gallery g-game">
-            <figure class="shot dev-desktop" style="--span:6">
-              <a class="zoom" href="../assets/projects/kvak/game-popup.webp"
-                aria-label="Открыть крупно: Карточка найденной банковской карты: концепт интеграции банка с условной наградой"><span
-                  class="dev-frame"><img src="../assets/projects/kvak/game-popup.webp"
-                    alt="Карточка найденной банковской карты: концепт интеграции банка с условной наградой" width="1600"
-                    height="900" loading="lazy" decoding="async"></span></a>
-              <figcaption>Каждая находка это концепт интеграции бренда</figcaption>
-            </figure>
-            <figure class="shot dev-desktop" style="--span:6">
-              <a class="zoom" href="../assets/projects/kvak/game-chat.webp"
-                aria-label="Открыть крупно: Открытый ноутбук Квака: рабочий чат «Квалоквиум» с перепиской и стикером"><span
-                  class="dev-frame"><img src="../assets/projects/kvak/game-chat.webp"
-                    alt="Открытый ноутбук Квака: рабочий чат «Квалоквиум» с перепиской и стикером" width="1600"
-                    height="900" loading="lazy" decoding="async"></span></a>
-              <figcaption>Рабочий чат Квака хорошо отражает бытие. Нарисовала в Иллюстраторе</figcaption>
-            </figure>
-            <figure class="shot dev-desktop" style="--span:12">
-              <a class="zoom" href="../assets/projects/kvak/game-final.webp"
-                aria-label="Открыть крупно: Финальный экран «Офис выжил. Менталка Квака тоже.»: обгоревший Квак в дыму и сертификат выжившего в дедлайне"><span
-                  class="dev-frame"><img src="../assets/projects/kvak/game-final.webp"
-                    alt="Финальный экран «Офис выжил. Менталка Квака тоже.»: обгоревший Квак в дыму и сертификат выжившего в дедлайне"
-                    width="1600" height="900" loading="lazy" decoding="async"></span></a>
-              <figcaption>Финал игры</figcaption>
-            </figure>
+      <section class="cs" id="evolution" aria-labelledby="evolution-h">
+        <h2 id="evolution-h"><span class="cs-n">04</span> Как я к этому пришла</h2>
+        <p>Игра прошла четыре версии. В каждой я проверяла одно: понятно ли за пару секунд, что делать, и есть ли у
+          игры характер.</p>
+        <ol class="evo">
+          <li>
+            <p class="evo-k">Версия 1: Прототип</p>
             <figure class="shot dev-desktop">
-              <a class="zoom" href="../assets/projects/kvak/cover-desktop.webp"
-                aria-label="Открыть крупно: Обложка игры на десктопе"><span class="dev-frame"><img
-                    src="../assets/projects/kvak/cover-desktop.webp" alt="Обложка игры на десктопе" width="1440"
-                    height="860" loading="lazy" decoding="async"></span></a>
-              <figcaption>Десктоп, 1440 px</figcaption>
+              <a class="zoom" href="../assets/projects/kvak/process-1-prototype.webp"
+                aria-label="Открыть крупно: Первый прототип «Квак на работе»: сцена офиса и простой список из пяти предметов"><span
+                  class="dev-frame"><img src="../assets/projects/kvak/process-1-prototype.webp"
+                    alt="Первый прототип «Квак на работе»: сцена офиса и простой список из пяти предметов" width="1200"
+                    height="717" loading="lazy" decoding="async"></span></a>
+              <figcaption>Прототип «Квак на работе»</figcaption>
             </figure>
-            <figure class="shot dev-tablet">
-              <a class="zoom" href="../assets/projects/kvak/cover-tablet.webp"
-                aria-label="Открыть крупно: Обложка игры на планшете"><span class="dev-frame"><img
-                    src="../assets/projects/kvak/cover-tablet.webp" alt="Обложка игры на планшете" width="900"
-                    height="1100" loading="lazy" decoding="async"></span></a>
-              <figcaption>Планшет, 900 px</figcaption>
+            <p>Попробовала изобразить свою задумку с помощью Claude Code.</p>
+          </li>
+          <li>
+            <p class="evo-k">Версия 2: Персонаж</p>
+            <figure class="shot dev-desktop">
+              <a class="zoom" href="../assets/projects/kvak/process-2-iteration.webp"
+                aria-label="Открыть крупно: Вторая версия: сцена на весь экран, Квак в пиджаке и розовых очках, плашка с правилами внизу"><span
+                  class="dev-frame"><img src="../assets/projects/kvak/process-2-iteration.webp"
+                    alt="Вторая версия: сцена на весь экран, Квак в пиджаке и розовых очках, плашка с правилами внизу"
+                    width="1200" height="607" loading="lazy" decoding="async"></span></a>
+              <figcaption>Сцена на весь экран и образ Квака</figcaption>
             </figure>
-            <figure class="shot dev-mobile">
-              <a class="zoom" href="../assets/projects/kvak/cover-mobile.webp"
-                aria-label="Открыть крупно: Обложка игры на телефоне"><span class="dev-frame"><img
-                    src="../assets/projects/kvak/cover-mobile.webp" alt="Обложка игры на телефоне" width="390"
-                    height="844" loading="lazy" decoding="async"></span></a>
-              <figcaption>Телефон, 390 px</figcaption>
+            <p> Добавила Квака – офисного сотрудника, которому осточертело всё на свете и он мечтает угнать в отпуск.
+              Поняла, что персонаж теряется на фоне главного экрана, где нужно искать предметы, убрала. </p>
+          </li>
+          <li>
+            <p class="evo-k">Версия 3: Переосмыслила первый экран</p>
+            <figure class="shot dev-desktop">
+              <a class="zoom" href="../assets/projects/kvak/process-3-final.webp"
+                aria-label="Открыть крупно: Финальная обложка: объявление «Квак, где мои вещи?!» и кнопка «Спасти рабочий день»"><span
+                  class="dev-frame"><img src="../assets/projects/kvak/process-3-final.webp"
+                    alt="Финальная обложка: объявление «Квак, где мои вещи?!» и кнопка «Спасти рабочий день»"
+                    width="1200" height="717" loading="lazy" decoding="async"></span></a>
+              <figcaption>Обложка-объявление</figcaption>
             </figure>
-            <figure class="shot dev-wide">
-              <a class="zoom" href="../assets/projects/kvak/share-1280x640.webp"
-                aria-label="Открыть крупно: Широкая обложка игры 1280 на 640"><span class="dev-frame"><img
-                    src="../assets/projects/kvak/share-1280x640.webp" alt="Широкая обложка игры 1280 на 640"
-                    width="1280" height="640" loading="lazy" decoding="async"></span></a>
-              <figcaption>Обложка 1280 × 640</figcaption>
+            <p>Вся вводная собралась на одном листке «Срочное дело», кнопка одна.</p>
+          </li>
+          <li>
+            <p class="evo-k">Версия 4: Свой Квак</p>
+            <figure class="shot dev-desktop">
+              <a class="zoom" href="../assets/projects/kvak/process-4-frog.webp"
+                aria-label="Открыть крупно: Слева сгенерированный Квак с сигаретой, справа три Квака, нарисованные вручную в Inkscape: чистый, в панике и обгоревший, и муха"><span
+                  class="dev-frame"><img src="../assets/projects/kvak/process-4-frog.webp"
+                    alt="Слева сгенерированный Квак с сигаретой, справа три Квака, нарисованные вручную в Inkscape: чистый, в панике и обгоревший, и муха"
+                    width="1600" height="827" loading="lazy" decoding="async"></span></a>
+              <figcaption>Черновик от нейросети, потом дорисовала сама</figcaption>
             </figure>
-          </div>
-        </section>
+            <p>Сгенерированный Квак курил и был нарисован в чужой манере — для игры с брендами не хотелось
+              представлять такого персонажа. Поэтому я перерисовала его сама в Inkscape. </p>
+          </li>
+        </ol>
+      </section>
 
-        <section class="cs" id="video" aria-labelledby="video-h">
-          <h2 id="video-h"><span class="cs-n">07</span> Видео и анимация</h2>
-          <figure class="vid" style="--ratio:1024 / 558">
-            <div class="vid-frame"><video src="../assets/projects/kvak/kvak-scene.mp4"
-                poster="../assets/projects/kvak/kvak-scene-poster.jpg" controls muted playsinline loop
-                preload="none"></video></div>
-            <figcaption>Тот самый ролик</figcaption>
+      <section class="cs" id="ux" aria-labelledby="ux-h">
+        <h2 id="ux-h"><span class="cs-n">05</span> Ключевые UX/UI-решения</h2>
+        <ol class="ux">
+          <li>
+            <h3>Правила в одну строчку</h3>
+            <p>На обложке сразу даётся суть игры («На рабочем месте пропали 5 вещей. Найди их, пока офис не сгорел») и
+              единственная кнопка «Спасти рабочий день».</p>
+          </li>
+          <li>
+            <h3>Цветовое кодирование</h3>
+            <p>Лаймовый оттенок отвечает только за интерактив и прогресс, а оранжевый закреплён за огнём и тревогой.
+              Игрок считывает эту логику с первых секунд без подсказок.</p>
+          </li>
+          <li>
+            <h3>Нативная механика интеграций</h3>
+            <p>Когда игрок находит предмет, открывается карточка партнёра в его фирменном стиле с шуткой про Квака,
+              репликой героя и бонусом вроде промокода или пробной подписки. Бренд органично вплетается в сюжет и не
+              ломает темп.</p>
+          </li>
+          <li>
+            <h3>Визуальный чек-лист</h3>
+            <p>Справа висит список пропавших вещей с иконками. Найденные предметы загораются лаймом и вычёркиваются,
+              поэтому прогресс понятен даже без цифр.</p>
+          </li>
+          <li>
+            <h3>Сертификат в финале</h3>
+            <p>В конце игрок получает карточку «Офис выжил. Менталка Квака тоже.» со временем прохождения, количеством
+              находок и промахов, чтобы её можно было заскринить и скинуть друзьям.</p>
+          </li>
+          <li>
+            <h3>Интерактивный ноутбук</h3>
+            <p>Если кликнуть по ноутбуку на столе, крупно откроется рабочий чат Квака, который в общей сцене слишком
+              мелкий. Этот клик не засчитывается как ошибка, а таймер на время чтения ставится на паузу.</p>
+          </li>
+          <li>
+            <h3>Пожар вместо скучного таймера</h3>
+            <p>Пламя разгорается в три этапа по мере того, как истекает минута, и замирает во время пауз. Игрок
+              чувствует, сколько времени осталось, буквально периферийным зрением.</p>
+          </li>
+          <li>
+            <h3>Отдельная вёрстка под разные экраны</h3>
+            <p>Для обложки я сделала три разные композиции под десктоп, планшет и смартфон, чтобы листок с правилами и
+              кнопка старта всегда помещались в первый экран без скролла.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="cs" id="screens" aria-labelledby="screens-h">
+        <h2 id="screens-h"><span class="cs-n">06</span> Экраны, макеты и адаптив</h2>
+        <div class="gallery g-game">
+          <figure class="shot dev-desktop" style="--span:6">
+            <a class="zoom" href="../assets/projects/kvak/game-popup.webp"
+              aria-label="Открыть крупно: Карточка найденной банковской карты: концепт интеграции банка с условной наградой"><span
+                class="dev-frame"><img src="../assets/projects/kvak/game-popup.webp"
+                  alt="Карточка найденной банковской карты: концепт интеграции банка с условной наградой" width="1600"
+                  height="900" loading="lazy" decoding="async"></span></a>
+            <figcaption>Каждая находка это концепт интеграции бренда</figcaption>
           </figure>
-        </section>
+          <figure class="shot dev-desktop" style="--span:6">
+            <a class="zoom" href="../assets/projects/kvak/game-chat.webp"
+              aria-label="Открыть крупно: Открытый ноутбук Квака: рабочий чат «Квалоквиум» с перепиской и стикером"><span
+                class="dev-frame"><img src="../assets/projects/kvak/game-chat.webp"
+                  alt="Открытый ноутбук Квака: рабочий чат «Квалоквиум» с перепиской и стикером" width="1600"
+                  height="900" loading="lazy" decoding="async"></span></a>
+            <figcaption>Рабочий чат Квака хорошо отражает бытие. Нарисовала в Иллюстраторе</figcaption>
+          </figure>
+          <figure class="shot dev-desktop" style="--span:12">
+            <a class="zoom" href="../assets/projects/kvak/game-final.webp"
+              aria-label="Открыть крупно: Финальный экран «Офис выжил. Менталка Квака тоже.»: обгоревший Квак в дыму и сертификат выжившего в дедлайне"><span
+                class="dev-frame"><img src="../assets/projects/kvak/game-final.webp"
+                  alt="Финальный экран «Офис выжил. Менталка Квака тоже.»: обгоревший Квак в дыму и сертификат выжившего в дедлайне"
+                  width="1600" height="900" loading="lazy" decoding="async"></span></a>
+            <figcaption>Финал игры</figcaption>
+          </figure>
+          <figure class="shot dev-desktop">
+            <a class="zoom" href="../assets/projects/kvak/cover-desktop.webp"
+              aria-label="Открыть крупно: Обложка игры на десктопе"><span class="dev-frame"><img
+                  src="../assets/projects/kvak/cover-desktop.webp" alt="Обложка игры на десктопе" width="1440"
+                  height="860" loading="lazy" decoding="async"></span></a>
+            <figcaption>Десктоп, 1440 px</figcaption>
+          </figure>
+          <figure class="shot dev-tablet">
+            <a class="zoom" href="../assets/projects/kvak/cover-tablet.webp"
+              aria-label="Открыть крупно: Обложка игры на планшете"><span class="dev-frame"><img
+                  src="../assets/projects/kvak/cover-tablet.webp" alt="Обложка игры на планшете" width="900"
+                  height="1100" loading="lazy" decoding="async"></span></a>
+            <figcaption>Планшет, 900 px</figcaption>
+          </figure>
+          <figure class="shot dev-mobile">
+            <a class="zoom" href="../assets/projects/kvak/cover-mobile.webp"
+              aria-label="Открыть крупно: Обложка игры на телефоне"><span class="dev-frame"><img
+                  src="../assets/projects/kvak/cover-mobile.webp" alt="Обложка игры на телефоне" width="390"
+                  height="844" loading="lazy" decoding="async"></span></a>
+            <figcaption>Телефон, 390 px</figcaption>
+          </figure>
+          <figure class="shot dev-wide">
+            <a class="zoom" href="../assets/projects/kvak/share-1280x640.webp"
+              aria-label="Открыть крупно: Широкая обложка игры 1280 на 640"><span class="dev-frame"><img
+                  src="../assets/projects/kvak/share-1280x640.webp" alt="Широкая обложка игры 1280 на 640" width="1280"
+                  height="640" loading="lazy" decoding="async"></span></a>
+            <figcaption>Обложка 1280 × 640</figcaption>
+          </figure>
+        </div>
+      </section>
 
-        <section class="cs" id="build" aria-labelledby="build-h">
-          <h2 id="build-h"><span class="cs-n">08</span> Реализация</h2>
-          <ul class="impl">
-            <li>Написала всё на чистых HTML, CSS и JavaScript без сборщиков, поэтому игра запускается простым двойным
-              кликом по index.html.</li>
-            <li>Всю пластику (огонь, моргание и почёсывание лапой) сначала настроила в After Effects. Затем с помощью
-              нейросети перевела этот ролик в чистый CSS, чтобы не утяжелять страницу видеофайлами, а паузы между
-              движениями сделала случайными от 10 до 20 секунд.</li>
-            <li>Каждому языку пламени задала свой период, амплитуду и сдвиг, благодаря чему огонь горит живо и не
-              выглядит зацикленным.</li>
-            <li>Шрифты подключены локально без внешних запросов, а лучший рекорд игрока сохраняется в localStorage.</li>
-          </ul>
-        </section>
+      <section class="cs" id="video" aria-labelledby="video-h">
+        <h2 id="video-h"><span class="cs-n">07</span> Видео и анимация</h2>
+        <figure class="vid" style="--ratio:1024 / 558">
+          <div class="vid-frame"><video src="../assets/projects/kvak/kvak-scene.mp4"
+              poster="../assets/projects/kvak/kvak-scene-poster.jpg" controls muted playsinline loop
+              preload="none"></video></div>
+          <figcaption>Тот самый ролик</figcaption>
+        </figure>
+      </section>
+
+      <section class="cs" id="build" aria-labelledby="build-h">
+        <h2 id="build-h"><span class="cs-n">08</span> Реализация</h2>
+        <ul class="impl">
+          <li>Написала всё на чистых HTML, CSS и JavaScript без сборщиков, поэтому игра запускается простым двойным
+            кликом по index.html.</li>
+          <li>Всю пластику (огонь, моргание и почёсывание лапой) сначала настроила в After Effects. Затем с помощью
+            нейросети перевела этот ролик в чистый CSS, чтобы не утяжелять страницу видеофайлами, а паузы между
+            движениями сделала случайными от 10 до 20 секунд.</li>
+          <li>Каждому языку пламени задала свой период, амплитуду и сдвиг, благодаря чему огонь горит живо и не
+            выглядит зацикленным.</li>
+          <li>Все шрифты подключены локально, чтобы игра не зависела от внешних сервисов, а личный рекорд игрока
+            сохраняется прямо в его браузере.</li>
+        </ul>
+      </section>
     </article>
 
     <nav class="case-nav" aria-label="Другие проекты">
