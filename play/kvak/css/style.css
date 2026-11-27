@@ -73,8 +73,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{font-synthesis:none;margin:0;color:var(--ink);font:400 var(--fs-body)/var(--lh-body) var(--font-body);
-    background:var(--noise),var(--fiber),url("../assets/wavy.svg") 0 0/72px 200px,#DDEAC8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%}
+    background:var(--noise),var(--fiber)}
 button{font:inherit;color:inherit}
 [hidden]{display:none !important}
 h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;line-height:1.15;padding:4px 0;margin:0;text-transform:none}
