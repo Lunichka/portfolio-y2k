@@ -4,7 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Кто ты из мира музыки</title>
+  <title>Кто ты из мира музыки?</title>
+  <meta name="description"
+    content="Короткий тест из 7 вопросов, чтобы узнать своего композитора-двойника и выбрать концерт под настроение.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;700&family=Rubik+Mono+One&display=swap">
@@ -202,10 +205,12 @@
     }
 
     .disc.d1 {
+
       left: -6vw;
-      bottom: -14vw;
+      bottom: -20vw;
       --fy: 40vh
     }
+
 
     .board {
       left: 37vw;
@@ -252,6 +257,7 @@
     }
 
     .arrow {
+      display: none;
       left: 20vw;
       bottom: 8vh;
       width: 7vw;
@@ -724,7 +730,7 @@
     }
 
     .ans input:checked+.card .tag::after {
-      content: " ✓ ВЫБРАНО"
+      content: " — ВЫБРАНО"
     }
 
     .q-foot {
@@ -925,6 +931,23 @@
 
     .music-card.is-result .mc-ico {
       width: 78px
+    }
+
+    /* Музыкальные карточки: в паузе — вступление и трек, в финале — трек и одна фраза о нём */
+    .music-card:not(.is-result) .mc-why {
+      display: none
+    }
+
+    .music-card.is-result .mc-lead {
+      display: none
+    }
+
+    .mc-label:empty {
+      display: none
+    }
+
+    .result .deco>.disc {
+      display: none
     }
 
     .sweep {
@@ -2834,17 +2857,67 @@
       }
     }
 
+    /* Музыкальные карточки: в паузе — вступление и трек, в финале — трек и одна фраза о нём */
+    .music-card:not(.is-result) .mc-why {
+      display: none
+    }
+
+    .music-card.is-result .mc-lead {
+      display: none
+    }
+
+    .mc-label:empty {
+      display: none
+    }
+
     /* COMPOSERS_CSS:END */
+
+    /* рисованная стрелка вместо символов-эмодзи */
+    .o-arrow {
+      flex: none;
+      display: inline-block;
+      width: 2em;
+      height: .55em;
+      margin-left: .5em;
+      overflow: visible;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.6px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle
+    }
+
+    .o-arrow path {
+      vector-effect: non-scaling-stroke
+    }
+
+    .o-arrow.left {
+      margin: 0 .5em 0 0;
+      transform: scaleX(-1)
+    }
+
+    .o-arrow.out {
+      width: 1.4em;
+      transform: rotate(-38deg) translate(.05em, .1em)
+    }
   </style>
   <div id="root"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
   <script>
     if (!window.React || !window.ReactDOM) {
       document.getElementById('root').innerHTML = '<p style="margin:0;padding:32px 20px;font:700 18px/1.4 Arial,sans-serif;color:#1D3028;background:#EFE8E1;min-height:100vh">Не удалось загрузить библиотеку интерфейса. Проверь соединение и обнови страницу.</p>';
     } else {
       (function () {
         const h = React.createElement;
+
+        /* Рисованная стрелка — фирменный элемент Оркестра */
+        const ARROW_D = 'M6 96 C230 94 520 95 816 96 M840 101 C806 72 752 38 712 9 C694 -3 696 22 724 42 C760 66 796 84 838 100 M842 104 C780 132 716 166 656 210';
+        function HandArrow(p) {
+          return h('svg', { className: 'o-arrow ' + ((p && p.dir) || 'right'), viewBox: '0 0 850 215', 'aria-hidden': 'true', focusable: 'false' },
+            h('path', { d: ARROW_D }));
+        }
         const G = '#1D3028', C = '#EC635D', M = '#F4BE68', K = '#EFE8E1';
         const SW = 5;
 
@@ -3282,19 +3355,18 @@
             retryLabel: 'Пройти еще раз',
             disclaimer: 'Игровой тест, а не диагноз от психотерапевта.',
             musicPause: { label: 'Музыкальная пауза', listen: 'Послушать трек' },
-            resultMusic: { label: 'Осенняя рекомендация', listen: 'Послушать трек' },
+            resultMusic: { listen: 'Послушать трек' },
             orchestra: {
               title: 'Хочешь услышать музыку вживую?',
-              text: 'Знакомство с классикой удобно продолжить на концерте. Orchestra 1703 играет в Санкт-Петербурге.',
+              text: 'Знакомство с классикой удобно продолжить на концерте. Оркестр 1703 играет в Санкт-Петербурге.',
               concerts: {
-                label: 'Посмотреть концерты Orchestra 1703',
+                label: 'Посмотреть концерты Оркестра 1703',
                 url: 'https://orchestra1703.com/#/afisha',
 
               },
               links: [
                 {
-                  label: 'Orchestra 1703 во ВКонтакте', url: 'https://vk.com/orchestra_1703',
-                  source: 'Указана как официальная на странице оркестра на сайте клуба A2 (a2.fm/events/1703), проверено 2026-10-13'
+                  label: 'Оркестр 1703 во ВКонтакте', url: 'https://vk.ru/orchestra_1703',
                 },
               ]
             }
@@ -3306,7 +3378,7 @@
             mozart: {
               name: 'Моцарт', fullName: 'Вольфганг Амадей Моцарт', epithet: 'виртуоз импровизации', poster: 'mozart',
               text: 'Ты находишь выход там, где остальные еще читают инструкцию. Как ты это сделал? Сам не понял, но сработало же идеально.',
-              detail: 'Твой девиз на вечер: «По ходу разберемся». Ситуация обычно соглашается.',
+              detail: 'Твой девиз на вечер — «по ходу разберёмся». И что удивительно, обычно всё и правда как-то разруливается.',
               music: { work: 'nachtmusik', lead: 'Осенний вечер, хаос под контролем. Для настроения «наугад, но гениально» идеально заходит серенада.' },
               asset: { file: 'assets/portraits/mozart.jpg', status: 'нужен архивный портрет, public domain, с указанием источника' }
             },
@@ -3349,8 +3421,7 @@
               name: 'Георгий Федоров', fullName: 'Георгий Федоров', epithet: 'мастер перформанса', poster: 'fedorov',
               text: 'Ты умеешь подать любую дичь так, что все вокруг слушают с открытым ртом. Обычный созвон превращаешь в шоу.',
               detail: 'После твоего рассказа о пропущенном автобусе хочется встать и зааплодировать.',
-              caption: 'Композитор и пианист, художественный руководитель Orchestra 1703.',
-              captionSource: 'Страница оркестра на сайте клуба A2: a2.fm/events/1703 (проверено 2026-10-13)',
+              caption: 'Композитор и пианист, художественный руководитель Оркестра 1703.',
               music: { work: 'ravel', lead: 'Музыку нужно не просто слушать, ее нужно проживать в моменте. Вот живой трек от оркестра.' },
               asset: { file: 'assets/portraits/fedorov.jpg', status: 'нужна подлинная фотография из надежного источника с разрешенными условиями использования; лицо не рисовать' }
             }
@@ -3368,7 +3439,7 @@
             },
             pastoral: {
               composer: 'Людвиг ван Бетховен', title: 'Симфония № 6 фа мажор, соч. 68, «Пасторальная»', kind: 'Симфония',
-              why: 'Идеальный трек для движения: от спокойного старта до эпической грозы.',
+              why: 'Идеально ложится под движение, когда тихое начало постепенно перерастает в мощную грозу.',
               listen: {
                 url: 'https://music.youtube.com/playlist?list=OLAK5uy_mI1q9Vru1YgI06Gd6O4Q7t83bA0HCbvPg', platform: 'YouTube Music',
                 recording: 'London Philharmonic Orchestra (альбом)', verified: 'title',
@@ -3412,12 +3483,12 @@
               }
             },
             ravel: {
-              composer: 'Морис Равель', title: '«Гробница Куперена»: Менуэт', kind: 'Запись Orchestra 1703',
+              composer: 'Морис Равель', title: '«Гробница Куперена»: Менуэт', kind: 'Запись Оркестра 1703',
               why: 'Изящный менуэт в живом исполнении питерского оркестра.',
               listen: {
                 url: 'https://www.youtube.com/watch?v=Y2fts7us074', platform: 'YouTube',
-                recording: 'Orchestra 1703', verified: 'title',
-                source: 'Заголовок в выдаче: «ОРКЕСТР 1703 - Морис Равель - "Гробница Куперена" Менуэт - YouTube». Равель назван в программе оркестра на a2.fm/events/1703. Автора загрузки не проверял.'
+                recording: 'Оркестр 1703', verified: 'title',
+                source: 'ОРКЕСТР 1703 - Морис Равель - "Гробница Куперена" Менуэт - YouTube». Равель назван в программе оркестра на a2.fm/events/1703.'
               }
             }
           },
@@ -3428,7 +3499,7 @@
               answers: [
                 {
                   hook: 'Импровизирую на ходу.', rest: 'Если реальность меняет тональность, соберем из этого сочный трек.', archetype: 'mozart',
-                  music: { work: 'firebird', lead: 'День сменил тональность? Лови музыку, где резкие перепады — фича, а не баг.' }
+                  music: { work: 'firebird', lead: 'Когда день внезапно меняет настроение, лучше всего заходит музыка с такими же резкими перепадами.' }
                 },
                 {
                   hook: 'Забиваю на все, укутываюсь в плед.', rest: 'Включаю режим «драматичный сериал у окна» под дождь.', archetype: 'tchaikovsky',
@@ -3440,7 +3511,7 @@
                 },
                 {
                   hook: 'Беру все в свои руки.', rest: 'Проблема сама себя не решит. А если решит, я все равно перепроверю.', archetype: 'beethoven',
-                  music: { work: 'pastoral', lead: 'Любишь держать контроль? В этой симфонии есть и буря, и штиль после нее.' }
+                  music: { work: 'pastoral', lead: 'Тем, кто привык держать всё под контролем, иногда полезно просто отпустить вожжи — в этой симфонии как раз можно выдохнуть после напряжённой гонки.' }
                 }
               ]
             },
@@ -3453,7 +3524,7 @@
                 },
                 {
                   hook: 'Резко меняю локацию.', rest: 'Сидеть на месте скучно, пойду проверю, что там за углом.', archetype: 'stravinsky',
-                  music: { work: 'nachtmusik', lead: 'Маршрут перестроился? Пусть на фоне играет бодрая серенада.' }
+                  music: { work: 'nachtmusik', lead: 'Для спонтанного побега из рутины нужен правильный фон — эта бодрая серенада идеально ложится под внезапную смену декораций.' }
                 },
                 {
                   hook: 'Затеваю грандиозный проект.', rest: 'Расписываю все до 2030 года с подпунктами и майлстоунами.', archetype: 'wagner',
@@ -3461,7 +3532,7 @@
                 },
                 {
                   hook: 'Берусь за три дела одновременно.', rest: 'В итоге ни одно не доделал, но получилось концептуально.', archetype: 'mozart',
-                  music: { work: 'idyll', lead: 'Хаос в задачах? Успокоим нервы спокойной камерной музыкой.' }
+                  music: { work: 'idyll', lead: 'Когда в задачах полный хаос, лучше всего выдохнуть под тихую камерную музыку.' }
                 }
               ]
             },
@@ -3474,7 +3545,7 @@
                 },
                 {
                   hook: 'Зажигаю команду вайбом.', rest: 'Превращаю унылую рутину в перформанс с овациями.', archetype: 'fedorov',
-                  music: { work: 'pastoral', lead: 'Рабочий процесс превратился в праздник? Лови третью часть симфонии.' }
+                  music: { work: 'pastoral', lead: 'Когда работа идёт настолько легко, что хочется танцевать, включай третью часть симфонии.' }
                 },
                 {
                   hook: 'Драматизирую масштабы катастрофы.', rest: 'Хотя на кону всего лишь презентация картошки фри.', archetype: 'tchaikovsky',
@@ -3491,7 +3562,7 @@
               answers: [
                 {
                   hook: 'Эпическое фэнтези.', rest: 'Сложная лорная база, масштабные декорации и открытый финал.', archetype: 'wagner',
-                  music: { work: 'pastoral', lead: 'Эпическому хронометражу — пейзажи симфонии сменяют друг друга, как кадры.' }
+                  music: { work: 'pastoral', lead: 'Если уж снимать эпическое фэнтези про твою жизнь, то только под эту симфонию — она звучит так, будто за кадром уже разворачивается битва за Средиземье.' }
                 },
                 {
                   hook: 'Безумная комедия положений.', rest: 'Где все шло не так с первой минуты, но вышло чертовски смешно.', archetype: 'mozart',
@@ -3511,7 +3582,7 @@
               id: 'q5', scene: 'q5', text: 'Как у тебя складываются отношения с дедлайнами и правилами?',
               answers: [
                 {
-                  hook: 'Правила существуют, чтобы', rest: 'Красиво нарушать их ради красивого же жеста.', archetype: 'tchaikovsky',
+                  hook: 'Правила придумали, чтобы их нарушать.', rest: 'Особенно если это можно сделать эффектно и ради красивого жеста.', archetype: 'tchaikovsky',
                   music: { work: 'clair', lead: 'Нарушать правила эстетично лучше под завораживающий «Лунный свет».' }
                 },
                 {
@@ -3524,7 +3595,7 @@
                 },
                 {
                   hook: 'Скучно жить по шаблонам.', rest: 'Я бы не просто нарушил правило, я бы переписал весь кодекс.', archetype: 'wagner',
-                  music: { work: 'pastoral', lead: 'Масштабный подход к переменам: пять частей, пять разных состояний.' }
+                  music: { work: 'pastoral', lead: 'Если уж менять всё вокруг, то с размахом — здесь за пять частей музыка успевает прожить пять разных настроений.' }
                 }
               ]
             },
@@ -3545,7 +3616,7 @@
                 },
                 {
                   hook: 'Просто молча занять угол.', rest: 'И через пять минут все будут смотреть только на тебя.', archetype: 'debussy',
-                  music: { work: 'october', lead: 'Тихая уверенность громче криков. Осенняя пьеса звучит ровно об этом.' }
+                  music: { work: 'october', lead: 'Когда внутри всё спокойно, доказывать никому ничего не нужно. Эта осенняя пьеса как раз про такое состояние.' }
                 }
               ]
             },
@@ -3880,14 +3951,14 @@
         function ListenLink(p) {
           var l = p.work.listen;
           if (!l || !l.url) {
-            return h('p', { className: 'mc-note' }, 'Ссылка на запись будет добавлена. Подтвержденной записи пока нет.');
+            return h('p', { className: 'mc-note' }, 'Ссылка на запись будет добавлена попозже.');
           }
           return h('div', { className: 'mc-actions' },
             h('a', {
               className: 'btn small', href: l.url, target: '_blank', rel: 'noopener noreferrer',
               'aria-label': p.label + ': ' + p.work.title + ', ' + p.work.composer + ' (откроется в новой вкладке)'
             },
-              h('span', { className: 'face' }, p.label, ' ↗')),
+              h('span', { className: 'face' }, p.label, h(HandArrow, { dir: 'out' }))),
             h('span', { className: 'mc-src' }, l.platform + (l.recording ? ' ' + l.recording : '')));
         }
 
@@ -3945,11 +4016,11 @@
               h('div', { className: 'music-slot', ref: slotRef, 'aria-live': 'polite' },
                 chosen
                   ? h(MusicCard, { key: p.sel, music: chosen.music, heading: M0.musicPause.label, listen: M0.musicPause.listen })
-                  : h('p', { className: 'mc-empty' }, 'После ответа здесь появится музыкальная пауза.'))
+                  : h('p', { className: 'mc-empty' },))
             ),
             h('div', { className: 'q-foot' },
-              h('button', { className: 'btn ghost small', onClick: p.onBack }, h('span', { className: 'face' }, p.qi === 0 ? '← В начало' : '← Назад')),
-              h('button', { className: 'btn', disabled: p.sel === null, onClick: p.onNext }, h('span', { className: 'face', style: { fontSize: 'clamp(16px,1.6vw,24px)' } }, last ? 'Узнать результат' : 'Дальше →'))
+              h('button', { className: 'btn ghost small', onClick: p.onBack }, h('span', { className: 'face' }, h(HandArrow, { dir: 'left' }), p.qi === 0 ? 'В начало' : 'Назад')),
+              h('button', { className: 'btn', disabled: p.sel === null, onClick: p.onNext }, h('span', { className: 'face', style: { fontSize: 'clamp(16px,1.6vw,24px)' } }, last ? 'Узнать результат' : 'Дальше', last ? null : h(HandArrow)))
             )
           );
         }
@@ -3962,9 +4033,9 @@
             h('p', null, o.text),
             h('div', { className: 'orch-links' },
               o.concerts.url && h('a', { className: 'btn small', href: o.concerts.url, target: '_blank', rel: 'noopener noreferrer' },
-                h('span', { className: 'face' }, o.concerts.label, ' ↗')),
+                h('span', { className: 'face' }, o.concerts.label, h(HandArrow, { dir: 'out' }))),
               o.links.map(function (l, i) {
-                return h('a', { key: i, className: 'orch-link', href: l.url, target: '_blank', rel: 'noopener noreferrer' }, l.label, ' ↗');
+                return h('a', { key: i, className: 'orch-link', href: l.url, target: '_blank', rel: 'noopener noreferrer' }, l.label, h(HandArrow, { dir: 'out' }));
               })),
             !o.concerts.url && o.concerts.note && h('p', { className: 'orch-note' }, o.concerts.note));
         }
@@ -3996,7 +4067,7 @@
               a.fullName && a.fullName !== a.name && h('p', { className: 'r-full rise', style: { '--d': '0.6s' } }, a.fullName),
               h('p', { className: 'r-epithet rise', style: { '--d': '0.7s' } }, a.epithet),
               h('p', { className: 'r-text rise', style: { '--d': '0.8s' } }, a.text),
-              h('p', { className: 'r-detail rise', style: { '--d': '0.9s' } }, h('b', null, 'Бытовая деталь'), a.detail),
+              h('p', { className: 'r-detail rise', style: { '--d': '0.9s' } }, h('b', null, 'Твой вайб'), a.detail),
               h('div', { className: 'r-music rise', style: { '--d': '1s' } },
                 h(MusicCard, { music: a.music, result: true, heading: M0.resultMusic.label, listen: M0.resultMusic.listen })),
               a.caption && h('p', { className: 'r-note rise', style: { '--d': '1.05s' } }, a.caption),
